@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1>Creative Coding</h1>
+            <p class="subtitle">Student Portal</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-section">
+                <span class="nav-section-title">Weeks</span>
+                <ul class="nav-submenu" id="weeks-menu"></ul>
+            </li>
+            <li><a href="assessments.html" class="nav-link">Assessments</a></li>
+            <li><a href="assignments.html" class="nav-link">Assignments</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="examples.html" class="nav-link">Examples</a></li>
+            <li><a href="challenges.html" class="nav-link">Challenges</a></li>
+            <li><a href="cheat-sheet.html" class="nav-link">p5.js Cheat Sheet</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="progress.html" class="nav-link">My Progress</a></li>
+            <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="overall-progress"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0% Complete</span>
+        </div>
+
+        <div class="page-content" id="page-content">
+            <div class="loading">Loading week content...</div>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/certificate.js"></script>
+    <script src="js/app.js?v=3"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const weekMatch = window.location.pathname.match(/week-(\d+)\.html/) || 
+                             window.location.href.match(/week-(\d+)\.html/);
+            if (weekMatch) {
+                loadWeekPage(parseInt(weekMatch[1]));
+            } else {
+                loadWeekPage(5);
+            }
+        });
+    </script>
+</body>
+</html>

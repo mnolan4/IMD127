@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Cheat Sheet - Creative Coding</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .cheat-sheet-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .cheat-sheet-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .cheat-sheet-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cheat-sheet-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .cheat-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cheat-section h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .cheat-section h3 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cheat-code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+            white-space: pre-wrap;
+        }
+        
+        .cheat-code-block code {
+            color: #e2e8f0;
+            background: transparent;
+            padding: 0;
+        }
+        
+        .cheat-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .cheat-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .cheat-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .cheat-list code {
+            background: var(--bg-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+        
+        .cheat-attribution {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .cheat-attribution a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .cheat-attribution a:hover {
+            text-decoration: underline;
+        }
+        
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .cheat-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .cheat-item code {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .cheat-comment {
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-header">
+            <h1>Creative Coding</h1>
+            <p class="subtitle">Student Portal</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-section">
+                <span class="nav-section-title">Weeks</span>
+                <ul class="nav-submenu" id="weeks-menu"></ul>
+            </li>
+            <li><a href="assessments.html" class="nav-link">Assessments</a></li>
+            <li><a href="assignments.html" class="nav-link">Assignments</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="examples.html" class="nav-link">Examples</a></li>
+            <li><a href="challenges.html" class="nav-link">Challenges</a></li>
+            <li><a href="cheat-sheet.html" class="nav-link active">p5.js Cheat Sheet</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="progress.html" class="nav-link">My Progress</a></li>
+            <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content" id="main-content" role="main" aria-label="Main content">
+        <div class="progress-bar-container">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall course progress">
+                <div class="progress-fill" id="overall-progress"></div>
+            </div>
+            <span class="progress-text" id="progress-text" aria-live="polite" aria-atomic="true">0% Complete</span>
+        </div>
+        <div aria-live="polite" aria-atomic="true" class="sr-only" id="aria-live-region"></div>
+
+        <div class="page-content">
+            <div class="cheat-sheet-container">
+                <div class="cheat-sheet-header">
+                    <h1>p5.js</h1>
+                    <p>a cheat sheet for beginners!</p>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>program structure</h2>
+                    <div class="cheat-code-block">
+                        <code><span class="cheat-comment">//runs once when program starts</span><br>
+function setup(){<br>
+  createCanvas(800,600); <span class="cheat-comment">//width,height in pixels</span><br>
+}<br>
+<br>
+<span class="cheat-comment">//run continuously after setup</span><br>
+function draw(){<br>
+  <span class="cheat-comment">//rendering loop</span><br>
+}</code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>system variables</h2>
+                    <div class="cheat-code-block">
+                        <code>windowWidth / windowHeight<br>
+<span class="cheat-comment">//width / height of window</span><br>
+<br>
+width / height<br>
+<span class="cheat-comment">//width / height of canvas</span><br>
+<br>
+mouseX / mouseY<br>
+<span class="cheat-comment">//current horizontal / vertical mouse position</span></code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>non-visual feedback</h2>
+                    <div class="cheat-code-block">
+                        <code>print();<br>
+<span class="cheat-comment">//report data to the output console</span><br>
+<br>
+<span class="cheat-comment">//double slash to comment code (program skips it)</span></code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>color</h2>
+                    <div class="cheat-code-block">
+                        <code>fill(120); <span class="cheat-comment">//gray: 0-255</span><br>
+fill(100,125,255); <span class="cheat-comment">//r, g, b: 0-255</span><br>
+fill(255, 0, 0, 50); <span class="cheat-comment">//r, g, b, alpha</span><br>
+fill('red'); <span class="cheat-comment">//color string</span><br>
+fill('#ccc'); <span class="cheat-comment">//3-digit hex</span><br>
+fill('#222222'); <span class="cheat-comment">//6-digit hex fill</span><br>
+color(0, 0, 255); <span class="cheat-comment">//p5.Color object</span></code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>math</h2>
+                    <div class="cheat-code-block">
+                        <code>+ - / *  <span class="cheat-comment">//basic math operators</span><br>
+<br>
+random(low,high); <span class="cheat-comment">//ranged random number</span><br>
+<br>
+map(value, in1, in2, out1, out2);<br>
+<span class="cheat-comment">//map a value from input range to output range</span></code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>2d primitives</h2>
+                    <div class="cheat-code-block">
+                        <code>line(x1, y1, x2, y2);<br>
+<br>
+ellipse(x, y, width, height);<br>
+<br>
+rect(x, y, width, height);<br>
+<br>
+arc(x, y, width, height, start, stop);<br>
+<br>
+beginShape();<br>
+  vertex(x1, y1);<br>
+  vertex(x2, y2);<br>
+  vertex(x3, y3);<br>
+  <span class="cheat-comment">//add more vertex</span><br>
+endShape(CLOSE);<br>
+<br>
+text("string", x, y, boxwidth, boxheight);</code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>attributes</h2>
+                    <div class="cheat-code-block">
+                        <code>background(color);<br>
+<span class="cheat-comment">//set the background color</span><br>
+<br>
+fill(color);<br>
+<span class="cheat-comment">//set the fill color</span><br>
+<br>
+noFill();<br>
+<span class="cheat-comment">//disables fill</span><br>
+<br>
+stroke(color);<br>
+<span class="cheat-comment">//set the stroke color</span><br>
+<br>
+strokeWeight(weight);<br>
+<span class="cheat-comment">//set the stroke's width in pixels</span><br>
+<br>
+noStroke();<br>
+<span class="cheat-comment">//disables stroke</span><br>
+<br>
+ellipseMode(MODE);<br>
+rectMode(MODE);<br>
+<span class="cheat-comment">//CENTER,CORNER</span><br>
+<br>
+textSize(pixels);</code>
+                    </div>
+                </div>
+
+                <div class="cheat-section">
+                    <h2>if/then logic</h2>
+                    <div class="cheat-code-block">
+                        <code>if(test){<br>
+  <span class="cheat-comment">//statements</span><br>
+}<br>
+<br>
+===  <span class="cheat-comment">//equal to</span><br>
+!==  <span class="cheat-comment">//not equal</span><br>
+>   <span class="cheat-comment">//greater than</span><br>
+<   <span class="cheat-comment">//less than</span><br>
+>=  <span class="cheat-comment">//greater than or equal</span><br>
+<=  <span class="cheat-comment">//less than or equal</span></code>
+                    </div>
+                </div>
+
+                <div class="cheat-attribution">
+                    <p>Based on a page from <a href="https://bmoren.github.io/p5js-cheat-sheet/" target="_blank" rel="noopener noreferrer">Ben Moren</a> <a href="https://bmoren.github.io/p5js-cheat-sheet/" target="_blank" rel="noopener noreferrer">https://bmoren.github.io/p5js-cheat-sheet/</a> CC-BY-SA-NC-4.0</p>
+                    <p>Translation by Ben Moren</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/bookmarks.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Ensure content loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize progress
+            if (typeof ProgressManager !== 'undefined') {
+                ProgressManager.updateUI();
+            }
+        });
+    </script>
+</body>
+</html>
+

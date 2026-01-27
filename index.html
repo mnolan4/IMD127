@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Coding Course - Student Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-header">
+            <h1>Creative Coding</h1>
+            <p class="subtitle">Student Portal</p>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li class="nav-section">
+                <span class="nav-section-title">Weeks</span>
+                <ul class="nav-submenu" id="weeks-menu">
+                    <!-- Populated by JavaScript -->
+                </ul>
+            </li>
+            <li><a href="assessments.html" class="nav-link">Assessments</a></li>
+            <li><a href="assignments.html" class="nav-link">Assignments</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="examples.html" class="nav-link">Examples</a></li>
+            <li><a href="challenges.html" class="nav-link">Challenges</a></li>
+            <li><a href="cheat-sheet.html" class="nav-link">p5.js Cheat Sheet</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="progress.html" class="nav-link">My Progress</a></li>
+            <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content" role="main" aria-label="Main content">
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall course progress">
+                <div class="progress-fill" id="overall-progress"></div>
+            </div>
+            <span class="progress-text" id="progress-text" aria-live="polite" aria-atomic="true">0% Complete</span>
+        </div>
+        
+        <!-- ARIA Live Region for announcements -->
+        <div aria-live="polite" aria-atomic="true" class="sr-only" id="aria-live-region"></div>
+
+        <!-- Homepage Content -->
+        <div class="page-content" id="page-content">
+            <header class="page-header">
+                <h1>Welcome to Creative Coding</h1>
+                <p class="lead">Learn to create art through code using JavaScript and p5.js. </p>
+                <p class="lead">Instructor and Curricular Design : <a href="mailto:mttnln@umd.edu">Matthew Nolan</a>, University of Maryland, Department of Computer Science. </p>
+            </header>
+
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <h2>Course Overview</h2>
+                    <p>This 15-week course introduces you to creative coding through hands-on projects. You'll learn programming fundamentals while creating visual art, interactive installations, data visualizations, and more.</p>
+                    <p><strong>No prior coding experience required!</strong> This course is designed for artists and designers with mixed technical backgrounds.</p>
+                </div>
+
+                <div class="welcome-card">
+                    <h2>Your Progress</h2>
+                    <div class="progress-summary">
+                        <div class="stat">
+                            <span class="stat-value" id="weeks-complete">0</span>
+                            <span class="stat-label">Weeks Complete</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="tasks-complete">0</span>
+                            <span class="stat-label">Tasks Complete</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="certificates-earned">0</span>
+                            <span class="stat-label">Certificates</span>
+                        </div>
+                    </div>
+                    <a href="progress.html" class="btn-primary">View Full Progress</a>
+                </div>
+            </section>
+
+            <section class="meet-lecturer-section">
+                <h2>Meet Your Lecturer Matt Nolan</h2>
+                <div class="lecturer-card">
+                    <p>Welcome to Creative Coding! I'm excited to guide you through this journey of exploring code as a creative medium. This course is designed to help you discover the expressive possibilities of programming, whether you're completely new to code or looking to expand your creative practice.</p>
+                    <p>Throughout this course, you'll learn to think like a creative coder—using programming concepts to generate visual art, create interactive experiences, and express your artistic vision through code. We'll work with p5.js, a powerful and accessible creative coding library that makes it easy to bring your ideas to life.</p>
+                    <p>My goal is to create a supportive learning environment where experimentation is encouraged, mistakes are part of the process, and your unique creative voice can emerge. Don't hesitate to reach out with questions, share your work, or discuss ideas. I'm here to help you succeed.</p>
+                    <p><strong>Contact:</strong> <a href="mailto:mttnln@umd.edu">mttnln@umd.edu</a></p>
+                </div>
+            </section>
+
+            <section class="schedule-section">
+                <h2>Important Dates</h2>
+                <div class="schedule-card" style="background-color: var(--bg-white); border-radius: 12px; padding: 2rem; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0; margin-bottom: 0.75rem; font-weight: 600;">Semester Dates</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-medium); line-height: 1.8;">
+                                <li><strong>First Day of Class:</strong><br>January 27, 2025 (Tuesday)</li>
+                                <li><strong>Last Day of Classes:</strong><br>May 8, 2025 (Friday)</li>
+                                <li><strong>Class Meeting Days:</strong><br>Tuesday & Thursday</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0; margin-bottom: 0.75rem; font-weight: 600;">Break & Exam Period</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-medium); line-height: 1.8;">
+                                <li><strong>Spring Break:</strong><br>March 15-22, 2025<br><span style="font-size: 0.9rem; color: var(--text-light);">(Sunday-Sunday)</span></li>
+                                <li><strong>Reading Day:</strong><br>May 9, 2025 (Saturday)</li>
+                                <li><strong>Final Exams:</strong><br>May 11-18, 2025<br><span style="font-size: 0.9rem; color: var(--text-light);">(Monday-Monday)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--text-medium); margin: 0; line-height: 1.6;">
+                            <strong>Note:</strong> This is a 15-week course. For specific weekly schedules, assignment due dates, and class meeting times, visit individual week pages. Homework sketches are typically due Monday at 11:59 PM before Tuesday's class.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="getting-started-section">
+                <h2>Getting Started</h2>
+                <div id="getting-started-content">
+                    <!-- Content will be loaded dynamically from courseData -->
+                </div>
+            </section>
+
+            <section class="mandala-section">
+                <div class="mandala-container">
+                    <h2>Creative Coding in Action</h2>
+                    <p class="mandala-description">Explore the possibilities of code as a creative medium</p>
+                    <div id="mandala-sketch" 
+                         class="mandala-sketch-wrapper" 
+                         role="img" 
+                         aria-label="Animated spiral mandala visualization demonstrating creative coding techniques. The visualization shows a colorful spiral pattern with circles arranged in a golden angle spiral, creating a dynamic, rotating mandala effect that changes colors over time."
+                         aria-describedby="mandala-description-text">
+                        <span class="sr-only" id="mandala-description-text">
+                            This interactive visualization demonstrates creative coding using p5.js. The mandala features a spiral pattern of colored circles arranged using the golden angle mathematical principle. The colors shift continuously, creating a dynamic, animated effect that showcases how code can be used to create artistic visualizations.
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quick-links">
+                <h2>Quick Links</h2>
+                <div class="link-grid">
+                    <a href="week-01.html" class="link-card">
+                        <h3>Week 1</h3>
+                        <p>Introduction to Creative Coding</p>
+                        <span class="link-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href="assessments.html" class="link-card">
+                        <h3>Assessments</h3>
+                        <p>Practice problems, code tracing, and more</p>
+                        <span class="link-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href="assignments.html" class="link-card">
+                        <h3>Assignments</h3>
+                        <p>Creative challenges and projects</p>
+                        <span class="link-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href="resources.html" class="link-card">
+                        <h3>Resources</h3>
+                        <p>Setup guides, FAQs, troubleshooting</p>
+                        <span class="link-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="course-structure">
+                <h2>Course Structure</h2>
+                <div class="structure-timeline">
+                    <div class="timeline-section">
+                        <h3>Weeks 1-5: Foundations</h3>
+                        <p>Building the basics and seeing code as a creative tool</p>
+                    </div>
+                    <div class="timeline-section">
+                        <h3>Weeks 6-8: Building Complexity</h3>
+                        <p>Working with collections and creating sophisticated systems</p>
+                    </div>
+                    <div class="timeline-section">
+                        <h3>Weeks 9-10: Sound and UI</h3>
+                        <p>Working with audio, sound synthesis, and creating interactive UI controls</p>
+                    </div>
+                    <div class="timeline-section">
+                        <h3>Weeks 11-12: Interactivity and Data</h3>
+                        <p>Game design, state machines, scoring systems, and data visualization</p>
+                    </div>
+                    <div class="timeline-section">
+                        <h3>Weeks 13-15: Video, Studio Work, and Portfolio</h3>
+                        <p>Video input and processing, independent studio work, and final portfolio development</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="privacy-section">
+                <h2>Privacy & Data</h2>
+                <div class="privacy-card">
+                    <p><strong>Your privacy is important.</strong> This website stores all progress data locally on your device using browser localStorage. No data is ever sent to any server or collected by anyone.</p>
+                    <ul>
+                        <li>✓ All progress stored on your computer only</li>
+                        <li>✓ No external data collection</li>
+                        <li>✓ No cookies or tracking</li>
+                        <li>✓ You can clear your data anytime</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <!-- p5.js library for mandala sketch -->
+    <script src="https://unpkg.com/p5@1.11.11/lib/p5.min.js"></script>
+    <!-- Highlight.js for syntax highlighting in key concepts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/a11y-light.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/bookmarks.js"></script>
+    <script src="js/code-copy.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Mandala Sketch -->
+    <script>
+        // Wait for everything to be ready
+        function initMandala() {
+            // Check if p5.js is loaded
+            if (typeof p5 === 'undefined') {
+                setTimeout(initMandala, 100);
+                return;
+            }
+
+            // Check if container exists
+            const container = document.getElementById('mandala-sketch');
+            if (!container) {
+                setTimeout(initMandala, 100);
+                return;
+            }
+
+            // Spiral Mandala — instance-mode p5.js
+            const N = 1000;
+            const GOLDEN_ANGLE = Math.PI * 2 * 0.61803398875; // ~golden-angle spacing
+
+            const mandalaSketch = (p) => {
+                let maxR;
+
+                p.setup = () => {
+                    let canvas = p.createCanvas(700, 700);
+                    canvas.parent('mandala-sketch');
+                    // Add accessibility attributes to canvas
+                    canvas.elt.setAttribute('role', 'img');
+                    canvas.elt.setAttribute('aria-label', 'Animated spiral mandala visualization with colorful circles arranged in a golden angle spiral pattern');
+                    canvas.elt.setAttribute('tabindex', '0');
+                    p.colorMode(p.HSB, 360, 100, 100, 100);
+                    p.noStroke();
+                    maxR = Math.min(p.width, p.height) * 0.48;
+                    p.background(0, 0, 0);
+                };
+
+                p.draw = () => {
+                    // soft persistence
+                    p.background(0, 0, 0, 12);
+                    p.translate(p.width / 2, p.height / 2);
+
+                    for (let i = 0; i < N; i++) {
+                        const t = i;
+                        const ang = t * GOLDEN_ANGLE;
+                        const r = maxR * Math.pow(t / (N - 1), 0.9);
+
+                        const x = r * Math.cos(ang);
+                        const y = r * Math.sin(ang);
+                        const d = p.lerp(2, maxR * 0.08, t / (N - 1));
+
+                        const hueShift = (p.frameCount * 0.6 + t * 0.25) % 360;
+                        p.fill(hueShift, 80, 100, 80);
+                        p.circle(x, y, d);
+                    }
+                };
+            };
+
+            new p5(mandalaSketch);
+        }
+
+        // Start initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMandala);
+        } else {
+            initMandala();
+        }
+    </script>
+</body>
+</html>
