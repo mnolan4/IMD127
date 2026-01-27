@@ -1,0 +1,284 @@
+<div class="key-concepts-content"><h1>Week 7: Objects and Classes - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to understand object-oriented programming basics. You should create classes to define object templates. You should instantiate multiple objects from a class. You should write methods that define object behaviors. You should design object-based systems with interactions.</p>
+<h2>Key Concepts</h2>
+<h3>Objects</h3>
+<p>Objects are collections of related data stored as properties. They let you group variables together that belong to the same thing, making your code more organized and easier to understand.</p>
+<p><strong>Why Use Objects:</strong></p>
+<ul>
+<li><strong>Organization</strong>: Group related data together (position, size, color for one shape)</li>
+<li><strong>Clarity</strong>: <code>myCircle.x</code> is clearer than <code>circleX</code></li>
+<li><strong>Flexibility</strong>: Easy to add new properties</li>
+<li><strong>Multiple objects</strong>: Create many objects with the same structure</li>
+</ul>
+<p><strong>Creating Objects (Object Literals):</strong><br>Objects use curly braces <code>{}</code> and store data as key-value pairs:</p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let myCircle = {
+  x: 200,           // Property: value
+  y: 200,
+  diameter: 50,
+  moveSpeed: 2
+};
+
+// Access properties with dot notation
+console.log(myCircle.x);         // 200
+console.log(myCircle.diameter);  // 50
+
+// Modify properties
+myCircle.x += myCircle.moveSpeed;
+myCircle.diameter = 100;
+</code></pre>
+<p><strong>Using Objects:</strong></p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let myCircle = {
+  x: 200,
+  y: 200,
+  diameter: 50,
+  moveSpeed: 2
+};
+
+function draw() {
+  background(220);
+  myCircle.x += myCircle.moveSpeed;  // Move circle
+  ellipse(myCircle.x, myCircle.y, myCircle.diameter, myCircle.diameter);
+}
+</code></pre>
+<p><strong>Multiple Objects:</strong><br>Create multiple objects with the same structure:</p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">let circle1 = { x: 100, y: 100, diameter: 50 };
+let circle2 = { x: 200, y: 200, diameter: 75 };
+let circle3 = { x: 300, y: 300, diameter: 100 };
+
+function draw() {
+  background(220);
+  ellipse(circle1.x, circle1.y, circle1.diameter, circle1.diameter);
+  ellipse(circle2.x, circle2.y, circle2.diameter, circle2.diameter);
+  ellipse(circle3.x, circle3.y, circle3.diameter, circle3.diameter);
+}
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>All data for one object is together</li>
+<li>Easy to pass objects to functions</li>
+<li>Clear what properties belong to what</li>
+<li>Foundation for classes (next concept)</li>
+</ul>
+<h3>Classes</h3>
+<p>Classes are blueprints for creating objects. They define what properties and methods (functions) objects of that type will have. Once you define a class, you can create many instances (objects) from it.</p>
+<p><strong>Why Use Classes:</strong></p>
+<ul>
+<li><strong>Templates</strong>: Define structure once, create many objects</li>
+<li><strong>Consistency</strong>: All instances have the same properties and methods</li>
+<li><strong>Organization</strong>: Group data and behavior together</li>
+<li><strong>Efficiency</strong>: Write code once, reuse many times</li>
+</ul>
+<p><strong>Defining a Class:</strong></p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">class Circle {
+  // Constructor: runs when object is created
+  constructor(x, y, diameter) {
+    this.x = x;      // &#39;this&#39; refers to the object being created
+    this.y = y;
+    this.diameter = diameter;
+  }
+
+  // Method: function that belongs to the class
+  display() {
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  }
+
+  // Method: can modify object properties
+  move() {
+    this.x += 1;
+  }
+}
+</code></pre>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li><code>class Circle</code>: Defines the class name</li>
+<li><code>constructor()</code>: Special method that runs when object is created</li>
+<li><code>this</code>: Refers to the current object instance</li>
+<li>Methods: Functions that belong to the class</li>
+</ul>
+<p><strong>Creating Instances:</strong><br>Use the <code>new</code> keyword to create objects from a class:</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">// Create instances (objects) from the class
+let circle1 = new Circle(100, 100, 50);  // x=100, y=100, diameter=50
+let circle2 = new Circle(200, 200, 75);  // x=200, y=200, diameter=75
+
+function draw() {
+  background(220);
+  circle1.display();  // Call method on circle1
+  circle1.move();     // Move circle1
+  circle2.display();  // Call method on circle2
+  circle2.move();     // Move circle2
+}
+</code></pre>
+<p><strong>How <code>this</code> Works:</strong><br><code>this</code> refers to the specific object instance:</p>
+<ul>
+<li>In <code>circle1</code>, <code>this</code> refers to <code>circle1</code></li>
+<li>In <code>circle2</code>, <code>this</code> refers to <code>circle2</code></li>
+<li>Each object has its own copy of properties</li>
+</ul>
+<p><strong>Class vs Instance:</strong></p>
+<ul>
+<li><strong>Class</strong>: The template/blueprint (<code>class Circle</code>)</li>
+<li><strong>Instance</strong>: A specific object created from the class (<code>circle1</code>, <code>circle2</code>)</li>
+<li>One class can create many instances</li>
+</ul>
+<h3>Methods</h3>
+<p>Methods are functions that belong to a class. They define what objects of that class can do. Methods can access and modify the object&#39;s properties using <code>this</code>.</p>
+<p><strong>Method Types:</strong></p>
+<p><strong>Display Methods:</strong> Show the object visually</p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">display() {
+  ellipse(this.x, this.y, this.diameter, this.diameter);
+}
+</code></pre>
+<p><strong>Update Methods:</strong> Change object state over time</p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">update() {
+  this.x += this.speedX;
+  this.y += this.speedY;
+}
+</code></pre>
+<p><strong>Behavior Methods:</strong> Implement object logic</p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">bounce() {
+  if (this.x &gt; width || this.x &lt; 0) {
+    this.speedX *= -1;  // Reverse horizontal direction
+  }
+  if (this.y &gt; height || this.y &lt; 0) {
+    this.speedY *= -1;  // Reverse vertical direction
+  }
+}
+</code></pre>
+<p><strong>Complete Example:</strong></p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">class Ball {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.speedX = 2;
+    this.speedY = 2;
+    this.diameter = 30;
+  }
+
+  update() {
+    // Update position
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
+
+  display() {
+    // Draw the ball
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  }
+  
+  bounce() {
+    // Bounce off edges
+    if (this.x &gt; width || this.x &lt; 0) {
+      this.speedX *= -1;
+    }
+    if (this.y &gt; height || this.y &lt; 0) {
+      this.speedY *= -1;
+    }
+  }
+}
+
+// Usage
+let ball = new Ball(200, 200);
+
+function draw() {
+  background(220);
+  ball.update();   // Update position
+  ball.bounce();   // Check for bouncing
+  ball.display();  // Draw the ball
+}
+</code></pre>
+<p><strong>Method Benefits:</strong></p>
+<ul>
+<li>Organize object behavior</li>
+<li>Encapsulate logic with data</li>
+<li>Reusable across all instances</li>
+<li>Clear what each object can do</li>
+</ul>
+<h2>Important Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>{}</code></td>
+<td>Object literal</td>
+<td><code>let obj = {x: 100}</code></td>
+</tr>
+<tr>
+<td><code>class Name {}</code></td>
+<td>Define class</td>
+<td><code>class Circle {}</code></td>
+</tr>
+<tr>
+<td><code>constructor()</code></td>
+<td>Initialize object</td>
+<td><code>constructor(x, y) {}</code></td>
+</tr>
+<tr>
+<td><code>new ClassName()</code></td>
+<td>Create instance</td>
+<td><code>new Circle(100, 100)</code></td>
+</tr>
+<tr>
+<td><code>this</code></td>
+<td>Reference to object</td>
+<td><code>this.x = 100</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Multiple Objects from Class</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">let circles = [];
+
+function setup() {
+  for (let i = 0; i &lt; 10; i++) {
+    circles.push(new Circle(random(width), random(height), random(20, 50)));
+  }
+}
+
+function draw() {
+  background(220);
+  for (let circle of circles) {
+    circle.update();
+    circle.display();
+  }
+}
+</code></pre>
+<h3>Object Interactions</h3>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = random(-2, 2);
+    this.vy = random(-2, 2);
+  }
+  
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+  }
+  
+  display() {
+    ellipse(this.x, this.y, 10, 10);
+  }
+  
+  checkCollision(other) {
+    let d = dist(this.x, this.y, other.x, other.y);
+    if (d &lt; 20) {
+      // Collision detected
+      this.vx *= -1;
+      this.vy *= -1;
+    }
+  }
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete code tracing with object interactions, and a creative challenge creating an object-based system.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is object-based animation that becomes a flipbook or stop-motion.</p>
+<h2>Tips for Success</h2>
+<p>Start with simple objects before classes. Use this to refer to the current object. Methods organize object behavior. Test one object before creating many.</p>
+</div>

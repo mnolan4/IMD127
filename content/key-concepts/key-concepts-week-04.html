@@ -1,0 +1,262 @@
+<div class="key-concepts-content"><h1>Week 4: Loops and Patterns - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to use for loops to repeat code. You should create nested loops for 2D patterns. You should generate patterns using loops. You should use the modulo operator for pattern variations.</p>
+<h2>Key Concepts</h2>
+<h3>For Loops</h3>
+<p>For loops are one of the most powerful tools in programming. They let you repeat code multiple times without writing it over and over. This is essential for creating patterns, managing multiple objects, and processing data.</p>
+<p><strong>Why Use Loops:</strong></p>
+<ul>
+<li><strong>Avoid repetition</strong>: Write code once, run it many times</li>
+<li><strong>Create patterns</strong>: Generate grids, rows, columns of shapes</li>
+<li><strong>Process collections</strong>: Work with arrays of data</li>
+<li><strong>Dynamic behavior</strong>: Change behavior based on loop variable</li>
+</ul>
+<p><strong>Basic syntax:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 10; i++) {
+  // This code runs 10 times
+  // i goes from 0 to 9
+  console.log(i);  // Prints 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+}
+</code></pre>
+<p><strong>Loop Structure:</strong><br>A for loop has three parts separated by semicolons:</p>
+<ol>
+<li><strong>Initialization</strong> (<code>let i = 0</code>): Sets the starting value. Runs once at the beginning.</li>
+<li><strong>Condition</strong> (<code>i &lt; 10</code>): Determines when to keep looping. Checked before each iteration. Loop continues while condition is <code>true</code>.</li>
+<li><strong>Increment</strong> (<code>i++</code>): Updates the loop variable. Runs at the end of each iteration. <code>i++</code> means &quot;add 1 to i&quot; (same as <code>i = i + 1</code>).</li>
+</ol>
+<p><strong>How It Works:</strong></p>
+<ol>
+<li>Initialize: <code>i = 0</code></li>
+<li>Check condition: Is <code>i &lt; 10</code>? Yes, so run the code</li>
+<li>Run code inside loop</li>
+<li>Increment: <code>i++</code> (now <code>i = 1</code>)</li>
+<li>Check condition: Is <code>i &lt; 10</code>? Yes, so run the code again</li>
+<li>Repeat until condition is false (<code>i &gt;= 10</code>), then exit loop</li>
+</ol>
+<p><strong>Common Loop Patterns:</strong></p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">// Count from 0 to 9
+for (let i = 0; i &lt; 10; i++) {
+  // i = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+}
+
+// Count from 1 to 10
+for (let i = 1; i &lt;= 10; i++) {
+  // i = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+}
+
+// Count by 2s
+for (let i = 0; i &lt; 10; i += 2) {
+  // i = 0, 2, 4, 6, 8
+}
+
+// Count backwards
+for (let i = 10; i &gt; 0; i--) {
+  // i = 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+}
+</code></pre>
+<h3>Using Loop Variables</h3>
+<p>The loop variable, usually i, changes each iteration.</p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 5; i++) {
+  ellipse(i * 100, 200, 50, 50);
+  // Draws 5 circles at x = 0, 100, 200, 300, 400
+}
+</code></pre>
+<h3>Nested Loops</h3>
+<p>Nested loops are loops inside other loops. They&#39;re essential for creating 2D patterns like grids, matrices, and organized layouts.</p>
+<p><strong>How Nested Loops Work:</strong></p>
+<ul>
+<li>The <strong>outer loop</strong> runs once, then the <strong>inner loop</strong> runs completely</li>
+<li>For each iteration of the outer loop, the inner loop runs from start to finish</li>
+<li>This creates a grid pattern: rows (outer loop) and columns (inner loop)</li>
+</ul>
+<p><strong>Example: 5x5 Grid</strong></p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">for (let x = 0; x &lt; 5; x++) {        // Outer loop: rows
+  for (let y = 0; y &lt; 5; y++) {      // Inner loop: columns
+    ellipse(x * 100, y * 100, 50, 50);
+  }
+}
+</code></pre>
+<p><strong>Execution Order:</strong></p>
+<ol>
+<li>Outer loop: <code>x = 0</code><ul>
+<li>Inner loop: <code>y = 0</code> → draw at (0, 0)</li>
+<li>Inner loop: <code>y = 1</code> → draw at (0, 100)</li>
+<li>Inner loop: <code>y = 2</code> → draw at (0, 200)</li>
+<li>... (completes all y values)</li>
+</ul>
+</li>
+<li>Outer loop: <code>x = 1</code><ul>
+<li>Inner loop: <code>y = 0</code> → draw at (100, 0)</li>
+<li>Inner loop: <code>y = 1</code> → draw at (100, 100)</li>
+<li>... (completes all y values again)</li>
+</ul>
+</li>
+<li>Continues for all x values</li>
+</ol>
+<p><strong>Result</strong>: A 5x5 grid of circles, 25 total circles.</p>
+<p><strong>Visualizing the Pattern:</strong></p>
+<span class="sr-only" id="code-desc-16">Code example 16. The code follows.</span><pre role="region" aria-label="Code example 16" aria-describedby="code-desc-16" id="code-block-16"><code>Row 0: (0,0) (0,100) (0,200) (0,300) (0,400)
+Row 1: (100,0) (100,100) (100,200) (100,300) (100,400)
+Row 2: (200,0) (200,100) (200,200) (200,300) (200,400)
+...
+</code></pre>
+<p><strong>Using Loop Variables for Positioning:</strong><br>Multiply the loop variable by a spacing value to position shapes:</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">let spacing = 50;
+for (let x = 0; x &lt; 8; x++) {
+  for (let y = 0; y &lt; 8; y++) {
+    ellipse(x * spacing, y * spacing, 30, 30);
+  }
+}
+</code></pre>
+<h3>Modulo Operator (%)</h3>
+<p>The modulo operator (<code>%</code>) returns the remainder after division. It&#39;s incredibly useful for creating repeating patterns, cycles, and alternating behaviors.</p>
+<p><strong>How Modulo Works:</strong></p>
+<ul>
+<li><code>a % b</code> means &quot;divide a by b, return the remainder&quot;</li>
+<li>The result is always between 0 and (b - 1)</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">5 % 2   // = 1  (5 ÷ 2 = 2 remainder 1)
+10 % 3  // = 1  (10 ÷ 3 = 3 remainder 1)
+8 % 4   // = 0  (8 ÷ 4 = 2 remainder 0)
+7 % 3   // = 1  (7 ÷ 3 = 2 remainder 1)
+12 % 5 // = 2  (12 ÷ 5 = 2 remainder 2)
+</code></pre>
+<p><strong>Common Uses:</strong></p>
+<ol>
+<li><strong>Check if number is even or odd:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">if (i % 2 === 0) {
+  // Even number
+} else {
+  // Odd number
+}
+</code></pre>
+<ol start="2">
+<li><strong>Create repeating cycles:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let colorIndex = frameCount % 3;  // Cycles: 0, 1, 2, 0, 1, 2, ...
+</code></pre>
+<ol start="3">
+<li><strong>Alternate behavior:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 10; i++) {
+  if (i % 2 === 0) {
+    fill(255, 0, 0);  // Red for even positions
+  } else {
+    fill(0, 0, 255);  // Blue for odd positions
+  }
+  ellipse(i * 50, 200, 40, 40);
+}
+</code></pre>
+<ol start="4">
+<li><strong>Wrap values (keep within range):</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">let x = frameCount % width;  // x stays between 0 and width
+</code></pre>
+<ol start="5">
+<li><strong>Create grid patterns:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 20; i++) {
+  if (i % 4 === 0) {  // Every 4th item
+    fill(255, 0, 0);
+  } else {
+    fill(0);
+  }
+  ellipse(i * 30, 200, 20, 20);
+}
+</code></pre>
+<p><strong>Using modulo for patterns:</strong></p>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 10; i++) {
+  if (i % 2 === 0) {
+    fill(255, 0, 0);  // Red for even numbers
+  } else {
+    fill(0, 0, 255);  // Blue for odd numbers
+  }
+  ellipse(i * 50, 200, 40, 40);
+}
+</code></pre>
+<h2>Important Functions to Know</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>for (let i = 0; i &lt; n; i++)</code></td>
+<td>Repeat n times</td>
+<td><code>for (let i = 0; i &lt; 10; i++)</code></td>
+</tr>
+<tr>
+<td><code>i++</code></td>
+<td>Increment by 1</td>
+<td><code>i = i + 1</code> (shorthand)</td>
+</tr>
+<tr>
+<td><code>i += 2</code></td>
+<td>Increment by 2</td>
+<td><code>i = i + 2</code> (shorthand)</td>
+</tr>
+<tr>
+<td><code>i--</code></td>
+<td>Decrement by 1</td>
+<td><code>i = i - 1</code> (shorthand)</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modulo (remainder)</td>
+<td><code>i % 2</code> (0 or 1)</td>
+</tr>
+<tr>
+<td><code>i % 2 === 0</code></td>
+<td>Check if even</td>
+<td>Returns true for even numbers</td>
+</tr>
+<tr>
+<td>Nested loops</td>
+<td>2D patterns/grids</td>
+<td><code>for (x) { for (y) { ... } }</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Grid Pattern</h3>
+<span class="sr-only" id="code-desc-13">Code example 13 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 13 in javascript" aria-describedby="code-desc-13" id="code-block-13"><code class="language-javascript" lang="javascript">let spacing = 50;
+for (let x = 0; x &lt; width; x += spacing) {
+  for (let y = 0; y &lt; height; y += spacing) {
+    ellipse(x, y, 30, 30);
+  }
+}
+</code></pre>
+<h3>Checkerboard Pattern</h3>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">let cellSize = 50;
+for (let x = 0; x &lt; width; x += cellSize) {
+  for (let y = 0; y &lt; height; y += cellSize) {
+    if ((x + y) % (cellSize * 2) === 0) {
+      fill(0);
+    } else {
+      fill(255);
+    }
+    rect(x, y, cellSize, cellSize);
+  }
+}
+</code></pre>
+<h3>Alternating Pattern</h3>
+<span class="sr-only" id="code-desc-15">Code example 15 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 15 in javascript" aria-describedby="code-desc-15" id="code-block-15"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 10; i++) {
+  if (i % 2 === 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 0, 255);
+  }
+  ellipse(i * 50, 200, 40, 40);
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete code tracing with nested loops, a creative pattern challenge, and practice problems.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is pattern designs that become CNC routed printing blocks, which are then used for printing.</p>
+<h2>Tips for Success</h2>
+<p>Start with simple loops before nesting. Use variables for spacing and size. Experiment with modulo for variations. Draw patterns on paper first to understand the logic.</p>
+</div>

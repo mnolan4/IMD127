@@ -1,0 +1,292 @@
+<div class="key-concepts-content"><h1>Week 2: Drawing with Code - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to create static visual compositions using shapes, colors, and drawing functions. You should use variables to store and manipulate position and color values. You should create simple animations using frameCount. You should understand how code executes over time through the draw loop.</p>
+<h2>Key Concepts</h2>
+<h3>Variables</h3>
+<p>Variables are containers that store values. They let you give names to values, making your code more readable and flexible. Instead of hard-coding numbers throughout your code, you can store them in variables and reuse or modify them easily.</p>
+<p><strong>Why Use Variables:</strong></p>
+<ul>
+<li><strong>Flexibility</strong>: Change a value once, and it updates everywhere it&#39;s used</li>
+<li><strong>Readability</strong>: Names like <code>x</code> and <code>y</code> are clearer than random numbers</li>
+<li><strong>Reusability</strong>: Use the same value multiple times without repeating it</li>
+<li><strong>Dynamic behavior</strong>: Change values over time to create animation</li>
+</ul>
+<p><strong>Syntax:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let x = 200;        // Declare variable with &#39;let&#39;
+let y = 200;
+let diameter = 100;
+ellipse(x, y, diameter, diameter);  // Use variable in function call
+</code></pre>
+<p><strong>Variable Declaration:</strong></p>
+<ul>
+<li>Use <code>let</code> to declare a variable that can be changed later</li>
+<li>Use <code>const</code> to declare a constant value that cannot be changed</li>
+<li>Variable names should be descriptive: <code>circleX</code> is better than <code>x1</code></li>
+</ul>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let circleX = 200;      // Can be changed
+const CANVAS_SIZE = 400; // Cannot be changed (convention: UPPERCASE for constants)
+circleX = 300;          // OK - variable can change
+// CANVAS_SIZE = 500;   // ERROR - constant cannot change
+</code></pre>
+<p><strong>Variable Scope:</strong><br>Variables declared at the top of your file (outside functions) are available everywhere. Variables declared inside functions are only available within that function.</p>
+<h3>What the Heck is <code>let</code>?</h3>
+<p>You might be wondering: why do we use the word <code>let</code>? It&#39;s actually a normal English word that means &quot;allow&quot; or &quot;permit.&quot; When you write <code>let x = 100</code>, you&#39;re literally saying to the computer: &quot;Let x be 100&quot; or &quot;Allow x to be 100.&quot; It&#39;s like giving permission for a variable to exist and have a value.</p>
+<p>Think of it like this: when you say &quot;Let me explain&quot; in conversation, you&#39;re asking for permission to explain something. In code, <code>let</code> is you giving the computer permission to create a variable with a specific name and value.</p>
+<p>Here&#39;s a comprehensive example showing all the different kinds of things you can store in variables using <code>let</code>. Notice how descriptive variable names make the code self-explanatory:</p>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">let x = 100;
+let y = 100;
+let z = 0;
+
+let widthOfThing = 50;
+let heightOfThing = 50;
+let depthOfThing = 0;
+
+let redValue = 255;
+let greenValue = 255;
+let blueValue = 255;
+let alphaValue = 255;
+
+let backgroundRed = 0;
+let backgroundGreen = 0;
+let backgroundBlue = 0;
+
+let strokeRed = 255;
+let strokeGreen = 255;
+let strokeBlue = 255;
+let strokeWeightValue = 1;
+
+let moveSpeed = 1;
+let velocity = 1;
+let acceleration = 0.01;
+let friction = 0.98;
+let gravity = 0;
+
+let time = 0;
+let frameCountButMine = 0;
+let elapsedTime = 0;
+let deltaTimeButArt = 0;
+
+let randomness = 0.5;
+let chaos = 0.1;
+let order = 0.9;
+
+let intention = &quot;unclear&quot;;
+let mood = &quot;experimental&quot;;
+let confidence = &quot;fragile&quot;;
+
+let userHasMovedMouse = false;
+let userHasClicked = false;
+let userIsConfused = true;
+
+let numberOfCircles = 1;
+let numberOfCirclesButMore = 12;
+let numberOfCirclesButTooMany = 400;
+
+let shouldThisAnimate = true;
+let shouldThisStop = false;
+let shouldThisHaveBeenAFunction = true;
+
+let bugCount = 0;
+let knownBugs = [];
+let unknownBugs = [&quot;probably this one&quot;];
+
+let aesthetic = &quot;minimal&quot;;
+let aestheticAfterTenMinutes = &quot;maximal&quot;;
+let aestheticAfterPanic = &quot;noise&quot;;
+
+let performanceIsAcceptable = false;
+let laptopFanIsAudible = true;
+let computerIsJudgingYou = true;
+
+let exportResolution = 1080;
+let exportResolutionBecauseProfessorSaidSo = 1920;
+
+let projectName = &quot;final_final_v3_reallyFinal&quot;;
+let backupProjectName = &quot;final_final_v3_reallyFinal_backup&quot;;
+
+let meaning = undefined;
+</code></pre>
+<p>This example demonstrates that you can use <code>let</code> to store:</p>
+<ul>
+<li><strong>Numbers</strong>: Position values (<code>x</code>, <code>y</code>), sizes (<code>widthOfThing</code>), colors (<code>redValue</code>), physics values (<code>moveSpeed</code>, <code>gravity</code>)</li>
+<li><strong>Strings (text)</strong>: Descriptive labels (<code>intention</code>, <code>mood</code>, <code>projectName</code>)</li>
+<li><strong>Booleans (true/false)</strong>: State flags (<code>userHasClicked</code>, <code>shouldThisAnimate</code>)</li>
+<li><strong>Arrays (lists)</strong>: Collections of values (<code>knownBugs</code>, <code>unknownBugs</code>)</li>
+<li><strong>Undefined</strong>: A placeholder for values that don&#39;t exist yet (<code>meaning</code>)</li>
+</ul>
+<p>Notice how descriptive variable names tell a story about what your code is doing. Names like <code>aestheticAfterPanic</code> or <code>numberOfCirclesButTooMany</code> are humorous but also make the code&#39;s purpose clear. While you might not use such playful names in production code, they demonstrate that variable names can be as descriptive as you need them to be.</p>
+<p><strong>Key Takeaway:</strong> <code>let</code> is just you saying &quot;let this variable exist with this value.&quot; It&#39;s a simple, human-readable way to create containers for any kind of data you need in your creative coding projects.</p>
+<h3>Variables for Position</h3>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">let x = 200;
+let y = 200;
+ellipse(x, y, 50, 50);
+// Easy to move the circle by changing x and y
+</code></pre>
+<h3>Variables for Color</h3>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">let redValue = 255;
+let greenValue = 0;
+let blueValue = 0;
+fill(redValue, greenValue, blueValue);
+ellipse(200, 200, 100, 100);
+</code></pre>
+<h3>Animation Basics</h3>
+<p>The draw function runs continuously, creating animation.</p>
+<p><strong>Using frameCount:</strong></p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  let x = frameCount;  // frameCount increases each frame
+  ellipse(x, 200, 50, 50);
+}
+</code></pre>
+<p><strong>Moving shapes:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">let x = 0;
+
+function draw() {
+  background(220);
+  ellipse(x, 200, 50, 50);
+  x = x + 1;  // Move right each frame
+}
+</code></pre>
+<h3>The Draw Loop</h3>
+<p>The <code>draw()</code> function is the heart of animation in p5.js. It runs continuously, approximately 60 times per second (60 frames per second, or 60 FPS). Each time <code>draw()</code> runs, it executes all the code inside it from top to bottom, then immediately starts again.</p>
+<p><strong>How Animation Works:</strong></p>
+<ol>
+<li><code>draw()</code> runs and draws everything</li>
+<li>A tiny amount of time passes (about 1/60th of a second)</li>
+<li><code>draw()</code> runs again, drawing everything again</li>
+<li>If something has changed (like a position variable), it appears in a new location</li>
+<li>This creates the illusion of smooth movement</li>
+</ol>
+<p><strong>Important: Always Clear the Canvas</strong><br>You must call <code>background()</code> at the start of <code>draw()</code> to clear the previous frame. Without it, shapes from previous frames remain visible, creating trails or overlapping shapes.</p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);  // Clear previous frame - CRITICAL!
+  ellipse(x, y, 50, 50);
+  x += 1;  // Move circle
+}
+</code></pre>
+<p><strong>Frame Rate:</strong><br>The default frame rate is 60 FPS. You can change it with <code>frameRate()</code>:</p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">frameRate(30);  // Slower animation (30 FPS)
+frameRate(120); // Faster animation (120 FPS, if your computer can handle it)
+</code></pre>
+<p><strong>Frame Count:</strong><br>The built-in variable <code>frameCount</code> automatically counts how many times <code>draw()</code> has run. It starts at 0 and increases by 1 each frame. This is useful for timing and creating patterns.</p>
+<h2>Important Functions to Know</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>let variable = value</code></td>
+<td>Declare variable</td>
+<td><code>let x = 200</code></td>
+</tr>
+<tr>
+<td><code>frameCount</code></td>
+<td>Current frame number</td>
+<td><code>let x = frameCount</code></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Canvas width</td>
+<td><code>ellipse(width/2, 200, 50, 50)</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Canvas height</td>
+<td><code>ellipse(200, height/2, 50, 50)</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Pulsing Animation</h3>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let circleSize = 50;
+
+function draw() {
+  background(220);
+  circleSize = circleSize + 1;
+  if (circleSize &gt; 100) {
+    circleSize = 50;
+  }
+  ellipse(200, 200, circleSize, circleSize);
+}
+</code></pre>
+<h3>Color Changing Animation</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">let redValue = 0;
+
+function draw() {
+  background(220);
+  fill(redValue, 0, 0);
+  ellipse(200, 200, 100, 100);
+  redValue = redValue + 1;
+  if (redValue &gt; 255) {
+    redValue = 0;
+  }
+}
+</code></pre>
+<h3>Using Canvas Dimensions</h3>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  ellipse(width/2, height/2, 100, 100);  // Center of canvas
+}
+</code></pre>
+<h2>Loading External Files</h2>
+<h3>Loading Images</h3>
+<p>You can load image files into your p5.js sketch to use them in your artwork. This allows you to incorporate photographs, illustrations, or any image files into your creative coding projects.</p>
+<p><strong>Key Steps:</strong></p>
+<ol>
+<li><strong>Declare a variable</strong> to store the image: <code>let myImage;</code></li>
+<li><strong>Load the image in preload()</strong>: <code>myImage = loadImage(&#39;filename.jpg&#39;);</code></li>
+<li><strong>Display the image</strong> using <code>image()</code>: <code>image(myImage, x, y);</code></li>
+</ol>
+<p><strong>Why preload()?</strong><br>The <code>preload()</code> function runs before <code>setup()</code> and ensures that all external files (images, sounds, data) are fully loaded before your sketch starts. This prevents errors from trying to use files before they&#39;re ready.</p>
+<span class="sr-only" id="code-desc-12a">Code example 12a written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12a in javascript" aria-describedby="code-desc-12a" id="code-block-12a"><code class="language-javascript" lang="javascript">let myImage;
+
+function preload() {
+  myImage = loadImage(&#39;your-image.jpg&#39;);
+}
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  image(myImage, 0, 0);
+}
+</code></pre>
+<p><strong>Image Display Options:</strong></p>
+<ul>
+<li><code>image(myImage, x, y)</code> - Display at original size at position (x, y)</li>
+<li><code>image(myImage, x, y, width, height)</code> - Display at specific size</li>
+<li><code>myImage.width</code> and <code>myImage.height</code> - Get image dimensions</li>
+<li><code>myImage.resize(width, height)</code> - Resize the image</li>
+</ul>
+<p><strong>Supported Image Formats:</strong> JPG, PNG, GIF, SVG</p>
+<h4>Loading Images in Different Environments</h4>
+<p><strong>p5.js Web Editor (editor.p5js.org):</strong><br>Place your image file in the same folder as your sketch file, or provide the full path to the image file. Use the filename directly: <code>loadImage(&#39;your-image.jpg&#39;)</code></p>
+<p><strong>OpenProcessing.org:</strong><br>OpenProcessing uses an Assets system instead of file folders. To load images:</p>
+<ol>
+<li><strong>Write your sketch code</strong> first (including the <code>loadImage()</code> line with your filename)</li>
+<li><strong>Save your sketch</strong> (File &gt; Save or Ctrl+S / Cmd+S) - this is required before uploading files</li>
+<li>Click the <strong>&quot;Assets&quot;</strong> button in the top toolbar (folder icon)</li>
+<li>Click <strong>&quot;Upload&quot;</strong> and select your image file</li>
+<li>Once uploaded, the image appears in your Assets panel</li>
+<li>Use the filename exactly as it appears in the Assets panel: <code>loadImage(&#39;my-photo.png&#39;)</code></li>
+</ol>
+<p><strong>Important:</strong> You must save your sketch before the Assets panel will work properly. Write your code, save it, then upload your image file.</p>
+<p><strong>External URLs (works everywhere):</strong><br>You can load images from the internet using a full URL: <code>loadImage(&#39;https://example.com/path/to/image.jpg&#39;)</code></p>
+<h2>Exporting Your Work</h2>
+<h3>Saving PNG Images</h3>
+<p>Use the <code>save()</code> function to export your canvas as a PNG image. This captures the current state of your canvas.</p>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">function keyPressed() {
+  if (key === &#39;s&#39; || key === &#39;S&#39;) {
+    save(&#39;my-sketch.png&#39;);  // Saves when &#39;s&#39; key is pressed
+  }
+}
+</code></pre>
+<p><strong>Note</strong>: In the p5.js web editor, you can also take a screenshot of the preview window or use File &gt; Export to download your sketch files.</p>
+<h2>Tips for Success</h2>
+<p>Start with static compositions before adding animation. Use variables to make your code flexible. Experiment with different animation speeds. Use <code>width</code> and <code>height</code> to make your code work with any canvas size. Always call <code>background()</code> at the start of <code>draw()</code> to clear previous frames. Use <code>frameCount</code> for timing and patterns. Test your animations at different frame rates to see how speed affects the visual result.</p>
+</div>

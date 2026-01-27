@@ -1,0 +1,262 @@
+<div class="key-concepts-content"><h1>Week 5: Functions and Modularity - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to define your own functions. You should use parameters to make functions flexible. You should return values from functions. You should organize code into reusable modules.</p>
+<h2>Key Concepts</h2>
+<h3>Custom Functions</h3>
+<p>Functions are blocks of code that perform a specific task. They let you organize your code, avoid repetition, and create reusable components. Once you define a function, you can call it multiple times from anywhere in your code.</p>
+<p><strong>Why Use Functions:</strong></p>
+<ul>
+<li><strong>Avoid repetition</strong>: Write code once, use it many times</li>
+<li><strong>Organization</strong>: Break complex code into manageable pieces</li>
+<li><strong>Readability</strong>: Function names describe what the code does</li>
+<li><strong>Maintainability</strong>: Change code in one place, affects all uses</li>
+<li><strong>Reusability</strong>: Use the same function in different projects</li>
+</ul>
+<p><strong>Basic syntax:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">// Define the function
+function functionName() {
+  // Code to run when function is called
+  console.log(&quot;Function is running!&quot;);
+}
+
+// Call (invoke) the function
+functionName();  // Runs the code inside the function
+functionName();  // Can call it multiple times
+</code></pre>
+<p><strong>Function Definition vs Function Call:</strong></p>
+<ul>
+<li><strong>Definition</strong>: <code>function myFunction() { ... }</code> - Creates the function</li>
+<li><strong>Call</strong>: <code>myFunction()</code> - Actually runs the function</li>
+<li>You must define a function before you can call it</li>
+</ul>
+<p><strong>Function Naming:</strong></p>
+<ul>
+<li>Use descriptive names that explain what the function does</li>
+<li>Start with a verb: <code>drawCircle()</code>, <code>moveObject()</code>, <code>calculateDistance()</code></li>
+<li>Use camelCase: <code>myFunctionName</code> (not <code>my_function_name</code>)</li>
+</ul>
+<h3>Function Parameters</h3>
+<p>Parameters are variables that receive values when you call a function. They make functions flexible and reusable with different inputs.</p>
+<p><strong>How Parameters Work:</strong></p>
+<ol>
+<li>Define parameters in the function definition: <code>function drawCircle(x, y, size)</code></li>
+<li>Parameters act like variables inside the function</li>
+<li>When you call the function, you provide values (arguments): <code>drawCircle(100, 100, 50)</code></li>
+<li>The values are assigned to the parameters in order</li>
+</ol>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">// Function with parameters
+function drawCircle(x, y, size) {
+  // x, y, and size are available inside the function
+  ellipse(x, y, size, size);
+}
+
+// Call with different values each time
+drawCircle(100, 100, 50);   // x=100, y=100, size=50
+drawCircle(200, 200, 75);   // x=200, y=200, size=75
+drawCircle(300, 300, 100);  // x=300, y=300, size=100
+</code></pre>
+<p><strong>Parameter vs Argument:</strong></p>
+<ul>
+<li><strong>Parameter</strong>: Variable in function definition (<code>x, y, size</code>)</li>
+<li><strong>Argument</strong>: Value passed when calling function (<code>100, 100, 50</code>)</li>
+</ul>
+<p><strong>Multiple Parameters:</strong><br>Functions can have any number of parameters. Separate them with commas:</p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">function drawShape(x, y, w, h, r, g, b) {
+  fill(r, g, b);
+  rect(x, y, w, h);
+}
+
+drawShape(100, 100, 200, 150, 255, 0, 0);  // Red rectangle
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li><strong>Flexibility</strong>: One function works with different values</li>
+<li><strong>Efficiency</strong>: Write once, use many times</li>
+<li><strong>Clarity</strong>: Function name + parameters describe what it does</li>
+<li><strong>Maintainability</strong>: Change function code once, all calls update</li>
+</ul>
+<h3>Return Values</h3>
+<p>Functions can calculate and return values that you can use elsewhere in your code. The <code>return</code> statement sends a value back to where the function was called.</p>
+<p><strong>How Return Works:</strong></p>
+<ol>
+<li>Function calculates a value</li>
+<li><code>return</code> sends that value back</li>
+<li>The function call becomes the returned value</li>
+<li>You can store it in a variable or use it directly</li>
+</ol>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">function add(a, b) {
+  return a + b;  // Send back the sum
+}
+
+let result = add(5, 3);  // result = 8
+console.log(add(10, 20));  // Prints 30
+</code></pre>
+<p><strong>Return vs No Return:</strong></p>
+<ul>
+<li>Functions without <code>return</code> perform actions (draw, change variables)</li>
+<li>Functions with <code>return</code> calculate and provide values</li>
+</ul>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">// Action function (no return)
+function drawCircle(x, y) {
+  ellipse(x, y, 50, 50);  // Draws something
+}
+
+// Value function (with return)
+function calculateArea(radius) {
+  return PI * radius * radius;  // Returns a number
+}
+
+let area = calculateArea(10);  // area = 314.159...
+</code></pre>
+<p><strong>Using Returned Values:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">function distance(x1, y1, x2, y2) {
+  let dx = x2 - x1;
+  let dy = y2 - y1;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+let d = distance(0, 0, 100, 100);  // d = 141.42...
+if (distance(mouseX, mouseY, 200, 200) &lt; 50) {
+  // Mouse is within 50 pixels of (200, 200)
+}
+</code></pre>
+<p><strong>Important:</strong> When a function hits <code>return</code>, it immediately exits. Code after <code>return</code> won&#39;t run.</p>
+<h3>Code Organization</h3>
+<p>Functions are essential for organizing code as projects grow more complex. They break large problems into smaller, manageable pieces.</p>
+<p><strong>Benefits of Organization:</strong></p>
+<ul>
+<li><strong>Readability</strong>: Function names describe what code does</li>
+<li><strong>Maintainability</strong>: Fix bugs or make changes in one place</li>
+<li><strong>Testing</strong>: Test individual functions separately</li>
+<li><strong>Reusability</strong>: Use functions in multiple projects</li>
+<li><strong>Collaboration</strong>: Others can understand your code structure</li>
+</ul>
+<p><strong>Before (repetitive and hard to maintain):</strong></p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">fill(255, 0, 0);
+ellipse(100, 100, 50, 50);
+fill(255, 0, 0);
+ellipse(200, 200, 50, 50);
+fill(255, 0, 0);
+ellipse(300, 300, 50, 50);
+// To change color, must change 3 places
+// To change size, must change 3 places
+</code></pre>
+<p><strong>After (organized with function):</strong></p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">function drawRedCircle(x, y) {
+  fill(255, 0, 0);
+  ellipse(x, y, 50, 50);
+}
+
+drawRedCircle(100, 100);
+drawRedCircle(200, 200);
+drawRedCircle(300, 300);
+// To change color or size, change function once
+</code></pre>
+<p><strong>Organizing Complex Projects:</strong><br>Break your code into logical functions:</p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">function setup() {
+  createCanvas(400, 400);
+  initializeGame();
+}
+
+function draw() {
+  background(220);
+  updateGame();
+  drawGame();
+  drawUI();
+}
+
+function initializeGame() {
+  // Set up initial game state
+}
+
+function updateGame() {
+  // Update game logic
+}
+
+function drawGame() {
+  // Draw game elements
+}
+
+function drawUI() {
+  // Draw user interface
+}
+</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>One function should do one thing well</li>
+<li>Use descriptive function names</li>
+<li>Keep functions focused and relatively short</li>
+<li>Group related functions together</li>
+</ul>
+<h2>Important Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>function name() {}</code></td>
+<td>Define function</td>
+<td><code>function drawCircle() {}</code></td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>Pass values in</td>
+<td><code>function draw(x, y) {}</code></td>
+</tr>
+<tr>
+<td><code>return</code></td>
+<td>Return value</td>
+<td><code>return x + y</code></td>
+</tr>
+<tr>
+<td>Function call</td>
+<td>Use function</td>
+<td><code>drawCircle(100, 100)</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Drawing Function</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">function drawFlower(x, y) {
+  fill(255, 200, 0);
+  ellipse(x, y, 50, 50);  // Center
+  fill(255, 0, 0);
+  ellipse(x - 20, y, 20, 20);  // Petal
+  ellipse(x + 20, y, 20, 20);  // Petal
+  ellipse(x, y - 20, 20, 20);  // Petal
+  ellipse(x, y + 20, 20, 20);  // Petal
+}
+
+drawFlower(100, 100);
+drawFlower(200, 200);
+</code></pre>
+<h3>Function with Return</h3>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">function calculateDistance(x1, y1, x2, y2) {
+  let dx = x2 - x1;
+  let dy = y2 - y1;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+let dist = calculateDistance(0, 0, 100, 100);
+</code></pre>
+<h3>Modular Pattern System</h3>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">function drawPattern(x, y, size, color) {
+  fill(color);
+  for (let i = 0; i &lt; 5; i++) {
+    ellipse(x + i * 10, y, size, size);
+  }
+}
+
+drawPattern(50, 50, 20, color(255, 0, 0));
+drawPattern(50, 150, 30, color(0, 255, 0));
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a code explanation exercise analyzing functions, and a Parsons problem.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is a modular pattern system that becomes a printed series.</p>
+<h2>Tips for Success</h2>
+<p>Start with simple functions before adding parameters. Use descriptive function names. One function should do one thing well. Test functions independently before combining them.</p>
+</div>

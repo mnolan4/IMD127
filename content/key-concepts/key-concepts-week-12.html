@@ -1,0 +1,294 @@
+<div class="key-concepts-content"><h1>Week 12: Data Visualization and Generative Systems - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to load external data in formats like JSON and CSV. You should parse and visualize data. You should create generative systems. You should design data-driven art. You should work with real-world datasets.</p>
+<h2>Key Concepts</h2>
+<h3>Loading External Data</h3>
+<p>p5.js can load data from files (JSON, CSV) or APIs. This lets you work with real-world datasets, create data visualizations, and build data-driven art projects.</p>
+<p><strong>Loading JSON Files:</strong><br>JSON (JavaScript Object Notation) stores structured data as objects and arrays. It&#39;s perfect for hierarchical data.</p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let data;
+
+function preload() {
+  // Load JSON file (must be in sketch folder or accessible URL)
+  data = loadJSON(&#39;data.json&#39;);
+}
+
+function setup() {
+  createCanvas(400, 400);
+  console.log(data);
+  // Access data properties
+  // If JSON is: {&quot;name&quot;: &quot;Value&quot;, &quot;count&quot;: 10}
+  // Access with: data.name, data.count
+}
+</code></pre>
+<p><strong>JSON Structure Examples:</strong></p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">// Simple object
+{&quot;temperature&quot;: 72, &quot;humidity&quot;: 45}
+
+// Array of objects
+[
+  {&quot;name&quot;: &quot;Item 1&quot;, &quot;value&quot;: 10},
+  {&quot;name&quot;: &quot;Item 2&quot;, &quot;value&quot;: 20}
+]
+
+// Nested structure
+{
+  &quot;location&quot;: {&quot;city&quot;: &quot;New York&quot;, &quot;population&quot;: 8000000},
+  &quot;data&quot;: [1, 2, 3, 4, 5]
+}
+</code></pre>
+<p><strong>Loading CSV Files:</strong><br>CSV (Comma-Separated Values) stores tabular data. Perfect for spreadsheets, sensor data, or any row-column data.</p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">let table;
+
+function preload() {
+  // Load CSV with header row
+  // Parameters: filename, format, header option
+  table = loadTable(&#39;data.csv&#39;, &#39;csv&#39;, &#39;header&#39;);
+}
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // Access table data
+  for (let row of table.rows) {
+    // Get value by column name (if header row exists)
+    let name = row.get(&#39;name&#39;);
+    let cellValue = row.get(&#39;value&#39;);
+
+    // Or by column index
+    let firstCol = row.get(0);
+    let secondCol = row.get(1);
+  }
+}
+</code></pre>
+<p><strong>Table Methods:</strong></p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">table.getRowCount();        // Number of rows
+table.getColumnCount();      // Number of columns
+table.getRow(i);            // Get row by index
+table.getColumn(i);         // Get column by index
+row.get(&#39;columnName&#39;);       // Get cell by column name
+row.get(0);                  // Get cell by column index
+</code></pre>
+<p><strong>Loading from APIs:</strong><br>You can also load data from web APIs (requires CORS support):</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">function setup() {
+  loadJSON(&#39;https://api.example.com/data&#39;, gotData);
+}
+
+function gotData(data) {
+  console.log(data);
+  // Use the data
+}
+</code></pre>
+<h3>Data Visualization</h3>
+<p>Data visualization transforms numerical data into visual representations, making patterns and relationships easier to understand. Effective visualizations help tell stories with data.</p>
+<p><strong>Visual Encoding:</strong><br>Map data values to visual properties:</p>
+<ul>
+<li><strong>Position</strong>: X, Y coordinates</li>
+<li><strong>Size</strong>: Width, height, radius</li>
+<li><strong>Color</strong>: Brightness, hue, saturation</li>
+<li><strong>Shape</strong>: Different shapes for different categories</li>
+</ul>
+<p><strong>Basic Bar Chart:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">let data = [10, 20, 30, 40, 50];
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  let barWidth = width / data.length;
+  
+  for (let i = 0; i &lt; data.length; i++) {
+    // Map data value to bar height
+    let barHeight = map(data[i], 0, 50, 0, height);
+    
+    // Draw bar
+    rect(i * barWidth, height - barHeight, barWidth - 2, barHeight);
+  }
+}
+</code></pre>
+<p><strong>Scatter Plot:</strong></p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">let data = [
+  {x: 10, y: 20},
+  {x: 30, y: 40},
+  {x: 50, y: 30}
+];
+
+function draw() {
+  background(220);
+  for (let point of data) {
+    ellipse(point.x, point.y, 10, 10);
+  }
+}
+</code></pre>
+<p><strong>Line Chart:</strong></p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let data = [10, 25, 30, 45, 50, 35, 40];
+
+function draw() {
+  background(220);
+  stroke(0);
+  noFill();
+  beginShape();
+  for (let i = 0; i &lt; data.length; i++) {
+    let x = map(i, 0, data.length - 1, 0, width);
+    let y = map(data[i], 0, 50, height, 0);
+    vertex(x, y);
+  }
+  endShape();
+}
+</code></pre>
+<h3>Mapping Data</h3>
+<p>Mapping data maps data values to visual properties.</p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let dataValue = 75;  // 0-100
+let x = map(dataValue, 0, 100, 0, width);
+let circleSize = map(dataValue, 0, 100, 10, 100);
+let colorValue = map(dataValue, 0, 100, 0, 255);
+</code></pre>
+<h3>Generative Systems</h3>
+<p>Generative systems create art through rules, algorithms, and processes. The artist defines the system, and the system generates the artwork. This creates a collaboration between human intention and algorithmic process.</p>
+<p><strong>Key Principles:</strong></p>
+<ol>
+<li><p><strong>Rules-Based Generation:</strong></p>
+<ul>
+<li>Define clear rules for how elements are created</li>
+<li>Rules determine placement, size, color, relationships</li>
+<li>Same rules can produce infinite variations</li>
+</ul>
+</li>
+<li><p><strong>Emergent Behavior:</strong></p>
+<ul>
+<li>Complex patterns emerge from simple rules</li>
+<li>Interactions between elements create unexpected results</li>
+<li>System behavior isn&#39;t always predictable</li>
+</ul>
+</li>
+<li><p><strong>Iteration and Variation:</strong></p>
+<ul>
+<li>Repeat processes with slight variations</li>
+<li>Use loops, randomness, and noise for variation</li>
+<li>Each run produces different but related results</li>
+</ul>
+</li>
+<li><p><strong>Parameter Control:</strong></p>
+<ul>
+<li>Adjustable parameters change system behavior</li>
+<li>Allows exploration of parameter space</li>
+<li>Find interesting combinations through experimentation</li>
+</ul>
+</li>
+</ol>
+<p><strong>Example Generative System:</strong></p>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">function setup() {
+  createCanvas(400, 400);
+  noLoop();  // Static generative art
+}
+
+function draw() {
+  background(220);
+  
+  // Rule: Draw circles in grid
+  // Variation: Size based on noise
+  for (let x = 0; x &lt; width; x += 20) {
+    for (let y = 0; y &lt; height; y += 20) {
+      // Parameter: noise scale
+      let circleSize = noise(x * 0.01, y * 0.01) * 30;
+      ellipse(x, y, circleSize, circleSize);
+    }
+  }
+}
+</code></pre>
+<p><strong>Interactive Generative System:</strong></p>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  
+  // Rule: Draw lines from center
+  // Variation: Angle and length change over time
+  for (let i = 0; i &lt; 20; i++) {
+    let angle = (TWO_PI / 20) * i + frameCount * 0.01;
+    let length = 50 + sin(frameCount * 0.05 + i) * 30;
+    let x2 = width/2 + cos(angle) * length;
+    let y2 = height/2 + sin(angle) * length;
+    line(width/2, height/2, x2, y2);
+  }
+}
+</code></pre>
+<h2>Important Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>loadJSON()</code></td>
+<td>Load JSON file</td>
+<td><code>loadJSON(&#39;data.json&#39;)</code></td>
+</tr>
+<tr>
+<td><code>loadTable()</code></td>
+<td>Load CSV/table</td>
+<td><code>loadTable(&#39;data.csv&#39;)</code></td>
+</tr>
+<tr>
+<td><code>map()</code></td>
+<td>Map value range</td>
+<td><code>map(value, 0, 100, 0, width)</code></td>
+</tr>
+<tr>
+<td><code>table.getRow()</code></td>
+<td>Get table row</td>
+<td><code>table.getRow(i)</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Visualizing JSON Data</h3>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">let data;
+
+function preload() {
+  data = loadJSON(&#39;data.json&#39;);
+}
+
+function draw() {
+  background(220);
+  for (let i = 0; i &lt; data.values.length; i++) {
+    let dataValue = data.values[i];
+    let x = map(i, 0, data.values.length, 0, width);
+    let h = map(dataValue, 0, 100, 0, height);
+    rect(x, height - h, width/data.values.length, h);
+  }
+}
+</code></pre>
+<h3>Generative Pattern System</h3>
+<span class="sr-only" id="code-desc-13">Code example 13 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 13 in javascript" aria-describedby="code-desc-13" id="code-block-13"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  for (let x = 0; x &lt; width; x += 20) {
+    for (let y = 0; y &lt; height; y += 20) {
+      let noiseValue = noise(x * 0.01, y * 0.01);
+      let circleSize = map(noiseValue, 0, 1, 5, 20);
+      ellipse(x, y, circleSize, circleSize);
+    }
+  }
+}
+</code></pre>
+<h3>Data-Driven Color</h3>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">let data = [10, 30, 50, 70, 90];
+
+function draw() {
+  background(220);
+  for (let i = 0; i &lt; data.length; i++) {
+    let brightness = map(data[i], 0, 100, 0, 255);
+    fill(brightness);
+    rect(i * 100, 100, 80, 80);
+  }
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a code writing task on data visualization, and a creative challenge.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is a data visualization that becomes a large format print for an installation piece.</p>
+<h2>Tips for Success</h2>
+<p>Start with small datasets before large ones. Use map to scale data to screen dimensions. Experiment with different visual encodings. Consider what story your data tells.</p>
+</div>

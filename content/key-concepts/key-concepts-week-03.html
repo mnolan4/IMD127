@@ -1,0 +1,330 @@
+<div class="key-concepts-content"><h1>Week 3: Interaction and Motion - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to use mouse and keyboard input to create interactive experiences. You should write conditional statements to make decisions in code. You should understand event-driven programming. You should create interactive drawing tools and applications.</p>
+<h2>Key Concepts</h2>
+<h3>Mouse Input</h3>
+<p>p5.js provides built-in variables and functions to track mouse position and button states. These update automatically every frame, making it easy to create interactive experiences.</p>
+<p><strong>Mouse Position Variables:</strong></p>
+<ul>
+<li><code>mouseX</code>: Current X coordinate of the mouse (0 to canvas width)</li>
+<li><code>mouseY</code>: Current Y coordinate of the mouse (0 to canvas height)</li>
+<li>These update continuously as you move the mouse</li>
+</ul>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  ellipse(mouseX, mouseY, 50, 50);  // Circle follows mouse
+}
+</code></pre>
+<p><strong>Mouse Button State:</strong></p>
+<ul>
+<li><code>mouseIsPressed</code>: Boolean variable that is <code>true</code> when mouse button is held down, <code>false</code> when released</li>
+<li>Use this in <code>draw()</code> to check if mouse is currently pressed</li>
+</ul>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">function draw() {
+  if (mouseIsPressed) {
+    fill(255, 0, 0);  // Red when mouse is down
+  } else {
+    fill(0, 0, 255);  // Blue when mouse is up
+  }
+  ellipse(mouseX, mouseY, 50, 50);
+}
+</code></pre>
+<p><strong>Mouse Event Functions:</strong></p>
+<ul>
+<li><code>mousePressed()</code>: Called once when mouse button is first pressed down</li>
+<li><code>mouseReleased()</code>: Called once when mouse button is released</li>
+<li><code>mouseClicked()</code>: Called once when mouse is pressed and released (complete click)</li>
+<li>These functions are called automatically by p5.js - you just define them</li>
+</ul>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">function mousePressed() {
+  // This runs once when mouse button is pressed
+  fill(random(255), random(255), random(255));
+}
+
+function mouseReleased() {
+  // This runs once when mouse button is released
+  console.log(&quot;Mouse released at&quot;, mouseX, mouseY);
+}
+</code></pre>
+<h3>Keyboard Input</h3>
+<p>Keyboard input allows users to control your sketch with keys. p5.js provides variables and functions to detect which keys are pressed.</p>
+<p><strong>Key Event Function:</strong></p>
+<ul>
+<li><code>keyPressed()</code>: Called once when any key is first pressed down</li>
+<li><code>keyReleased()</code>: Called once when a key is released</li>
+<li>These functions are called automatically by p5.js</li>
+</ul>
+<p><strong>Key Variables:</strong></p>
+<ul>
+<li><code>key</code>: Contains the character of the key that was pressed (as a string)<ul>
+<li>Letters: <code>&#39;a&#39;</code>, <code>&#39;b&#39;</code>, <code>&#39;A&#39;</code>, <code>&#39;B&#39;</code></li>
+<li>Numbers: <code>&#39;1&#39;</code>, <code>&#39;2&#39;</code>, <code>&#39;3&#39;</code></li>
+<li>Special characters: <code>&#39; &#39;</code> (space), <code>&#39;Enter&#39;</code></li>
+</ul>
+</li>
+<li><code>keyCode</code>: Contains special keys that don&#39;t have character representations<ul>
+<li>Arrow keys: <code>UP_ARROW</code>, <code>DOWN_ARROW</code>, <code>LEFT_ARROW</code>, <code>RIGHT_ARROW</code></li>
+<li>Other: <code>ENTER</code>, <code>BACKSPACE</code>, <code>TAB</code>, <code>SHIFT</code>, <code>CONTROL</code>, <code>ALT</code></li>
+</ul>
+</li>
+</ul>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">function keyPressed() {
+  if (key === &#39;r&#39; || key === &#39;R&#39;) {
+    // Reset when &#39;r&#39; is pressed
+    background(220);
+  }
+  
+  if (keyCode === UP_ARROW) {
+    // Move up when up arrow is pressed
+    y -= 10;
+  }
+}
+</code></pre>
+<p><strong>Continuous Key Detection:</strong><br>Use <code>keyIsDown()</code> to check if a key is currently being held down (works in <code>draw()</code>):</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">function draw() {
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= 5;  // Move left continuously while arrow is held
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += 5;  // Move right continuously while arrow is held
+  }
+  ellipse(x, y, 50, 50);
+}
+</code></pre>
+<h3>Conditional Statements (if/else)</h3>
+<p>Conditional statements make decisions in your code based on conditions.</p>
+<p><strong>Basic syntax:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">if (condition) {
+  // Do this if condition is true
+} else {
+  // Do this if condition is false
+}
+</code></pre>
+<p><strong>Examples:</strong></p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">// Change color based on mouse position
+if (mouseX &lt; width/2) {
+  fill(255, 0, 0);  // Red on left side
+} else {
+  fill(0, 0, 255);  // Blue on right side
+}
+ellipse(mouseX, mouseY, 50, 50);
+</code></pre>
+<h3>Event-Driven Programming</h3>
+<p>Event-driven programming means your code responds to specific user actions (events) rather than just running continuously. When an event occurs, p5.js automatically calls the corresponding function you&#39;ve defined.</p>
+<p><strong>How It Works:</strong></p>
+<ol>
+<li>You define event functions (like <code>mousePressed()</code>, <code>keyPressed()</code>)</li>
+<li>p5.js automatically calls these functions when events occur</li>
+<li>Your code inside these functions runs in response to the event</li>
+</ol>
+<p><strong>Common Events:</strong></p>
+<ul>
+<li><strong>Mouse events</strong>: <code>mousePressed()</code>, <code>mouseReleased()</code>, <code>mouseClicked()</code>, <code>mouseMoved()</code></li>
+<li><strong>Keyboard events</strong>: <code>keyPressed()</code>, <code>keyReleased()</code>, <code>keyTyped()</code></li>
+<li><strong>Window events</strong>: <code>windowResized()</code> (when browser window is resized)</li>
+</ul>
+<p><strong>Event vs Continuous:</strong></p>
+<ul>
+<li><strong>Event functions</strong> (<code>mousePressed()</code>, <code>keyPressed()</code>): Run once when event occurs</li>
+<li><strong>Continuous checking</strong> (<code>mouseIsPressed</code>, <code>keyIsDown()</code>): Check state every frame in <code>draw()</code></li>
+</ul>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">// Event-driven: runs once per click
+function mousePressed() {
+  console.log(&quot;Clicked!&quot;);
+}
+
+// Continuous: checks every frame
+function draw() {
+  if (mouseIsPressed) {
+    // Do something while mouse is held
+  }
+}
+</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use event functions for one-time actions (like changing a color on click)</li>
+<li>Use continuous checking in <code>draw()</code> for ongoing behaviors (like drawing while mouse is held)</li>
+<li>Keep event functions simple and fast</li>
+</ul>
+<h2>Important Functions to Know</h2>
+<table>
+<thead>
+<tr>
+<th>Function/Variable</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>mouseX</code>, <code>mouseY</code></td>
+<td>Mouse position</td>
+<td><code>ellipse(mouseX, mouseY, 50, 50)</code></td>
+</tr>
+<tr>
+<td><code>mouseIsPressed</code></td>
+<td>Is mouse down?</td>
+<td><code>if (mouseIsPressed) { ... }</code></td>
+</tr>
+<tr>
+<td><code>mousePressed()</code></td>
+<td>On click event</td>
+<td><code>function mousePressed() { ... }</code></td>
+</tr>
+<tr>
+<td><code>mouseReleased()</code></td>
+<td>On mouse release</td>
+<td><code>function mouseReleased() { ... }</code></td>
+</tr>
+<tr>
+<td><code>mouseClicked()</code></td>
+<td>On complete click</td>
+<td><code>function mouseClicked() { ... }</code></td>
+</tr>
+<tr>
+<td><code>keyPressed()</code></td>
+<td>On key press</td>
+<td><code>function keyPressed() { ... }</code></td>
+</tr>
+<tr>
+<td><code>keyReleased()</code></td>
+<td>On key release</td>
+<td><code>function keyReleased() { ... }</code></td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>Key character</td>
+<td><code>if (key === &#39;a&#39;) { ... }</code></td>
+</tr>
+<tr>
+<td><code>keyCode</code></td>
+<td>Special key code</td>
+<td><code>if (keyCode === UP_ARROW) { ... }</code></td>
+</tr>
+<tr>
+<td><code>keyIsDown(code)</code></td>
+<td>Is key held?</td>
+<td><code>if (keyIsDown(LEFT_ARROW)) { ... }</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Mouse Following</h3>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  ellipse(mouseX, mouseY, 50, 50);
+}
+</code></pre>
+<h3>Drawing Tool</h3>
+<p>A simple drawing tool that leaves marks where you click. The key is NOT calling <code>background()</code> in <code>draw()</code>, so previous marks remain visible.</p>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">function setup() {
+  createCanvas(400, 400);
+  background(220);  // Set background once in setup
+}
+
+function draw() {
+  // No background() here - this preserves previous drawings
+}
+
+function mousePressed() {
+  fill(random(255), random(255), random(255));
+  ellipse(mouseX, mouseY, 20, 20);
+}
+</code></pre>
+<p><strong>Variation: Drawing while dragging:</strong></p>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">function setup() {
+  createCanvas(400, 400);
+  background(220);
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    // Draw continuously while mouse is held
+    fill(0);
+    ellipse(mouseX, mouseY, 10, 10);
+  }
+}
+</code></pre>
+<h3>Conditional Color</h3>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">function draw() {
+  if (mouseX &lt; width/2) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 0, 255);
+  }
+  ellipse(mouseX, mouseY, 50, 50);
+}
+</code></pre>
+<h3>Keyboard Control</h3>
+<p>Control object movement with keyboard keys. This example uses WASD keys for movement.</p>
+<span class="sr-only" id="code-desc-13">Code example 13 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 13 in javascript" aria-describedby="code-desc-13" id="code-block-13"><code class="language-javascript" lang="javascript">let x = 200;
+let y = 200;
+let moveSpeed = 5;
+
+function draw() {
+  background(220);
+  ellipse(x, y, 50, 50);
+}
+
+function keyPressed() {
+  if (key === &#39;w&#39; || key === &#39;W&#39;) {
+    y -= moveSpeed;  // Move up
+  } else if (key === &#39;s&#39; || key === &#39;S&#39;) {
+    y += moveSpeed;  // Move down
+  } else if (key === &#39;a&#39; || key === &#39;A&#39;) {
+    x -= moveSpeed;  // Move left
+  } else if (key === &#39;d&#39; || key === &#39;D&#39;) {
+    x += moveSpeed;  // Move right
+  }
+  
+  // Keep object on canvas
+  x = constrain(x, 25, width - 25);
+  y = constrain(y, 25, height - 25);
+}
+</code></pre>
+<p><strong>Using Arrow Keys:</strong></p>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    y -= 10;
+  } else if (keyCode === DOWN_ARROW) {
+    y += 10;
+  } else if (keyCode === LEFT_ARROW) {
+    x -= 10;
+  } else if (keyCode === RIGHT_ARROW) {
+    x += 10;
+  }
+}
+</code></pre>
+<p><strong>Continuous Movement (while key held):</strong></p>
+<span class="sr-only" id="code-desc-15">Code example 15 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 15 in javascript" aria-describedby="code-desc-15" id="code-block-15"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= 5;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += 5;
+  }
+  if (keyIsDown(UP_ARROW)) {
+    y -= 5;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+    y += 5;
+  }
+  
+  ellipse(x, y, 50, 50);
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a pair programming challenge, a code writing task, and Major Project 1: Static Image, Visual Poetry.</p>
+<h2>Major Project 1: Static Image, Visual Poetry</h2>
+<p>The tangible output for this week is your own visual poetry sketch created in openprocessing using the <code>setup()</code> static draw OR a generative system that you render a still image from. We will then print, perfect bind and have zine as a keepsake for the class. You will create the page however you would like as an artistic or poetic piece. We would love to see visual poetry experiments that explore the relationship between text and image, form and meaning, code and expression.</p>
+<p>You can create image and/or text, but we encourage you to experiment with visual poetry—exploring how words, shapes, colors, and composition can create meaning beyond literal text. Think about how code can generate poetic visual experiences.</p>
+<p><strong>Pro tip:</strong> An 8.5 x 11 page could have a number of different size canvases, depending on how many Dots Per Inch you want. Higher DPI uses more power to process, lower DPI is more efficient, but lower resolution for print.</p>
+<ul>
+<li><strong>High-quality screen / decent print</strong><br>150 DPI → 1275 × 1650 px<br>This is a sweet spot if students might export images.</li>
+<li><strong>Print-ready</strong><br>300 DPI → 2550 × 3300 px<br>This is standard for professional printing, but heavy for beginners and slower in the browser.</li>
+<li><strong>Recommendation for a creative coding class</strong><br>Start with 816 × 1056 px (96 DPI).<br>It maps cleanly to inches, feels "page-like," and keeps performance friendly.</li>
+</ul>
+<p><strong>Note:</strong> In addition to using a key command to export an image, there are multiple other workarounds. In the p5.js web editor, you can also take a screenshot of the preview window, right click to print frame, or for whole page file print → PDF.</p>
+<h2>Tips for Success</h2>
+<p>Start with simple mouse following before adding clicks. Use conditionals to create different behaviors. Experiment with combining mouse and keyboard input. Test your interactive code frequently.</p>
+</div>

@@ -1,0 +1,255 @@
+<div class="key-concepts-content"><h1>Week 1: Introduction to Creative Coding - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to set up your development environment and create your first p5.js sketch. You should understand the basic structure of a p5.js program including setup and draw functions. You should use basic drawing functions to create shapes, text, and colors. You should navigate the coordinate system.</p>
+<h2>Key Concepts</h2>
+<h3>What is Creative Coding?</h3>
+<p>Creative coding treats code as instructions for the computer. It differs from traditional programming in its focus on creative expression. p5.js serves as a tool for artists, providing a creative coding workflow that emphasizes experimentation and visual output.</p>
+<h3>Basic p5.js Structure</h3>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  // Your drawing code here
+}
+</code></pre>
+<p>The setup function runs once when the program starts. The draw function runs continuously, creating animation. The createCanvas function sets the size of your drawing area.</p>
+<h3>Using console.log() for Debugging</h3>
+<p><code>console.log()</code> is one of the most important tools for learning and debugging code. It lets you see values, check if code is running, and understand what your program is doing. The output appears in the browser's Developer Console, not on your canvas.</p>
+<p><strong>How to Open the Console:</strong></p>
+<ul>
+<li><strong>p5.js Web Editor (editor.p5js.org):</strong> Click the "Console" button at the bottom of the editor, or press Ctrl+Shift+K (Windows/Linux) or Cmd+Option+K (Mac)</li>
+<li><strong>OpenProcessing.org:</strong> Press F12 to open Developer Tools, then click the "Console" tab</li>
+<li><strong>Browser (local HTML):</strong> Press F12 to open Developer Tools, then click the "Console" tab, or right-click → "Inspect" → "Console" tab</li>
+</ul>
+<p><strong>Basic Usage:</strong></p>
+<span class="sr-only" id="code-desc-1b">Code example 1b written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1b in javascript" aria-describedby="code-desc-1b" id="code-block-1b"><code class="language-javascript" lang="javascript">// Log a message
+console.log("Setup is running!");
+
+// Log a variable value
+let x = 200;
+console.log("X position:", x);
+
+// Log multiple values
+console.log("Canvas size:", width, "x", height);
+</code></pre>
+<p><strong>When to Use console.log():</strong></p>
+<ul>
+<li><strong>Understanding code flow:</strong> See which functions run and when</li>
+<li><strong>Checking variable values:</strong> See what numbers, strings, or other values your variables contain</li>
+<li><strong>Debugging problems:</strong> When something isn't working, log values to see what's wrong</li>
+<li><strong>Learning new functions:</strong> Log the output of functions to understand what they return</li>
+<li><strong>Tracking changes:</strong> See how values change over time</li>
+</ul>
+<p><strong>Important Tips:</strong></p>
+<ul>
+<li><strong>Use descriptive messages:</strong> <code>console.log("Circle X position:", circleX);</code> is better than just <code>console.log(circleX);</code></li>
+<li><strong>Don't log in draw() without conditions:</strong> The <code>draw()</code> function runs 60 times per second. Logging every frame floods the console. Use conditions like <code>if (frameCount % 60 === 0)</code> to log less frequently</li>
+<li><strong>Log before and after changes:</strong> This helps you see what's happening to your variables</li>
+</ul>
+<span class="sr-only" id="code-desc-1c">Code example 1c written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1c in javascript" aria-describedby="code-desc-1c" id="code-block-1c"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  
+  // Log only on first frame
+  if (frameCount === 1) {
+    console.log("Draw started");
+  }
+  
+  // Log every 60 frames (once per second)
+  if (frameCount % 60 === 0) {
+    console.log("Frame:", frameCount, "Mouse:", mouseX, mouseY);
+  }
+  
+  // Log only when mouse is pressed
+  if (mouseIsPressed) {
+    console.log("Mouse clicked at:", mouseX, mouseY);
+  }
+}
+</code></pre>
+<p><strong>Common Patterns:</strong></p>
+<ul>
+<li>Check if code is running: <code>console.log("This function ran");</code></li>
+<li>See variable values: <code>console.log("myVariable is:", myVariable);</code></li>
+<li>Check calculations: <code>console.log("Distance:", dist(x1, y1, x2, y2));</code></li>
+<li>Track execution: <code>console.log("Step 1:", value1, "Step 2:", value2);</code></li>
+</ul>
+<h3>Coordinate System</h3>
+<p>The origin at coordinates 0, 0 is at the top-left corner of the canvas. The X coordinate increases as you move right. The Y coordinate increases as you move down. For example, to draw at the top-left, use small x and y values such as 10, 10.</p>
+<h3>Basic Drawing Functions</h3>
+<p>p5.js provides several functions for drawing shapes. Each shape is drawn in the order it appears in your code, so shapes drawn later appear on top of earlier ones.</p>
+<p><strong>Ellipse:</strong><br>The <code>ellipse()</code> function draws circles and ovals. It takes four parameters: x position, y position, width, and height. When width and height are equal, you get a circle. When they differ, you get an oval.</p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">ellipse(200, 200, 100, 100);  // Circle at center
+ellipse(100, 100, 80, 120);   // Oval (taller than wide)
+</code></pre>
+<p><strong>Rectangle:</strong><br>The <code>rect()</code> function draws rectangles. It uses the same four parameters: x, y, width, and height. By default, rectangles are drawn from the top-left corner.</p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">rect(100, 100, 200, 150);  // Rectangle: x=100, y=100, width=200, height=150
+</code></pre>
+<p><strong>Line:</strong><br>The <code>line()</code> function draws straight lines. It takes four parameters: x1, y1 (start point) and x2, y2 (end point).</p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">line(0, 0, 400, 400);      // Diagonal line from top-left to bottom-right
+line(100, 200, 300, 200); // Horizontal line
+</code></pre>
+<p><strong>Triangle:</strong><br>The <code>triangle()</code> function draws triangles. It takes six parameters: three pairs of x, y coordinates for the three vertices.</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">triangle(200, 50, 150, 150, 250, 150);  // Triangle pointing up
+</code></pre>
+<p><strong>Point:</strong><br>The <code>point()</code> function draws a single pixel. It takes x and y coordinates.</p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">point(200, 200);  // Single pixel at center
+</code></pre>
+<p><strong>Text:</strong><br>The <code>text()</code> function displays text on the canvas. It takes the text string and x, y coordinates. Use <code>textSize()</code> to set the size and <code>textAlign()</code> to control alignment.</p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">textSize(32);
+textAlign(CENTER);
+text(&quot;Hello World&quot;, 200, 200);
+</code></pre>
+<h3>Colors</h3>
+<p>Colors in p5.js control how shapes appear. You set colors before drawing shapes, and the color settings apply to all shapes drawn afterward until you change them.</p>
+<p><strong>Background:</strong><br>The <code>background()</code> function sets the canvas background color. It clears the entire canvas and sets the base color. You typically call it at the start of <code>draw()</code> to clear previous frames.</p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">background(220);           // Light gray background
+background(255, 0, 0);    // Red background
+background(0);            // Black background
+</code></pre>
+<p><strong>Fill:</strong><br>The <code>fill()</code> function sets the interior color of shapes. Once set, all subsequent shapes use this fill color until you change it.</p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">fill(255, 0, 0);  // Red fill
+ellipse(100, 100, 50, 50);  // Red circle
+fill(0, 255, 0);  // Green fill
+ellipse(200, 200, 50, 50);  // Green circle
+</code></pre>
+<p><strong>Stroke:</strong><br>The <code>stroke()</code> function sets the outline color of shapes. Like fill, it applies to all shapes drawn afterward.</p>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">stroke(0);  // Black outline
+strokeWeight(3);  // 3-pixel thick outline
+ellipse(200, 200, 100, 100);
+</code></pre>
+<p><strong>No Fill / No Stroke:</strong><br>Use <code>noFill()</code> to draw shapes without interior color (transparent fill). Use <code>noStroke()</code> to draw shapes without outlines.</p>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">noFill();
+stroke(0);
+ellipse(200, 200, 100, 100);  // Circle with only outline, no fill
+</code></pre>
+<p><strong>Color Formats:</strong></p>
+<ol>
+<li><p><strong>Grayscale</strong>: Single number from 0 (black) to 255 (white)</p>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">fill(128);  // Medium gray
+</code></pre>
+</li>
+<li><p><strong>RGB</strong>: Three numbers for red, green, blue (each 0-255)</p>
+<span class="sr-only" id="code-desc-13">Code example 13 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 13 in javascript" aria-describedby="code-desc-13" id="code-block-13"><code class="language-javascript" lang="javascript">fill(255, 0, 0);    // Red
+fill(0, 255, 0);     // Green
+fill(0, 0, 255);     // Blue
+fill(255, 255, 0);   // Yellow (red + green)
+</code></pre>
+</li>
+<li><p><strong>Named Colors</strong>: String values (limited set)</p>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">fill(&#39;red&#39;);
+fill(&#39;blue&#39;);
+fill(&#39;yellow&#39;);
+</code></pre>
+</li>
+</ol>
+<p><strong>Color Order Matters:</strong><br>Shapes are drawn in the order they appear in your code. Later shapes appear on top of earlier ones, creating layers.</p>
+<h2>Important Functions to Know</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>createCanvas(w, h)</code></td>
+<td>Creates drawing area</td>
+<td><code>createCanvas(400, 400)</code></td>
+</tr>
+<tr>
+<td><code>background(color)</code></td>
+<td>Sets background color</td>
+<td><code>background(220)</code> or <code>background(255, 0, 0)</code></td>
+</tr>
+<tr>
+<td><code>fill(color)</code></td>
+<td>Sets fill color for shapes</td>
+<td><code>fill(255, 0, 0)</code> or <code>fill(&#39;red&#39;)</code></td>
+</tr>
+<tr>
+<td><code>stroke(color)</code></td>
+<td>Sets outline color</td>
+<td><code>stroke(0)</code> for black outline</td>
+</tr>
+<tr>
+<td><code>noFill()</code></td>
+<td>Removes fill (transparent)</td>
+<td><code>noFill()</code></td>
+</tr>
+<tr>
+<td><code>noStroke()</code></td>
+<td>Removes outline</td>
+<td><code>noStroke()</code></td>
+</tr>
+<tr>
+<td><code>strokeWeight(size)</code></td>
+<td>Sets outline thickness</td>
+<td><code>strokeWeight(3)</code></td>
+</tr>
+<tr>
+<td><code>ellipse(x, y, w, h)</code></td>
+<td>Draws circle/oval</td>
+<td><code>ellipse(200, 200, 100, 100)</code></td>
+</tr>
+<tr>
+<td><code>rect(x, y, w, h)</code></td>
+<td>Draws rectangle</td>
+<td><code>rect(100, 100, 200, 150)</code></td>
+</tr>
+<tr>
+<td><code>line(x1, y1, x2, y2)</code></td>
+<td>Draws line</td>
+<td><code>line(0, 0, 400, 400)</code></td>
+</tr>
+<tr>
+<td><code>triangle(x1, y1, x2, y2, x3, y3)</code></td>
+<td>Draws triangle</td>
+<td><code>triangle(200, 50, 150, 150, 250, 150)</code></td>
+</tr>
+<tr>
+<td><code>point(x, y)</code></td>
+<td>Draws single pixel</td>
+<td><code>point(200, 200)</code></td>
+</tr>
+<tr>
+<td><code>text(str, x, y)</code></td>
+<td>Draws text</td>
+<td><code>text(&quot;Hello&quot;, 200, 200)</code></td>
+</tr>
+<tr>
+<td><code>textSize(size)</code></td>
+<td>Sets text size</td>
+<td><code>textSize(32)</code></td>
+</tr>
+<tr>
+<td><code>textAlign(align)</code></td>
+<td>Sets text alignment</td>
+<td><code>textAlign(CENTER)</code></td>
+</tr>
+<tr>
+<td><code>console.log(value)</code></td>
+<td>Prints values to browser console for debugging</td>
+<td><code>console.log("Hello");</code> or <code>console.log("X:", x);</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Drawing Multiple Shapes</h3>
+<span class="sr-only" id="code-desc-15">Code example 15 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 15 in javascript" aria-describedby="code-desc-15" id="code-block-15"><code class="language-javascript" lang="javascript">function draw() {
+  background(220);
+  fill(255, 0, 0);
+  ellipse(100, 100, 50, 50);
+  fill(0, 255, 0);
+  rect(200, 200, 100, 100);
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a code tracing exercise and create a creative variation of Hello World. You can use Points, lines, shapes, Text, fill, and background color. Your code should define each shape individually and avoid repetition or instancing.</p>
+<h2>Tangible Output</h2>
+<p>This week focuses on learning the fundamentals of p5.js. Your tangible output will be a simple static sketch using basic shapes, colors, and text. This is a foundational week to get comfortable with the p5.js environment and basic drawing functions.</p>
+<h2>Resources</h2>
+<p>The p5.js reference is available at <a href="https://p5js.org/reference/">https://p5js.org/reference/</a>. The p5.js examples are available at <a href="https://p5js.org/examples/">https://p5js.org/examples/</a>. The setup guide is available in the Student Resources folder.</p>
+<h2>Tips for Success</h2>
+<p>Experiment with different shapes and colors. Do not worry about making perfect code. Think about how the order of drawing shapes can be used to create interesting unique characteristics in your art. Modify existing examples to see how simple changes can have dramatic results. Experiment freely. Fork projects and build upon them. Use the p5.js reference when you need help. Ask questions and collaborate with classmates.</p>
+</div>

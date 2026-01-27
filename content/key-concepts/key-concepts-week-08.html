@@ -1,0 +1,267 @@
+<div class="key-concepts-content"><h1>Week 8: Randomness and Noise - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to use random to create variation. You should use noise for smooth, organic randomness. You should understand Perlin noise. You should apply probability concepts. You should create organic, natural-looking forms.</p>
+<h2>Key Concepts</h2>
+<h3>Random Function</h3>
+<p>The <code>random()</code> function generates random numbers. It&#39;s essential for creating variation, unpredictability, and organic-looking results in your sketches.</p>
+<p><strong>Basic Usage:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">random(10);        // Random number from 0 to 10 (not including 10)
+random(5, 15);     // Random number from 5 to 15 (not including 15)
+random(0, 255);    // Random number from 0 to 255 (for colors)
+</code></pre>
+<p><strong>Important:</strong> <code>random()</code> returns a floating-point number (decimal). The upper bound is <strong>not included</strong>:</p>
+<ul>
+<li><code>random(10)</code> returns 0.0 to 9.999... (never exactly 10)</li>
+<li><code>random(5, 15)</code> returns 5.0 to 14.999... (never exactly 15)</li>
+</ul>
+<p><strong>Common Uses:</strong></p>
+<ol>
+<li><strong>Random Positions:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">ellipse(random(width), random(height), 50, 50);
+</code></pre>
+<ol start="2">
+<li><strong>Random Colors:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">fill(random(255), random(255), random(255));  // Random RGB
+</code></pre>
+<ol start="3">
+<li><strong>Random Sizes:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">let circleSize = random(10, 100);
+ellipse(200, 200, circleSize, circleSize);
+</code></pre>
+<ol start="4">
+<li><strong>Random Speeds:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">let moveSpeed = random(-3, 3);  // Random speed in any direction
+x += moveSpeed;
+</code></pre>
+<ol start="5">
+<li><strong>Random Choices:</strong></li>
+</ol>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">let colors = [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;];
+let randomColor = colors[floor(random(colors.length))];
+</code></pre>
+<p><strong>Random Seed:</strong><br>By default, <code>random()</code> produces different results each time. Use <code>randomSeed()</code> to get the same sequence:</p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">randomSeed(42);  // Same seed = same random sequence
+</code></pre>
+<h3>Random Walk</h3>
+<p>Objects that move randomly create organic patterns.</p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let x = width/2;
+let y = height/2;
+
+function draw() {
+  stroke(0);
+  point(x, y);
+  x += random(-2, 2);
+  y += random(-2, 2);
+}
+</code></pre>
+<h3>Noise Function</h3>
+<p>The <code>noise()</code> function generates smooth, continuous random values using Perlin noise. Unlike <code>random()</code>, which produces completely independent values, <code>noise()</code> creates values that smoothly transition from one to the next, resulting in natural, organic-looking patterns.</p>
+<p><strong>Why Use Noise Instead of Random:</strong></p>
+<ul>
+<li><strong>Smooth transitions</strong>: Values change gradually, not abruptly</li>
+<li><strong>Natural appearance</strong>: Creates organic, flowing patterns</li>
+<li><strong>Predictable yet varied</strong>: Same input gives same output, but looks random</li>
+<li><strong>Multi-dimensional</strong>: Works in 1D, 2D, 3D for complex patterns</li>
+</ul>
+<p><strong>How Noise Works:</strong></p>
+<ul>
+<li><code>noise()</code> takes one or more coordinates as input</li>
+<li>Returns a value between 0 and 1</li>
+<li>Similar input coordinates produce similar output values</li>
+<li>This creates smooth, continuous curves</li>
+</ul>
+<p><strong>1D Noise (One Dimension):</strong></p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let xoff = 0;  // Offset in noise space
+
+function draw() {
+  background(220);
+  // Get noise value (0 to 1), scale to canvas height
+  let y = noise(xoff) * height;
+  ellipse(200, y, 50, 50);
+  
+  // Increment offset (small increments = smooth movement)
+  xoff += 0.01;  // Try different values: 0.001 (very smooth) to 0.1 (more variation)
+}
+</code></pre>
+<p><strong>2D Noise (Two Dimensions):</strong><br>Creates smooth patterns across a 2D surface:</p>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">for (let x = 0; x &lt; width; x += 10) {
+  for (let y = 0; y &lt; height; y += 10) {
+    // Get noise value for this position
+    // Scale coordinates down (0.01) for smoother variation
+    let bright = noise(x * 0.01, y * 0.01) * 255;
+    fill(bright);
+    rect(x, y, 10, 10);
+  }
+}
+</code></pre>
+<p><strong>3D Noise (Three Dimensions):</strong><br>Adds time dimension for animated patterns:</p>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">function draw() {
+  for (let x = 0; x &lt; width; x += 10) {
+    for (let y = 0; y &lt; height; y += 10) {
+      // Third parameter (frameCount) adds time dimension
+      let bright = noise(x * 0.01, y * 0.01, frameCount * 0.01) * 255;
+      fill(bright);
+      rect(x, y, 10, 10);
+    }
+  }
+}
+</code></pre>
+<p><strong>Noise Scale:</strong><br>The multiplier (like <code>0.01</code>) controls how quickly noise values change:</p>
+<ul>
+<li><strong>Small values</strong> (0.001): Very smooth, slow variation</li>
+<li><strong>Medium values</strong> (0.01): Balanced smoothness</li>
+<li><strong>Large values</strong> (0.1): More variation, less smooth</li>
+</ul>
+<p><strong>Common Patterns:</strong></p>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">// Smooth movement
+let x = noise(frameCount * 0.01) * width;
+
+// Organic size variation
+let circleSize = noise(frameCount * 0.02) * 100 + 50;
+
+// Flowing color
+let r = noise(frameCount * 0.01) * 255;
+let g = noise(frameCount * 0.01 + 100) * 255;  // Offset for different pattern
+let b = noise(frameCount * 0.01 + 200) * 255;
+</code></pre>
+<h3>Probability</h3>
+<p>Probability lets you control how often random events occur. You can create weighted randomness where some outcomes are more likely than others.</p>
+<p><strong>How Probability Works:</strong></p>
+<ul>
+<li><code>random(100)</code> returns 0 to 99.999...</li>
+<li>Compare to a threshold to create probability</li>
+<li><code>random(100) &lt; 10</code> is true 10% of the time (when result is 0-9.999)</li>
+</ul>
+<p><strong>Basic Probability:</strong></p>
+<span class="sr-only" id="code-desc-13">Code example 13 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 13 in javascript" aria-describedby="code-desc-13" id="code-block-13"><code class="language-javascript" lang="javascript">if (random(100) &lt; 10) {
+  // 10% chance: happens when random(100) is 0-9.999
+  fill(255, 0, 0);  // Red
+} else {
+  // 90% chance: happens when random(100) is 10-99.999
+  fill(0, 0, 255);  // Blue
+}
+</code></pre>
+<p><strong>Probability Examples:</strong></p>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">// 50% chance
+if (random(100) &lt; 50) {
+  // Do something
+}
+
+// 25% chance
+if (random(100) &lt; 25) {
+  // Do something
+}
+
+// 1% chance (rare event)
+if (random(100) &lt; 1) {
+  // Do something special
+}
+</code></pre>
+<p><strong>Multiple Probability Levels:</strong></p>
+<span class="sr-only" id="code-desc-15">Code example 15 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 15 in javascript" aria-describedby="code-desc-15" id="code-block-15"><code class="language-javascript" lang="javascript">let chance = random(100);
+
+if (chance &lt; 10) {
+  // 10% chance: rare
+  fill(255, 0, 0);
+} else if (chance &lt; 40) {
+  // 30% chance: uncommon (10-40)
+  fill(0, 255, 0);
+} else {
+  // 60% chance: common (40-100)
+  fill(0, 0, 255);
+}
+</code></pre>
+<p><strong>Using Probability in Loops:</strong></p>
+<span class="sr-only" id="code-desc-16">Code example 16 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 16 in javascript" aria-describedby="code-desc-16" id="code-block-16"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 100; i++) {
+  if (random(100) &lt; 20) {
+    // 20% of items will be red
+    fill(255, 0, 0);
+  } else {
+    fill(0);
+  }
+  ellipse(i * 10, 200, 20, 20);
+}
+</code></pre>
+<p><strong>Probability for Behavior:</strong></p>
+<span class="sr-only" id="code-desc-17">Code example 17 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 17 in javascript" aria-describedby="code-desc-17" id="code-block-17"><code class="language-javascript" lang="javascript">function draw() {
+  if (random(100) &lt; 5) {
+    // 5% chance per frame: add new particle
+    particles.push(new Particle(mouseX, mouseY));
+  }
+}
+</code></pre>
+<h2>Important Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>random(max)</code></td>
+<td>Random 0 to max</td>
+<td><code>random(100)</code></td>
+</tr>
+<tr>
+<td><code>random(min, max)</code></td>
+<td>Random min to max</td>
+<td><code>random(10, 20)</code></td>
+</tr>
+<tr>
+<td><code>noise(x)</code></td>
+<td>Smooth random</td>
+<td><code>noise(frameCount * 0.01)</code></td>
+</tr>
+<tr>
+<td><code>noise(x, y)</code></td>
+<td>2D smooth random</td>
+<td><code>noise(x * 0.01, y * 0.01)</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Random Distribution</h3>
+<span class="sr-only" id="code-desc-18">Code example 18 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 18 in javascript" aria-describedby="code-desc-18" id="code-block-18"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 100; i++) {
+  let x = random(width);
+  let y = random(height);
+  let circleSize = random(10, 30);
+  ellipse(x, y, circleSize, circleSize);
+}
+</code></pre>
+<h3>Organic Movement</h3>
+<span class="sr-only" id="code-desc-19">Code example 19 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 19 in javascript" aria-describedby="code-desc-19" id="code-block-19"><code class="language-javascript" lang="javascript">let xoff = 0;
+let yoff = 10000;
+
+function draw() {
+  let x = noise(xoff) * width;
+  let y = noise(yoff) * height;
+  ellipse(x, y, 30, 30);
+  xoff += 0.01;
+  yoff += 0.01;
+}
+</code></pre>
+<h3>Probability-Based Behavior</h3>
+<span class="sr-only" id="code-desc-20">Code example 20 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 20 in javascript" aria-describedby="code-desc-20" id="code-block-20"><code class="language-javascript" lang="javascript">function draw() {
+  if (random(100) &lt; 5) {
+    // 5% chance: draw red circle
+    fill(255, 0, 0);
+    ellipse(random(width), random(height), 50, 50);
+  } else {
+    // 95% chance: draw blue circle
+    fill(0, 0, 255);
+    ellipse(random(width), random(height), 30, 30);
+  }
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a code explanation exercise analyzing randomness algorithms, and a Parsons problem.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is random walk patterns that become AxiDraw pen drawings for a gallery of organic forms.</p>
+<h2>Tips for Success</h2>
+<p>Use random for discrete randomness. Use noise for smooth, organic patterns. Adjust noise scale by multiplying by a small number like 0.01. Experiment with probability to control randomness.</p>
+</div>

@@ -1,0 +1,360 @@
+<div class="key-concepts-content"><h1>Week 13: Video Input and Processing - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to capture video from a webcam using built-in p5.js features. You should apply filters and effects to video. You should manipulate video at the pixel level. You should use video as input for generative systems. You should create video-reactive interactive installations.</p>
+<h2>Key Concepts</h2>
+<h3>Video Capture</h3>
+<p>p5.js provides built-in video capture capabilities through <code>createCapture(VIDEO)</code>. This allows you to access the webcam and use live video as input for your projects. Video capture is a core p5.js feature that doesn't require external libraries.</p>
+<p><strong>Basic Video Capture:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let video;
+
+function setup() {
+  createCanvas(640, 480);
+  
+  // Create video capture from webcam
+  video = createCapture(VIDEO);
+  
+  // Set video size
+  video.size(640, 480);
+  
+  // Hide the default HTML video element
+  // We'll draw video ourselves using image()
+  video.hide();
+}
+
+function draw() {
+  background(0);
+  
+  // Display video on canvas
+  image(video, 0, 0);
+}
+</code></pre>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li>Browser will prompt for camera permission (security requirement)</li>
+<li>Works best with HTTPS or localhost</li>
+<li><code>video.hide()</code> hides the default HTML video element</li>
+<li><code>image(video, x, y)</code> displays video on canvas</li>
+<li>Video dimensions: <code>video.width</code> and <code>video.height</code></li>
+</ul>
+<p><strong>Video Display Options:</strong></p>
+<ul>
+<li>Full canvas: <code>image(video, 0, 0, width, height)</code></li>
+<li>Original size: <code>image(video, 0, 0)</code></li>
+<li>Scaled: <code>image(video, 0, 0, 320, 240)</code></li>
+<li>Mirrored: Use transformations (see below)</li>
+</ul>
+<h3>Video Filters and Effects</h3>
+<p>p5.js provides built-in filters that can be applied to video. These filters process the video image to create visual effects. Filters are applied using the <code>filter()</code> function.</p>
+<p><strong>Available Filters:</strong></p>
+<ul>
+<li><code>GRAY</code> - Convert to grayscale</li>
+<li><code>THRESHOLD</code> - Black and white threshold</li>
+<li><code>INVERT</code> - Invert colors</li>
+<li><code>BLUR</code> - Blur effect (takes parameter: <code>BLUR, amount</code>)</li>
+<li><code>POSTERIZE</code> - Reduce color levels (takes parameter: <code>POSTERIZE, levels</code>)</li>
+<li><code>ERODE</code> - Erode effect</li>
+<li><code>DILATE</code> - Dilate effect</li>
+</ul>
+<p><strong>Applying Filters:</strong></p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  // Apply filter before drawing video
+  filter(GRAY);  // Grayscale filter
+  image(video, 0, 0);
+  
+  // Or use threshold
+  // filter(THRESHOLD);
+  // image(video, 0, 0);
+}
+</code></pre>
+<p><strong>Color Tinting:</strong></p>
+<p>Use <code>tint()</code> to add color overlays to video:</p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  // Apply color tint
+  tint(255, 100, 100);  // Red tint
+  image(video, 0, 0);
+  
+  // Remove tint for other drawings
+  noTint();
+}
+</code></pre>
+<p><strong>Combining Filters:</strong></p>
+<ul>
+<li>Filters are applied in order</li>
+<li>Multiple filters can be combined</li>
+<li>Filters affect everything drawn after the <code>filter()</code> call</li>
+</ul>
+<h3>Pixel-Level Manipulation</h3>
+<p>You can access and modify individual pixels in video using <code>loadPixels()</code> and <code>updatePixels()</code>. This allows for custom effects that go beyond built-in filters.</p>
+<p><strong>Pixel Array Structure:</strong></p>
+<ul>
+<li>Each pixel = 4 consecutive values (RGBA)</li>
+<li>Red: <code>pixels[index]</code></li>
+<li>Green: <code>pixels[index + 1]</code></li>
+<li>Blue: <code>pixels[index + 2]</code></li>
+<li>Alpha: <code>pixels[index + 3]</code></li>
+<li>Index calculation: <code>(y * width + x) * 4</code></li>
+</ul>
+<p><strong>Basic Pixel Manipulation:</strong></p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  // Load video pixels
+  video.loadPixels();
+  
+  // Load canvas pixels
+  loadPixels();
+  
+  // Loop through all pixels
+  for (let y = 0; y < video.height; y++) {
+    for (let x = 0; x < video.width; x++) {
+      // Calculate index
+      let index = (y * video.width + x) * 4;
+      
+      // Get pixel values from video
+      let r = video.pixels[index];
+      let g = video.pixels[index + 1];
+      let b = video.pixels[index + 2];
+      
+      // Manipulate pixels
+      // Example: Invert colors
+      r = 255 - r;
+      g = 255 - g;
+      b = 255 - b;
+      
+      // Set canvas pixels
+      let canvasIndex = (y * width + x) * 4;
+      pixels[canvasIndex] = r;
+      pixels[canvasIndex + 1] = g;
+      pixels[canvasIndex + 2] = b;
+      pixels[canvasIndex + 3] = 255;
+    }
+  }
+  
+  // Apply changes
+  updatePixels();
+}
+</code></pre>
+<p><strong>Common Pixel Manipulations:</strong></p>
+<ul>
+<li><strong>Brightness:</strong> Multiply r, g, b by factor</li>
+<li><strong>Contrast:</strong> Adjust based on 128 (midpoint)</li>
+<li><strong>Color effects:</strong> Swap channels, modify individual channels</li>
+<li><strong>Threshold:</strong> Convert to black/white based on brightness</li>
+<li><strong>Edge detection:</strong> Compare neighboring pixels</li>
+</ul>
+<p><strong>Performance Considerations:</strong></p>
+<ul>
+<li>Pixel manipulation is computationally expensive</li>
+<li>Consider processing every Nth pixel for better performance</li>
+<li>Use smaller video sizes for complex manipulations</li>
+<li>Process only when needed (not every frame)</li>
+</ul>
+<h3>Video as Input for Generative Systems</h3>
+<p>Video can be used as input to drive generative art systems. Extract information from video (brightness, color, motion) and use it to control particles, patterns, and visual effects. This creates reactive systems where video influences generation.</p>
+<p><strong>Extraction Techniques:</strong></p>
+<ul>
+<li><strong>Brightness:</strong> <code>(r + g + b) / 3</code></li>
+<li><strong>Color:</strong> Use r, g, b values directly</li>
+<li><strong>Motion:</strong> Compare frames (requires storing previous frame)</li>
+<li><strong>Regions:</strong> Sample specific areas of video</li>
+</ul>
+<p><strong>Mapping Patterns:</strong></p>
+<ul>
+<li>Brightness → size, speed, opacity</li>
+<li>Color → particle color, background color</li>
+<li>Motion → particle velocity, direction</li>
+<li>Position → particle position, spawn location</li>
+</ul>
+<p><strong>Example: Video-Driven Particles:</strong></p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">let video;
+let particles = [];
+
+function setup() {
+  createCanvas(640, 480);
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+  
+  // Create particles
+  for (let i = 0; i < 500; i++) {
+    particles.push({
+      x: random(width),
+      y: random(height),
+      vx: 0,
+      vy: 0
+    });
+  }
+}
+
+function draw() {
+  background(0);
+  
+  // Load video pixels
+  video.loadPixels();
+  
+  // Update particles based on video
+  for (let p of particles) {
+    let x = floor(p.x);
+    let y = floor(p.y);
+    
+    if (x >= 0 && x < video.width && y >= 0 && y < video.height) {
+      let index = (y * video.width + x) * 4;
+      
+      // Extract brightness
+      let r = video.pixels[index];
+      let g = video.pixels[index + 1];
+      let b = video.pixels[index + 2];
+      let brightness = (r + g + b) / 3;
+      
+      // Use brightness to control particle
+      p.size = map(brightness, 0, 255, 2, 10);
+      fill(r, g, b);
+      
+      // Use brightness for speed
+      let velocityFactor = map(brightness, 0, 255, 0.5, 3);
+      p.vx += random(-1, 1) * velocityFactor * 0.1;
+      p.vy += random(-1, 1) * velocityFactor * 0.1;
+    }
+    
+    p.x += p.vx;
+    p.y += p.vy;
+    
+    ellipse(p.x, p.y, p.size, p.size);
+  }
+}
+</code></pre>
+<h3>Video Transformations</h3>
+<p>You can apply transformations to video just like other graphics. Use <code>push()</code> and <code>pop()</code> to isolate transformations.</p>
+<p><strong>Mirroring Video:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  push();
+  // Flip horizontally
+  translate(width, 0);
+  scale(-1, 1);
+  image(video, 0, 0);
+  pop();
+}
+</code></pre>
+<p><strong>Rotating Video:</strong></p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  push();
+  translate(width/2, height/2);
+  rotate(PI/4);  // Rotate 45 degrees
+  image(video, -video.width/2, -video.height/2);
+  pop();
+}
+</code></pre>
+<h2>Important Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>createCapture(VIDEO)</code></td>
+<td>Capture video from webcam</td>
+<td><code>video = createCapture(VIDEO)</code></td>
+</tr>
+<tr>
+<td><code>video.hide()</code></td>
+<td>Hide default video element</td>
+<td><code>video.hide()</code></td>
+</tr>
+<tr>
+<td><code>image(video, x, y)</code></td>
+<td>Display video on canvas</td>
+<td><code>image(video, 0, 0)</code></td>
+</tr>
+<tr>
+<td><code>filter()</code></td>
+<td>Apply image filter</td>
+<td><code>filter(GRAY)</code></td>
+</tr>
+<tr>
+<td><code>tint()</code></td>
+<td>Color overlay</td>
+<td><code>tint(255, 100, 100)</code></td>
+</tr>
+<tr>
+<td><code>video.loadPixels()</code></td>
+<td>Load video pixels</td>
+<td><code>video.loadPixels()</code></td>
+</tr>
+<tr>
+<td><code>video.pixels[]</code></td>
+<td>Access video pixels</td>
+<td><code>video.pixels[index]</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Basic Video Display</h3>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let video;
+
+function setup() {
+  createCanvas(640, 480);
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+}
+
+function draw() {
+  background(0);
+  image(video, 0, 0);
+}
+</code></pre>
+<h3>Video with Filter</h3>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  // Apply filter
+  filter(THRESHOLD);
+  image(video, 0, 0);
+}
+</code></pre>
+<h3>Video Pixel Manipulation</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">function draw() {
+  background(0);
+  
+  video.loadPixels();
+  loadPixels();
+  
+  for (let y = 0; y < video.height; y++) {
+    for (let x = 0; x < video.width; x++) {
+      let index = (y * video.width + x) * 4;
+      let r = video.pixels[index];
+      let g = video.pixels[index + 1];
+      let b = video.pixels[index + 2];
+      
+      // Manipulate
+      let brightness = (r + g + b) / 3;
+      r = g = b = brightness;
+      
+      let canvasIndex = (y * width + x) * 4;
+      pixels[canvasIndex] = r;
+      pixels[canvasIndex + 1] = g;
+      pixels[canvasIndex + 2] = b;
+      pixels[canvasIndex + 3] = 255;
+    }
+  }
+  
+  updatePixels();
+}
+</code></pre>
+<h2>This Week's Deliverables</h2>
+<p>This week you will complete a code explanation exercise analyzing a video system, and a creative challenge creating a video-based project. Students MAY use AI tools for these projects but must document their use.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is a video-reactive system that can be developed into an interactive installation.</p>
+<h2>Tips for Success</h2>
+<p>Always test video capture in a secure context (HTTPS or localhost). Use <code>video.hide()</code> to hide the default video element. Start with simple video display before adding filters or pixel manipulation. Pixel manipulation is computationally expensive - optimize by processing fewer pixels or using smaller video sizes. Extract simple information first (brightness, color) before attempting complex analysis. Use video as input to drive generative systems - map video properties to visual parameters. Document any AI tools used in your projects.</p>
+</div>

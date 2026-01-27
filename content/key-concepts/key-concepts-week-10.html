@@ -1,0 +1,436 @@
+<div class="key-concepts-content"><h1>Week 10: UI Basics - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to create interactive UI controls in p5.js. You should use sliders, buttons, checkboxes, and select menus to control sound synthesis and visual systems. You should capture audio input from a microphone and use it to manipulate video properties. You should build UI-controlled interactive systems.</p>
+<h2>Key Concepts</h2>
+<h3>UI Controls in p5.js</h3>
+<p>p5.js provides built-in UI controls that make it easy to create interactive interfaces for your creative coding projects. These controls automatically handle user interaction, allowing you to focus on connecting them to your code. UI controls are essential for creating interactive installations, performances, and user-driven art.</p>
+<p><strong>Why Use UI Controls:</strong></p>
+<ul>
+<li><strong>User-Friendly:</strong> Provide intuitive interfaces for non-programmers</li>
+<li><strong>Real-Time Control:</strong> Allow live manipulation of parameters</li>
+<li><strong>Experimentation:</strong> Enable exploration of different values quickly</li>
+<li><strong>Performance:</strong> Create interactive installations and live performances</li>
+</ul>
+<p><strong>Available UI Controls:</strong></p>
+<ul>
+<li><strong>Sliders:</strong> For continuous values (size, position, color, etc.)</li>
+<li><strong>Buttons:</strong> For discrete actions (start/stop, reset, change mode)</li>
+<li><strong>Checkboxes:</strong> For boolean toggles (show/hide, enable/disable)</li>
+<li><strong>Select Menus:</strong> For choosing from multiple options</li>
+</ul>
+<h3>Creating UI Controls</h3>
+<p><strong>Important:</strong> UI controls are created in <code>setup()</code>, not <code>draw()</code>. They are created once and persist throughout your sketch.</p>
+<p><strong>Sliders:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let sizeSlider;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // createSlider(min, max, [value], [step])
+  // min: minimum value
+  // max: maximum value
+  // value: starting value (optional, defaults to middle)
+  // step: increment size (optional, defaults to 1)
+  sizeSlider = createSlider(10, 200, 50, 1);
+  sizeSlider.position(20, 20);  // Position on screen
+  sizeSlider.style('width', '200px');  // Set width
+}
+
+function draw() {
+  background(220);
+  
+  // Read slider value
+  let circleSize = sizeSlider.value();  // Returns number
+
+  ellipse(200, 200, circleSize, circleSize);
+}
+</code></pre>
+<p><strong>Buttons:</strong></p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let myButton;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // createButton(label)
+  myButton = createButton('Click Me');
+  myButton.position(20, 20);
+  myButton.mousePressed(buttonClicked);  // Call function when clicked
+}
+
+function draw() {
+  background(220);
+  // Draw your sketch
+}
+
+// Function called when button is clicked
+function buttonClicked() {
+  console.log('Button was clicked!');
+  // Do something when button is pressed
+}
+</code></pre>
+<p><strong>Checkboxes:</strong></p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">let myCheckbox;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // createCheckbox(label, [checked])
+  // label: text displayed next to checkbox
+  // checked: initial state (optional, defaults to false)
+  myCheckbox = createCheckbox('Show Grid', false);
+  myCheckbox.position(20, 20);
+}
+
+function draw() {
+  background(220);
+  
+  // Read checkbox state
+  if (myCheckbox.checked()) {  // Returns true or false
+    drawGrid();
+  }
+  
+  // Draw rest of sketch
+}
+</code></pre>
+<p><strong>Select Menus (Dropdowns):</strong></p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">let mySelect;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // createSelect()
+  mySelect = createSelect();
+  mySelect.position(20, 20);
+  
+  // Add options
+  mySelect.option('circle');
+  mySelect.option('square');
+  mySelect.option('triangle');
+  
+  // Call function when selection changes
+  mySelect.changed(selectionChanged);
+}
+
+function draw() {
+  background(220);
+  
+  // Read selected value
+  let shape = mySelect.value();  // Returns string
+  
+  if (shape === 'circle') {
+    ellipse(200, 200, 100, 100);
+  } else if (shape === 'square') {
+    rect(150, 150, 100, 100);
+  }
+}
+
+function selectionChanged() {
+  console.log('Selection changed to: ' + mySelect.value());
+}
+</code></pre>
+<h3>Controlling Sound Synthesis with UI</h3>
+<p>UI controls are perfect for manipulating sound synthesis. You can use sliders to control frequency (pitch), amplitude (volume), and other parameters in real-time. This builds on Week 9's sound synthesis lessons by adding user-friendly interfaces.</p>
+<p><strong>UI-Controlled Oscillator:</strong></p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">let osc;
+let freqSlider;
+let ampSlider;
+let startButton;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // Create oscillator
+  osc = new p5.Oscillator('sine');
+  osc.amp(0.3);
+  
+  // Frequency slider (pitch control)
+  freqSlider = createSlider(100, 1000, 440, 1);
+  freqSlider.position(20, 20);
+  
+  // Amplitude slider (volume control)
+  ampSlider = createSlider(0, 100, 30, 1);
+  ampSlider.position(20, 50);
+  
+  // Start button
+  startButton = createButton('Start');
+  startButton.position(20, 80);
+  startButton.mousePressed(startSound);
+}
+
+function draw() {
+  background(220);
+  
+  // Update oscillator from sliders
+  if (osc && osc.started) {
+    let freq = freqSlider.value();
+    let amp = ampSlider.value() / 100.0;  // Convert 0-100 to 0.0-1.0
+    
+    osc.freq(freq);
+    osc.amp(amp);
+  }
+}
+
+function startSound() {
+  osc.start();
+}
+</code></pre>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li>Read slider values in <code>draw()</code> for real-time updates</li>
+<li>Convert slider values to appropriate ranges (e.g., 0-100 to 0.0-1.0 for amplitude)</li>
+<li>Use buttons for discrete actions (start/stop, change waveform)</li>
+<li>Use checkboxes to toggle effects (tremolo, reverb, etc.)</li>
+</ul>
+<h3>Controlling Visual Systems with UI</h3>
+<p>UI controls can manipulate any visual property: colors, shapes, sizes, positions, animation speeds, and more. This allows for live visual experimentation and interactive installations.</p>
+<p><strong>UI-Controlled Visuals:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">let redSlider, greenSlider, blueSlider;
+let sizeSlider;
+let modeButton;
+let currentMode = 'circle';
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // Color sliders (RGB: 0-255)
+  redSlider = createSlider(0, 255, 255, 1);
+  redSlider.position(20, 20);
+  
+  greenSlider = createSlider(0, 255, 100, 1);
+  greenSlider.position(20, 50);
+  
+  blueSlider = createSlider(0, 255, 100, 1);
+  blueSlider.position(20, 80);
+  
+  // Size slider
+  sizeSlider = createSlider(20, 200, 100, 1);
+  sizeSlider.position(20, 110);
+  
+  // Mode button
+  modeButton = createButton('Change Mode');
+  modeButton.position(20, 140);
+  modeButton.mousePressed(changeMode);
+}
+
+function draw() {
+  background(30);
+  
+  // Read slider values
+  let r = redSlider.value();
+  let g = greenSlider.value();
+  let b = blueSlider.value();
+  let shapeSize = sizeSlider.value();
+
+  // Draw shape with current settings
+  fill(r, g, b);
+  noStroke();
+
+  if (currentMode === 'circle') {
+    ellipse(200, 200, shapeSize, shapeSize);
+  } else if (currentMode === 'square') {
+    rectMode(CENTER);
+    rect(200, 200, shapeSize, shapeSize);
+  }
+}
+
+function changeMode() {
+  if (currentMode === 'circle') {
+    currentMode = 'square';
+  } else {
+    currentMode = 'circle';
+  }
+}
+</code></pre>
+<h3>Audio Input and Video Manipulation</h3>
+<p>You can capture audio input from a microphone and use it to control video properties. This creates reactive video that responds to sound, perfect for interactive installations and performances.</p>
+<p><strong>Audio Input:</strong></p>
+<p>p5.js provides <code>p5.AudioIn</code> to capture audio from the microphone. Use <code>getLevel()</code> to get the current volume level (0.0 to 1.0).</p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">let mic;
+let audioLevel = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // Create audio input (microphone)
+  mic = new p5.AudioIn();
+  mic.start();  // Start capturing audio
+  
+  // Browser will ask for microphone permission
+}
+
+function draw() {
+  background(220);
+  
+  // Get current audio level (0.0 to 1.0)
+  audioLevel = mic.getLevel();
+  
+  // Use audio level to control something
+  let circleSize = map(audioLevel, 0, 1, 10, 200);
+  ellipse(200, 200, circleSize, circleSize);
+  
+  // Display audio level
+  fill(0);
+  text('Audio Level: ' + nf(audioLevel, 1, 3), 20, 30);
+}
+</code></pre>
+<p><strong>Video Capture:</strong></p>
+<p>Use <code>createCapture(VIDEO)</code> to capture video from the webcam. The browser will ask for camera permission.</p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let video;
+
+function setup() {
+  createCanvas(640, 480);
+  
+  // Create video capture (webcam)
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();  // Hide the default video element
+}
+
+function draw() {
+  background(0);
+  
+  // Display video
+  image(video, 0, 0);
+}
+</code></pre>
+<p><strong>Audio Input Controlling Video Properties:</strong></p>
+<p>Map audio volume to video brightness, contrast, and saturation to create reactive video effects.</p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let mic;
+let video;
+let audioLevel = 0;
+
+function setup() {
+  createCanvas(640, 480);
+  
+  // Audio input
+  mic = new p5.AudioIn();
+  mic.start();
+  
+  // Video capture
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+}
+
+function draw() {
+  background(0);
+  
+  // Get audio level
+  audioLevel = mic.getLevel();
+  
+  // Map audio level to video properties
+  // Louder = brighter, more contrast, more saturation
+  let brightness = 1.0 + (audioLevel * 2.0);  // 1.0 to 3.0
+  let contrast = 1.0 + (audioLevel * 1.5);    // 1.0 to 2.5
+  let saturation = 1.0 + (audioLevel * 1.5);  // 1.0 to 2.5
+  
+  // Apply effects to video
+  // (Simplified - actual implementation uses pixel manipulation)
+  tint(255, saturation * 255);
+  image(video, 0, 0);
+  noTint();
+  
+  // Display audio level
+  fill(255);
+  text('Audio Level: ' + nf(audioLevel, 1, 3), 20, 30);
+  text('Brightness: ' + nf(brightness, 1, 2), 20, 50);
+  text('Contrast: ' + nf(contrast, 1, 2), 20, 70);
+  text('Saturation: ' + nf(saturation, 1, 2), 20, 90);
+}
+</code></pre>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li>Audio and video capture require browser permissions</li>
+<li>Works best with HTTPS or localhost (security requirement)</li>
+<li><code>getLevel()</code> returns values that can be jittery - consider smoothing</li>
+<li>Video manipulation can be performance-intensive</li>
+</ul>
+<h2>Important UI Control Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Function</th>
+<th>Read Value</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>createSlider()</code></td>
+<td>Continuous values</td>
+<td><code>.value()</code></td>
+<td>Size, position, color, speed</td>
+</tr>
+<tr>
+<td><code>createButton()</code></td>
+<td>Discrete actions</td>
+<td>N/A (use callback)</td>
+<td>Start/stop, reset, change mode</td>
+</tr>
+<tr>
+<td><code>createCheckbox()</code></td>
+<td>Boolean toggle</td>
+<td><code>.checked()</code></td>
+<td>Show/hide, enable/disable</td>
+</tr>
+<tr>
+<td><code>createSelect()</code></td>
+<td>Multiple choice</td>
+<td><code>.value()</code></td>
+<td>Choose from options</td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Real-Time Parameter Control</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">let slider;
+
+function setup() {
+  createCanvas(400, 400);
+  slider = createSlider(0, 255, 128, 1);
+}
+
+function draw() {
+  // Read slider value every frame for real-time control
+  let sliderValue = slider.value();
+
+  // Use value to control something
+  fill(sliderValue);
+  ellipse(200, 200, 100, 100);
+}
+</code></pre>
+<h3>Multiple Controls</h3>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">let rSlider, gSlider, bSlider;
+let sizeSlider;
+let showCheckbox;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  rSlider = createSlider(0, 255, 255, 1);
+  gSlider = createSlider(0, 255, 100, 1);
+  bSlider = createSlider(0, 255, 100, 1);
+  sizeSlider = createSlider(20, 200, 100, 1);
+  showCheckbox = createCheckbox('Show Shape', true);
+}
+
+function draw() {
+  background(220);
+  
+  if (showCheckbox.checked()) {
+    let r = rSlider.value();
+    let g = gSlider.value();
+    let b = bSlider.value();
+    let circleSize = sizeSlider.value();
+
+    fill(r, g, b);
+    ellipse(200, 200, circleSize, circleSize);
+  }
+}
+</code></pre>
+<h2>This Week's Deliverables</h2>
+<p>This week you will complete a code explanation exercise on UI integration, and a creative challenge building a UI-controlled system.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is a UI-controlled interactive system that can be used for performance or installation.</p>
+<h2>Tips for Success</h2>
+<p>Create UI controls in setup(), not draw(). Read control values in draw() for real-time updates. Use appropriate value ranges for sliders. Test UI controls with simple examples before complex projects. Consider user experience when designing interfaces. Audio and video capture require permissions - test in appropriate environments (HTTPS or localhost).</p>
+</div>

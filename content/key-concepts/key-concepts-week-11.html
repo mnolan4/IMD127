@@ -1,0 +1,416 @@
+<div class="key-concepts-content"><h1>Week 11: Interactivity and Game Design - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to implement state machines to organize interactive systems. You should create scoring systems and track game data. You should implement timers and countdowns. You should detect collisions between game objects. You should design game mechanics that create playfulness and intentionality. You should use user input to drive generative systems.</p>
+<h2>Key Concepts</h2>
+<h3>State Machines</h3>
+<p>State machines organize your code into distinct phases or modes. Each state has its own behavior, drawing, and transitions. This is essential for creating structured interactive systems, games, and applications that go beyond simple animations.</p>
+<p><strong>Why State Machines:</strong></p>
+<ul>
+<li><strong>Organization:</strong> Separate code for different phases (menu, playing, paused, game over)</li>
+<li><strong>Control:</strong> Prevent code from running in wrong state</li>
+<li><strong>Clarity:</strong> Easy to understand system flow</li>
+<li><strong>Flexibility:</strong> Easy to add new states</li>
+</ul>
+<p><strong>Basic State Machine Pattern:</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let gameState = 'menu';  // Current state
+
+function draw() {
+  background(220);
+  
+  // Handle each state
+  if (gameState === 'menu') {
+    drawMenu();
+  } else if (gameState === 'playing') {
+    updateGame();
+    drawGame();
+  } else if (gameState === 'paused') {
+    drawGame();  // Show game in background
+    drawPauseOverlay();
+  } else if (gameState === 'gameOver') {
+    drawGameOver();
+  }
+}
+
+function keyPressed() {
+  // State transitions
+  if (key === ' ') {
+    if (gameState === 'menu') {
+      gameState = 'playing';
+      startGame();
+    } else if (gameState === 'playing') {
+      gameState = 'paused';
+    } else if (gameState === 'paused') {
+      gameState = 'playing';
+    }
+  }
+}
+</code></pre>
+<p><strong>Common States:</strong></p>
+<ul>
+<li><code>'menu'</code> - Start screen, instructions</li>
+<li><code>'playing'</code> - Active gameplay</li>
+<li><code>'paused'</code> - Game paused, can resume</li>
+<li><code>'gameOver'</code> - Game ended, show results</li>
+<li><code>'settings'</code> - Options/configuration</li>
+</ul>
+<h3>Scoring Systems</h3>
+<p>Scoring systems give purpose and intentionality to interactive systems. They track player progress, create win/lose conditions, and make interactions meaningful. Scoring transforms simple interactivity into purposeful play.</p>
+<p><strong>Core Scoring Components:</strong></p>
+<ul>
+<li><strong>Score:</strong> Points accumulated through actions</li>
+<li><strong>Lives:</strong> Chances remaining before game over</li>
+<li><strong>High Score:</strong> Best score achieved (creates replay value)</li>
+<li><strong>Win/Lose Conditions:</strong> Goals that give purpose to interactions</li>
+</ul>
+<p><strong>Basic Scoring:</strong></p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let score = 0;
+let lives = 3;
+let highScore = 0;
+
+function addScore(points) {
+  score += points;
+  
+  // Update high score
+  if (score > highScore) {
+    highScore = score;
+  }
+  
+  // Bonus every 100 points
+  if (score % 100 === 0 && score > 0) {
+    lives++;  // Extra life
+  }
+}
+
+function loseLife() {
+  lives--;
+  
+  if (lives <= 0) {
+    gameOver = true;
+  }
+}
+
+function draw() {
+  // Display score and lives
+  text('Score: ' + score, 10, 30);
+  text('Lives: ' + lives, 10, 50);
+  text('High Score: ' + highScore, 10, 70);
+}
+</code></pre>
+<p><strong>Scoring Patterns:</strong></p>
+<ul>
+<li>Collect items → gain points</li>
+<li>Complete objectives → bonus points</li>
+<li>Hit obstacles → lose life</li>
+<li>Reach threshold → level up or bonus</li>
+<li>Track high score for replay value</li>
+</ul>
+<h3>Timers and Countdowns</h3>
+<p>Timers add urgency, structure, and constraints to interactive systems. They can create time limits, countdowns, delays, and time-based events. Timers transform open-ended interactions into structured challenges.</p>
+<p><strong>Timer Types:</strong></p>
+<ul>
+<li><strong>Elapsed Time:</strong> Track how long something has been running</li>
+<li><strong>Countdown:</strong> Time remaining before something happens</li>
+<li><strong>Delay:</strong> Wait before something happens</li>
+<li><strong>Periodic:</strong> Repeat something every N frames/seconds</li>
+</ul>
+<p><strong>Basic Timer:</strong></p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">let gameTime = 0;      // Elapsed time (in frames)
+let timeLimit = 600;   // Time limit (10 seconds at 60fps)
+let countdown = 10;    // Countdown timer (seconds)
+
+function draw() {
+  // Update timer
+  gameTime++;
+  
+  // Update countdown every 60 frames (1 second)
+  if (frameCount % 60 === 0 && countdown > 0) {
+    countdown--;
+  }
+  
+  // Display time remaining
+  let timeRemaining = floor((timeLimit - gameTime) / 60);
+  text('Time: ' + timeRemaining + 's', 10, 30);
+  
+  // Check time limit
+  if (gameTime >= timeLimit) {
+    // Time's up!
+    gameOver = true;
+  }
+}
+</code></pre>
+<p><strong>Converting Frames to Seconds:</strong></p>
+<ul>
+<li>60 frames = 1 second (at 60 fps)</li>
+<li>Frames to seconds: <code>seconds = frames / 60</code></li>
+<li>Seconds to frames: <code>frames = seconds * 60</code></li>
+</ul>
+<h3>Collision Detection</h3>
+<p>Collision detection determines when game objects overlap or touch. It's essential for interactions like player-enemy collisions, item collection, and boundary checking. Collision detection enables meaningful interactions between objects.</p>
+<p><strong>Circle-Circle Collision:</strong><br>Check if two circles overlap by comparing the distance between centers to the sum of their radii:</p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">function checkCollision(circle1, circle2) {
+  // Calculate distance between centers
+  let d = dist(circle1.x, circle1.y, circle2.x, circle2.y);
+  
+  // Collision if distance < sum of radii
+  if (d < circle1.diameter/2 + circle2.diameter/2) {
+    return true;  // Collision detected!
+  }
+  return false;
+}
+
+// Usage
+if (checkCollision(player, enemy)) {
+  lives--;
+  enemy.reset();
+}
+</code></pre>
+<p><strong>Rectangle-Rectangle Collision (AABB):</strong><br>Check if two rectangles overlap by comparing their boundaries:</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">function checkCollision(rect1, rect2) {
+  // Check if rectangles overlap on both axes
+  if (rect1.x < rect2.x + rect2.w &&      // rect1 left < rect2 right
+      rect1.x + rect1.w > rect2.x &&      // rect1 right > rect2 left
+      rect1.y < rect2.y + rect2.h &&      // rect1 top < rect2 bottom
+      rect1.y + rect1.h > rect2.y) {      // rect1 bottom > rect2 top
+    return true;  // Collision!
+  }
+  return false;
+}
+</code></pre>
+<p><strong>Point-Circle Collision:</strong><br>Check if a point is inside a circle:</p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">function pointInCircle(px, py, cx, cy, radius) {
+  let d = dist(px, py, cx, cy);
+  return d < radius;
+}
+
+// Check if mouse is over circle
+if (pointInCircle(mouseX, mouseY, circle.x, circle.y, circle.diameter/2)) {
+  // Mouse is over circle
+}
+</code></pre>
+<p><strong>Collision Response:</strong><br>After detecting collision, decide what happens:</p>
+<ul>
+<li>Remove object (collect item, destroy enemy)</li>
+<li>Bounce objects apart</li>
+<li>Damage player (lose life)</li>
+<li>Play sound effect</li>
+<li>Change game state</li>
+</ul>
+<h3>Game Objects and Organization</h3>
+<p>Game objects organize game elements as objects or classes. This makes code modular, reusable, and easier to manage. Objects encapsulate properties (position, size, color) and behaviors (update, display, collision).</p>
+<p><strong>Basic Game Object:</strong></p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">class Player {
+  constructor() {
+    this.x = width/2;
+    this.y = height/2;
+    this.diameter = 30;
+    this.moveSpeed = 5;
+  }
+
+  update() {
+    // Update position based on input
+    if (keyIsDown(LEFT_ARROW)) this.x -= this.moveSpeed;
+    if (keyIsDown(RIGHT_ARROW)) this.x += this.moveSpeed;
+    if (keyIsDown(UP_ARROW)) this.y -= this.moveSpeed;
+    if (keyIsDown(DOWN_ARROW)) this.y += this.moveSpeed;
+
+    // Keep on canvas
+    this.x = constrain(this.x, this.diameter/2, width - this.diameter/2);
+    this.y = constrain(this.y, this.diameter/2, height - this.diameter/2);
+  }
+
+  display() {
+    fill(100, 150, 255);
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  }
+}
+</code></pre>
+<h3>User Input to Generative Systems</h3>
+<p>User input can drive generative systems, creating interactive art where user actions influence the generative process. This combines intentionality (user choices) with generativity (system responses), creating playful, responsive experiences.</p>
+<p><strong>Patterns:</strong></p>
+<ul>
+<li><strong>Input as Parameters:</strong> User actions set parameters for generative algorithms</li>
+<li><strong>Input as Triggers:</strong> User actions trigger generative events</li>
+<li><strong>Input as Constraints:</strong> User actions limit or guide generation</li>
+<li><strong>Input as Seeds:</strong> User actions seed random processes</li>
+</ul>
+<p><strong>Example: User Input Driving Particle System:</strong></p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let particles = [];
+
+function draw() {
+  background(30);
+  
+  // Mouse position influences particle behavior
+  let mouseInfluence = map(mouseX, 0, width, 0.5, 2.0);
+  
+  // Update particles based on user input
+  for (let p of particles) {
+    // Mouse distance affects particle speed
+    let mouseDist = dist(p.x, p.y, mouseX, mouseY);
+    p.moveSpeed = map(mouseDist, 0, 200, 5, 1) * mouseInfluence;
+    
+    p.update();
+    p.display();
+  }
+  
+  // Click to add particles
+  if (mouseIsPressed) {
+    particles.push(new Particle(mouseX, mouseY));
+  }
+}
+</code></pre>
+<h3>Playfulness vs Simple Interactivity</h3>
+<p><strong>Simple Interactivity:</strong> User actions cause immediate visual responses (e.g., mouse moves circle, click changes color). This is reactive but lacks structure or purpose.</p>
+<p><strong>Playfulness and Intentionality:</strong> User actions have meaning, consequences, and goals. Systems have rules, objectives, and structure. This creates engagement, challenge, and purpose.</p>
+<p><strong>Key Differences:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Simple Interactivity</th>
+<th>Playful/Intentional Systems</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Immediate response</td>
+<td>Structured responses with rules</td>
+</tr>
+<tr>
+<td>No goals or objectives</td>
+<td>Clear goals and win conditions</td>
+</tr>
+<tr>
+<td>No consequences</td>
+<td>Actions have consequences (score, lives, time)</td>
+</tr>
+<tr>
+<td>Open-ended</td>
+<td>Has structure and constraints</td>
+</tr>
+<tr>
+<td>Reactive</td>
+<td>Purposeful and engaging</td>
+</tr>
+</tbody></table>
+<p><strong>Creating Intentionality:</strong></p>
+<ul>
+<li>Add goals (collect items, reach target, survive time limit)</li>
+<li>Add consequences (score changes, lives lost, game over)</li>
+<li>Add structure (states, rules, constraints)</li>
+<li>Add feedback (visual, audio, score updates)</li>
+<li>Add progression (levels, difficulty increase, unlocks)</li>
+</ul>
+<h2>Important Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>State machine</td>
+<td>Organize code into phases</td>
+<td><code>let state = 'menu'</code></td>
+</tr>
+<tr>
+<td><code>dist()</code></td>
+<td>Calculate distance</td>
+<td><code>dist(x1, y1, x2, y2)</code></td>
+</tr>
+<tr>
+<td>Collision detection</td>
+<td>Check object overlaps</td>
+<td><code>checkCollision(obj1, obj2)</code></td>
+</tr>
+<tr>
+<td>Score tracking</td>
+<td>Track progress</td>
+<td><code>score += points</code></td>
+</tr>
+<tr>
+<td>Timer</td>
+<td>Track time</td>
+<td><code>gameTime++</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Complete Game Structure</h3>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let gameState = 'menu';
+let score = 0;
+let lives = 3;
+let gameTime = 0;
+let player;
+let items = [];
+let enemies = [];
+
+function draw() {
+  if (gameState === 'menu') {
+    drawMenu();
+  } else if (gameState === 'playing') {
+    updateGame();
+    drawGame();
+    drawUI();
+    
+    // Check game over
+    if (lives <= 0 || gameTime >= timeLimit) {
+      gameState = 'gameOver';
+    }
+  } else if (gameState === 'gameOver') {
+    drawGameOver();
+  }
+}
+
+function updateGame() {
+  gameTime++;
+  player.update();
+  
+  // Check collisions
+  for (let item of items) {
+    if (checkCollision(player, item)) {
+      score += 10;
+      item.collected = true;
+    }
+  }
+  
+  for (let enemy of enemies) {
+    if (checkCollision(player, enemy)) {
+      lives--;
+      enemy.reset();
+    }
+  }
+}
+</code></pre>
+<h3>User Input Driving Generative System</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">let particles = [];
+let userMode = 'add';  // User chooses mode
+
+function draw() {
+  background(30);
+  
+  // User input influences generation
+  let mouseInfluence = map(mouseX, 0, width, 0, 1);
+  
+  // Generate based on user input
+  for (let p of particles) {
+    // Mouse position affects behavior
+    let angle = atan2(mouseY - p.y, mouseX - p.x);
+    p.vx = cos(angle) * mouseInfluence;
+    p.vy = sin(angle) * mouseInfluence;
+    
+    p.update();
+    p.display();
+  }
+  
+  // User actions trigger generation
+  if (mouseIsPressed && userMode === 'add') {
+    particles.push(new Particle(mouseX, mouseY));
+  }
+}
+</code></pre>
+<h2>This Week's Deliverables</h2>
+<p>This week you will complete a code tracing exercise on game systems, and a creative challenge creating an interactive system or game that demonstrates playfulness and intentionality.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is an interactive game or system that creates a user-driven experience demonstrating playfulness and intentionality beyond simple interactivity.</p>
+<h2>Tips for Success</h2>
+<p>Start with simple state machines before complex ones. Use state machines to organize all interactive systems, not just games. Implement scoring to give purpose to interactions. Use timers to create structure and urgency. Test collision detection carefully with different object sizes. Combine concepts: state machines + scoring + timers + collisions = complete interactive system. Focus on creating intentionality - every interaction should have purpose and consequence.</p>
+</div>

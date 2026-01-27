@@ -1,0 +1,252 @@
+<div class="key-concepts-content"><h1>Week 6: Arrays and Collections - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to create and use arrays to store multiple values. You should use array methods to manipulate data. You should create particle systems. You should manage multiple objects efficiently.</p>
+<h2>Key Concepts</h2>
+<h3>Arrays</h3>
+<p>Arrays are collections that store multiple values in a single variable. They&#39;re essential for managing groups of related data, like positions of multiple objects, colors for a palette, or any list of values.</p>
+<p><strong>Why Use Arrays:</strong></p>
+<ul>
+<li><strong>Store collections</strong>: Keep multiple related values together</li>
+<li><strong>Manage many objects</strong>: Track positions, sizes, colors for many shapes</li>
+<li><strong>Process data</strong>: Work with lists of information</li>
+<li><strong>Dynamic collections</strong>: Add and remove items as needed</li>
+</ul>
+<p><strong>Creating arrays:</strong><br>Arrays use square brackets <code>[]</code> and separate values with commas:</p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">let numbers = [10, 20, 30, 40, 50];
+let colors = [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;];
+let positions = [100, 200, 300];
+let empty = [];  // Empty array
+</code></pre>
+<p><strong>Array Indexing:</strong><br>Arrays use <strong>zero-based indexing</strong>, meaning the first element is at index 0, not 1.</p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30, 40, 50];
+// Index:   0   1   2   3   4
+
+arr[0]  // = 10 (first element)
+arr[1]  // = 20 (second element)
+arr[4]  // = 50 (fifth element)
+</code></pre>
+<p><strong>Accessing Elements:</strong></p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">let numbers = [10, 20, 30];
+console.log(numbers[0]);  // Prints 10
+console.log(numbers[1]);  // Prints 20
+
+// Use in code
+ellipse(numbers[0], 200, 50, 50);  // Circle at x=10
+</code></pre>
+<p><strong>Array Length:</strong><br>The <code>length</code> property tells you how many elements are in the array:</p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30];
+console.log(arr.length);  // Prints 3
+
+// Last element is at index (length - 1)
+let last = arr[arr.length - 1];  // = 30
+</code></pre>
+<p><strong>Modifying Elements:</strong><br>You can change array elements by assigning new values:</p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30];
+arr[1] = 99;  // Change second element
+// arr is now [10, 99, 30]
+</code></pre>
+<h3>Array Methods</h3>
+<p>Array methods are built-in functions that help you work with arrays. They make it easy to add, remove, and manipulate array elements.</p>
+<p><strong>Adding Elements:</strong></p>
+<p><code>push()</code> adds an element to the end of the array:</p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">let arr = [];
+arr.push(10);  // Add 10 to end
+arr.push(20);  // Add 20 to end
+// arr is now [10, 20]
+</code></pre>
+<p><strong>Removing Elements:</strong></p>
+<p><code>pop()</code> removes and returns the last element:</p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30];
+let last = arr.pop();  // Removes 30, arr is now [10, 20]
+</code></pre>
+<p><strong>Array Length:</strong><br><code>length</code> property (not a method, but important):</p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30];
+console.log(arr.length);  // 3
+</code></pre>
+<p><strong>Looping Through Arrays:</strong></p>
+<p><strong>Method 1: Traditional for loop (most control):</strong></p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let numbers = [10, 20, 30, 40];
+
+for (let i = 0; i &lt; numbers.length; i++) {
+  // i is the index (0, 1, 2, 3)
+  // numbers[i] is the value
+  ellipse(numbers[i] * 10, 200, 30, 30);
+}
+</code></pre>
+<p><strong>Method 2: for...of loop (simpler, when you don&#39;t need index):</strong></p>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">for (let num of numbers) {
+  // num is the value directly (10, 20, 30, 40)
+  ellipse(num * 10, 200, 30, 30);
+}
+</code></pre>
+<p><strong>When to use which:</strong></p>
+<ul>
+<li>Use traditional <code>for</code> loop when you need the index</li>
+<li>Use <code>for...of</code> when you only need the values</li>
+</ul>
+<p><strong>Finding Elements:</strong></p>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30, 40];
+let index = arr.indexOf(30);  // Returns 2 (index of value 30)
+</code></pre>
+<h3>Particle Systems</h3>
+<p>Particle systems use arrays to manage many objects (particles) at once. Each particle has properties like position, velocity, color, or size. Arrays let you store and update all particles efficiently.</p>
+<p><strong>Why Arrays for Particles:</strong></p>
+<ul>
+<li>Store positions for many particles: <code>let x = [100, 200, 300, ...]</code></li>
+<li>Update all particles in a loop</li>
+<li>Add or remove particles dynamically</li>
+<li>Create complex visual effects with many elements</li>
+</ul>
+<p><strong>Basic Particle System (Parallel Arrays):</strong><br>Store related data in separate arrays with matching indices:</p>
+<span class="sr-only" id="code-desc-12">Code example 12 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 12 in javascript" aria-describedby="code-desc-12" id="code-block-12"><code class="language-javascript" lang="javascript">let x = [];      // x positions
+let y = [];      // y positions
+let vx = [];     // x velocities
+let vy = [];     // y velocities
+
+function setup() {
+  createCanvas(400, 400);
+  // Create 50 particles
+  for (let i = 0; i &lt; 50; i++) {
+    x.push(random(width));
+    y.push(random(height));
+    vx.push(random(-2, 2));
+    vy.push(random(-2, 2));
+  }
+}
+
+function draw() {
+  background(220);
+  // Update and draw all particles
+  for (let i = 0; i &lt; x.length; i++) {
+    // Update position
+    x[i] += vx[i];
+    y[i] += vy[i];
+    
+    // Wrap around edges
+    if (x[i] &gt; width) x[i] = 0;
+    if (x[i] &lt; 0) x[i] = width;
+    if (y[i] &gt; height) y[i] = 0;
+    if (y[i] &lt; 0) y[i] = height;
+    
+    // Draw particle
+    ellipse(x[i], y[i], 10, 10);
+  }
+}
+</code></pre>
+<p><strong>Particle System with Objects (Better Organization):</strong><br>Using objects is cleaner than parallel arrays:</p>
+<span class="sr-only" id="code-desc-13">Code example 13 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 13 in javascript" aria-describedby="code-desc-13" id="code-block-13"><code class="language-javascript" lang="javascript">let particles = [];
+
+function setup() {
+  createCanvas(400, 400);
+  for (let i = 0; i &lt; 50; i++) {
+    particles.push({
+      x: random(width),
+      y: random(height),
+      vx: random(-2, 2),
+      vy: random(-2, 2)
+    });
+  }
+}
+
+function draw() {
+  background(220);
+  for (let p of particles) {
+    p.x += p.vx;
+    p.y += p.vy;
+    ellipse(p.x, p.y, 10, 10);
+  }
+}
+</code></pre>
+<h2>Important Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[]</code></td>
+<td>Create array</td>
+<td><code>let arr = []</code> or <code>let arr = [1, 2, 3]</code></td>
+</tr>
+<tr>
+<td><code>arr.push(value)</code></td>
+<td>Add to end</td>
+<td><code>arr.push(10)</code></td>
+</tr>
+<tr>
+<td><code>arr.pop()</code></td>
+<td>Remove from end</td>
+<td><code>let last = arr.pop()</code></td>
+</tr>
+<tr>
+<td><code>arr.length</code></td>
+<td>Array size</td>
+<td><code>arr.length</code> (property, not method)</td>
+</tr>
+<tr>
+<td><code>arr[i]</code></td>
+<td>Access element</td>
+<td><code>arr[0]</code> (first element)</td>
+</tr>
+<tr>
+<td><code>arr[i] = value</code></td>
+<td>Modify element</td>
+<td><code>arr[1] = 99</code></td>
+</tr>
+<tr>
+<td><code>for (let i = 0; i &lt; arr.length; i++)</code></td>
+<td>Loop with index</td>
+<td>Standard loop</td>
+</tr>
+<tr>
+<td><code>for (let item of arr)</code></td>
+<td>Loop through values</td>
+<td>Simpler loop</td>
+</tr>
+<tr>
+<td><code>arr.indexOf(value)</code></td>
+<td>Find index</td>
+<td><code>arr.indexOf(30)</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Multiple Objects</h3>
+<span class="sr-only" id="code-desc-14">Code example 14 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 14 in javascript" aria-describedby="code-desc-14" id="code-block-14"><code class="language-javascript" lang="javascript">let x = [100, 200, 300];
+let y = [100, 200, 300];
+let diameter = [50, 75, 100];
+
+function draw() {
+  background(220);
+  for (let i = 0; i &lt; x.length; i++) {
+    ellipse(x[i], y[i], diameter[i], diameter[i]);
+  }
+}
+</code></pre>
+<h3>Adding/Removing Particles</h3>
+<span class="sr-only" id="code-desc-15">Code example 15 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 15 in javascript" aria-describedby="code-desc-15" id="code-block-15"><code class="language-javascript" lang="javascript">let particles = [];
+
+function mousePressed() {
+  particles.push({x: mouseX, y: mouseY});
+}
+
+function draw() {
+  background(220);
+  for (let i = particles.length - 1; i &gt;= 0; i--) {
+    ellipse(particles[i].x, particles[i].y, 10, 10);
+    particles[i].y += 1;  // Fall down
+    if (particles[i].y &gt; height) {
+      particles.splice(i, 1);  // Remove if off screen
+    }
+  }
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a code writing task, a pair programming challenge, practice problems, and Creative Challenge 2: Interactive Drawing Tool.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is a particle system that becomes frame captures, which are then used for GIF or print series.</p>
+<h2>Tips for Success</h2>
+<p>Start with small arrays of 3 to 5 elements before scaling up. Use loops to work with arrays. Keep related data in parallel arrays or use objects. Test with a few elements before creating hundreds.</p>
+</div>

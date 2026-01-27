@@ -1,0 +1,292 @@
+<div class="key-concepts-content"><h1>Week 9: Sound Basics - Key Concepts</h1>
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to load and play audio files. You should use the p5.sound library. You should create sound-reactive visuals. You should synthesize simple sounds. You should analyze audio for visualization.</p>
+<h2>Key Concepts</h2>
+<h3>p5.sound Library</h3>
+<p>The p5.sound library extends p5.js with audio capabilities. It allows you to load and play sound files, synthesize sounds, analyze audio, and create sound-reactive visuals. This library is essential for working with audio in p5.js.</p>
+<p><strong>Loading the library:</strong></p>
+<p><strong>For p5.js web editor:</strong></p>
+<ol>
+<li>Click the gear icon (Settings) in the top bar</li>
+<li>Find <strong>&quot;p5.sound.js Add-on Library&quot;</strong> in the settings</li>
+<li>Toggle it <strong>On</strong></li>
+<li>The library is now available in your sketch</li>
+</ol>
+<p><strong>For HTML files (local development):</strong></p>
+<span class="sr-only" id="code-desc-1">Code example 1 written in html. The code follows.</span><pre role="region" aria-label="Code example 1 in html" aria-describedby="code-desc-1" id="code-block-1"><code class="language-html" lang="html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.11/p5.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.11/addons/p5.sound.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3>Loading and Playing Sound</h3>
+<p><strong>Loading Sound Files:</strong><br>Use <code>loadSound()</code> in <code>preload()</code> to load audio files before your sketch starts. The <code>preload()</code> function runs once before <code>setup()</code>, ensuring files are loaded before use.</p>
+<span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let song;
+
+function preload() {
+  // Load sound file (supports .mp3, .wav, .ogg formats)
+  song = loadSound(&#39;sound.mp3&#39;);
+}
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function mousePressed() {
+  if (song.isPlaying()) {
+    song.stop();  // Stop if playing
+  } else {
+    song.play();   // Play if not playing
+  }
+}
+</code></pre>
+<p><strong>Sound File Formats:</strong></p>
+<ul>
+<li><strong>MP3</strong>: Most common, good compression</li>
+<li><strong>WAV</strong>: Uncompressed, larger files, high quality</li>
+<li><strong>OGG</strong>: Open format, good compression</li>
+</ul>
+<p><strong>Important:</strong> Sound files must be in your sketch folder (p5.js editor) or accessible via URL.</p>
+<p><strong>Sound Methods:</strong></p>
+<span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">song.play();      // Start playing
+song.stop();      // Stop playing
+song.pause();     // Pause (can resume)
+song.loop();      // Play in loop
+song.isPlaying(); // Returns true if currently playing
+song.setVolume(0.5); // Set volume (0.0 to 1.0)
+</code></pre>
+<p><strong>User Interaction Requirement:</strong><br>Browsers require user interaction before playing audio. Call <code>play()</code> in response to mouse or keyboard events, not in <code>setup()</code>.</p>
+<h3>Sound Synthesis</h3>
+<p>Sound synthesis creates sounds programmatically using oscillators. You can generate tones, control frequency and amplitude, and create dynamic sound effects.</p>
+<p><strong>Oscillator Types:</strong></p>
+<ul>
+<li><code>&#39;sine&#39;</code>: Smooth, pure tone (most musical)</li>
+<li><code>&#39;triangle&#39;</code>: Bright, clear tone</li>
+<li><code>&#39;sawtooth&#39;</code>: Harsh, buzzy tone</li>
+<li><code>&#39;square&#39;</code>: Hollow, digital-sounding tone</li>
+</ul>
+<p><strong>Basic Oscillator:</strong></p>
+<p><strong>Important:</strong> Browsers require user interaction before playing audio. Always start oscillators in response to mouse or keyboard events, not in setup().</p>
+<span class="sr-only" id="code-desc-4">Code example 4 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4 in javascript" aria-describedby="code-desc-4" id="code-block-4"><code class="language-javascript" lang="javascript">let osc;
+let isPlaying = false;
+
+function setup() {
+  createCanvas(400, 400);
+  osc = new p5.Oscillator();
+  osc.setType(&#39;sine&#39;);     // Waveform type
+  osc.freq(440);           // Frequency in Hz (A note)
+  osc.amp(0.5);            // Amplitude/volume (0.0 to 1.0)
+  // Don&#39;t start here - wait for user interaction!
+}
+
+function mousePressed() {
+  // Start/stop on click (required for browser audio policy)
+  if (!isPlaying) {
+    osc.start();
+    isPlaying = true;
+  }
+  // Change frequency based on mouse X position
+  let freq = map(mouseX, 0, width, 200, 800);
+  osc.freq(freq);
+}
+</code></pre>
+<p><strong>Oscillator Control:</strong></p>
+<span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">osc.freq(440);        // Set frequency (Hz)
+osc.amp(0.5);         // Set amplitude/volume (0.0 to 1.0)
+osc.start();          // Start oscillator (call in mousePressed/keyPressed)
+osc.stop();           // Stop oscillator
+osc.setType(&#39;sine&#39;);  // Change waveform type
+</code></pre>
+<p><strong>Interactive Sound:</strong></p>
+<span class="sr-only" id="code-desc-6">Code example 6 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 6 in javascript" aria-describedby="code-desc-6" id="code-block-6"><code class="language-javascript" lang="javascript">let osc;
+let isPlaying = false;
+
+function setup() {
+  createCanvas(400, 400);
+  osc = new p5.Oscillator(&#39;sine&#39;);
+  osc.amp(0.3);  // Lower volume to avoid harshness
+}
+
+function draw() {
+  background(220);
+  text(isPlaying ? &#39;Move mouse to change sound&#39; : &#39;Click to start&#39;, 10, 20);
+
+  if (isPlaying) {
+    // Map mouse position to frequency
+    let freq = map(mouseX, 0, width, 200, 800);
+    osc.freq(freq);
+
+    // Map mouse Y to volume
+    let vol = map(mouseY, 0, height, 0, 1);
+    osc.amp(vol);
+  }
+}
+
+function mousePressed() {
+  // Toggle sound on user interaction
+  if (!isPlaying) {
+    osc.start();
+    isPlaying = true;
+  } else {
+    osc.stop();
+    isPlaying = false;
+  }
+}
+</code></pre>
+<h3>Sound Analysis</h3>
+<p>Sound analysis extracts data from audio that you can use to create visualizations. The FFT (Fast Fourier Transform) breaks down audio into frequency bands, showing which frequencies are present and how loud they are.</p>
+<p><strong>FFT (Fast Fourier Transform):</strong><br>FFT analyzes audio and returns an array of amplitude values for different frequency bands. This lets you visualize the frequency content of sound.</p>
+<p><strong>Microphone Input:</strong></p>
+<span class="sr-only" id="code-desc-7">Code example 7 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 7 in javascript" aria-describedby="code-desc-7" id="code-block-7"><code class="language-javascript" lang="javascript">let mic;
+let fft;
+
+function setup() {
+  createCanvas(400, 400);
+  
+  // Create audio input (microphone)
+  mic = new p5.AudioIn();
+  mic.start();  // Start capturing audio
+  
+  // Create FFT analyzer
+  fft = new p5.FFT();
+  fft.setInput(mic);  // Analyze microphone input
+}
+
+function draw() {
+  background(220);
+  
+  // Get frequency spectrum (array of amplitude values)
+  let spectrum = fft.analyze();
+  
+  // Draw spectrum as bars
+  for (let i = 0; i &lt; spectrum.length; i++) {
+    let amp = spectrum[i];  // Amplitude 0-255
+    let barHeight = map(amp, 0, 255, 0, height);
+    let x = map(i, 0, spectrum.length, 0, width);
+    rect(x, height - barHeight, width/spectrum.length, barHeight);
+  }
+}
+</code></pre>
+<p><strong>Analyzing Specific Frequency Ranges:</strong></p>
+<span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">let bass = fft.getEnergy(&quot;bass&quot;);      // Low frequencies
+let mid = fft.getEnergy(&quot;mid&quot;);        // Mid frequencies
+let treble = fft.getEnergy(&quot;treble&quot;);  // High frequencies
+
+// Use for visualization
+let circleSize = map(bass, 0, 255, 50, 200);
+ellipse(width/2, height/2, circleSize, circleSize);
+</code></pre>
+<p><strong>Analyzing Loaded Audio:</strong><br>You can also analyze loaded sound files:</p>
+<span class="sr-only" id="code-desc-9">Code example 9 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 9 in javascript" aria-describedby="code-desc-9" id="code-block-9"><code class="language-javascript" lang="javascript">let song;
+let fft;
+
+function preload() {
+  song = loadSound(&#39;song.mp3&#39;);
+}
+
+function setup() {
+  createCanvas(400, 400);
+  fft = new p5.FFT();
+  fft.setInput(song);  // Analyze the song
+  song.loop();
+}
+</code></pre>
+<h2>Important p5.sound Objects</h2>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>loadSound()</code></td>
+<td>Load audio file</td>
+<td><code>loadSound(&#39;song.mp3&#39;)</code></td>
+</tr>
+<tr>
+<td><code>p5.Oscillator</code></td>
+<td>Create tone</td>
+<td><code>new p5.Oscillator()</code></td>
+</tr>
+<tr>
+<td><code>p5.AudioIn</code></td>
+<td>Microphone input</td>
+<td><code>new p5.AudioIn()</code></td>
+</tr>
+<tr>
+<td><code>p5.FFT</code></td>
+<td>Frequency analysis</td>
+<td><code>new p5.FFT()</code></td>
+</tr>
+</tbody></table>
+<h2>Common Patterns</h2>
+<h3>Sound-Reactive Visuals</h3>
+<span class="sr-only" id="code-desc-10">Code example 10 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 10 in javascript" aria-describedby="code-desc-10" id="code-block-10"><code class="language-javascript" lang="javascript">let mic;
+let fft;
+let micStarted = false;
+
+function setup() {
+  createCanvas(400, 400);
+  mic = new p5.AudioIn();
+  fft = new p5.FFT();
+  fft.setInput(mic);
+}
+
+function draw() {
+  background(220);
+
+  if (!micStarted) {
+    text(&#39;Click to enable microphone&#39;, width/2, height/2);
+    textAlign(CENTER);
+  } else {
+    let spectrum = fft.analyze();
+    let bass = fft.getEnergy(&quot;bass&quot;);
+    let circleSize = map(bass, 0, 255, 50, 200);
+    ellipse(width/2, height/2, circleSize, circleSize);
+  }
+}
+
+function mousePressed() {
+  if (!micStarted) {
+    mic.start();
+    micStarted = true;
+  }
+}
+</code></pre>
+<h3>Interactive Sound</h3>
+<span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">let osc;
+let isPlaying = false;
+
+function setup() {
+  createCanvas(400, 400);
+  osc = new p5.Oscillator();
+}
+
+function draw() {
+  background(220);
+  text(isPlaying ? &#39;Move mouse to control&#39; : &#39;Click to start&#39;, 10, 20);
+
+  if (isPlaying) {
+    let freq = map(mouseX, 0, width, 200, 800);
+    osc.freq(freq);
+    let amp = map(mouseY, 0, height, 0, 1);
+    osc.amp(amp);
+  }
+}
+
+function mousePressed() {
+  if (!isPlaying) {
+    osc.start();
+    isPlaying = true;
+  } else {
+    osc.stop();
+    isPlaying = false;
+  }
+}
+</code></pre>
+<h2>This Week&#39;s Deliverables</h2>
+<p>This week you will complete a code writing task on sound synthesis, a creative challenge combining sound and visuals, and practice problems.</p>
+<h2>Tangible Output</h2>
+<p>The tangible output for this week is sound-reactive visuals that are synchronized with maker space sound equipment for a performance or installation.</p>
+<h2>Tips for Success</h2>
+<p>Start with simple playback before synthesis. Test audio in the browser, as you may need user interaction first. Use preload for loading files. Experiment with mapping sound data to visuals.</p>
+</div>
