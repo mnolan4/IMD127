@@ -73,7 +73,7 @@ function createCollapsibleResourceSection(resourceId, title, content, isHorizont
     const contentStyle = isHorizontal ? 'width: 100%; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word;' : '';
     
     return `
-        <div class="task-item resource-item" style="${containerStyle}">
+        <div class="resource-item" style="${containerStyle}">
             <div class="key-concepts-header-wrapper" style="margin-bottom: 0; ${isHorizontal ? 'width: 100%;' : ''}">
                 <h4 style="${headerStyle}">
                     <span style="${titleStyle}">${title}</span>
@@ -387,17 +387,18 @@ function loadWeekPage(weekNumber) {
             const hasContent = resource.content && resource.content.trim().length > 0;
             
             if (hasContent) {
-                // Use collapsible section with content
-                html += createCollapsibleResourceSection(resourceId, resource.title, resource.content);
-                // Add checkbox for completion tracking
+                // Use collapsible section with content, wrapped in task-item with checkbox inline
                 html += `
-                    <div style="margin-top: 0.5rem;">
+                    <div class="task-item">
                         <input type="checkbox" class="task-checkbox" 
                                id="resource-checkbox-${week.id}-${index}"
                                ${ProgressManager.isComplete(week.id, 'resource', index) ? 'checked' : ''}
                                onchange="toggleTask('${week.id}', 'resource', ${index})"
                                aria-label="Mark ${resource.title} as complete">
-                        <label for="resource-checkbox-${week.id}-${index}" style="margin-left: 0.5rem;">Mark as complete</label>
+                        <label for="resource-checkbox-${week.id}-${index}" class="sr-only">Mark ${resource.title} as complete</label>
+                        <div class="task-content" style="flex: 1;">
+                            ${createCollapsibleResourceSection(resourceId, resource.title, resource.content)}
+                        </div>
                     </div>
                 `;
             } else {
