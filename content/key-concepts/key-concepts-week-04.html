@@ -61,6 +61,13 @@ for (let i = 10; i &gt; 0; i--) {
   // Draws 5 circles at x = 0, 100, 200, 300, 400
 }
 </code></pre>
+<h3>Basic Randomness</h3>
+<p>p5&#39;s <code>random()</code> returns a random number. <code>random(max)</code> returns 0 up to (but not including) max; <code>random(min, max)</code> returns a value between min and max (max not included). Use it to create variation—random positions, sizes, or colors.</p>
+<p>Combine a loop with <code>random()</code> to draw many shapes at random positions (and optionally random sizes or colors). We&#39;ll explore more methods of randomness in Week 8—noise, probability, random walk, and when to use which.</p>
+<span class="sr-only" id="code-desc-4a">Code example 4a written in javascript. The code follows.</span><pre role="region" aria-label="Code example 4a in javascript" aria-describedby="code-desc-4a" id="code-block-4a"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 50; i++) {
+  fill(random(255), random(255), random(255));
+  ellipse(random(width), random(height), random(10, 40), random(10, 40));
+}</code></pre>
 <h3>Nested Loops</h3>
 <p>Nested loops are loops inside other loops. They&#39;re essential for creating 2D patterns like grids, matrices, and organized layouts.</p>
 <p><strong>How Nested Loops Work:</strong></p>
