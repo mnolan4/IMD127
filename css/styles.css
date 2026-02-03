@@ -54,6 +54,19 @@ body {
     top: 0;
 }
 
+/* Sidebar toggle and overlay: hidden on desktop, shown on mobile via media query */
+.sidebar-toggle,
+.sidebar-overlay {
+    display: none;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
 /* Sidebar Layout */
 .sidebar {
     position: fixed;
@@ -427,6 +440,8 @@ body {
     align-items: center;
     margin: 2rem 0;
     min-height: 400px;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Quick Links */
@@ -2171,6 +2186,66 @@ section {
 
     .sidebar.open {
         left: 0;
+    }
+
+    /* Hamburger button: visible only on mobile */
+    .sidebar-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background-color: var(--bg-white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        z-index: 10001;
+        transition: background-color 0.2s ease;
+    }
+
+    .sidebar-toggle:hover {
+        background-color: var(--bg-light);
+    }
+
+    .sidebar-toggle:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    .sidebar-toggle-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 22px;
+    }
+
+    .sidebar-toggle-icon span {
+        display: block;
+        height: 2px;
+        background-color: var(--text-dark);
+        border-radius: 1px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .sidebar.open + .sidebar-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Overlay when drawer is open */
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
     }
 
     .main-content {
