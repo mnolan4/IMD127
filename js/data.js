@@ -763,8 +763,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 examples: [
                     { title: "Variables for Position", file: "code-examples/week-02-drawing/variables-position.js", type: "code", description: "Review and understand this code example to be able to use variables to store position values instead of hard-coding numbers. This makes code more flexible, readable, and easier to modify. See how variables can be used multiple times and changed easily." },
                     { title: "Variables for Position (Simple)", file: "code-examples/week-02-drawing/variables-position-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for using position variables." },
-                    { title: "Variables for Color", file: "code-examples/week-02-drawing/variables-color.js", type: "code", description: "Review and understand this code example to be able to store RGB color components in variables and easily experiment with colors. Learn how color component variables make it simple to change colors throughout your code and prepare for color animations." },
-                    { title: "Variables for Color (Simple)", file: "code-examples/week-02-drawing/variables-color-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for using color component variables." },
+                    { title: "Variables for Color", file: "code-examples/week-02-drawing/variables-color.js", type: "code", description: "Review and understand this code example to be able to store RGB color components in variables and easily experiment with colors. Learn how color variables make it simple to change colors throughout your code and prepare for color animations." },
+                    { title: "Variables for Color (Simple)", file: "code-examples/week-02-drawing/variables-color-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for using color variables." },
                     { title: "Basic Animation", file: "code-examples/week-02-drawing/animation-basic.js", type: "code", description: "Review and understand this code example to be able to create your first animation using frameCount and the modulo operator. Learn how animation works by drawing something slightly different each frame, and how to use modulo to create looping movement.", embedDemo: true },
                     { title: "Basic Animation (Simple)", file: "code-examples/week-02-drawing/animation-basic-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for basic animation.", embedDemo: true },
                     { title: "Pulsing Animation", file: "code-examples/week-02-drawing/animation-pulse.js", type: "code", description: "Review and understand this code example to be able to create smooth, organic pulsing animations using the sin() function. Learn how sine waves create natural-feeling oscillations perfect for breathing effects, size changes, and gentle movement." },
@@ -2626,6 +2626,12 @@ Debugging is a normal part of coding. It is a skill that improves with practice.
                         url: "https://editor.p5js.org/",
                         description: "Online code editor for p5.js with live preview, perfect for experimenting and sharing sketches without local setup.",
                         type: "tool"
+                    },
+                    {
+                        title: "HTML Color Names (W3Schools)",
+                        url: "https://www.w3schools.com/tags/ref_colornames.asp",
+                        description: "Full list of HTML color names with swatches—easy way to get interesting colors (e.g. Tomato, DodgerBlue) for fill() and background().",
+                        type: "reference"
                     }
                 ]
             }
