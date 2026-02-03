@@ -244,15 +244,23 @@
                 return;
             }
 
-            // Spiral Mandala — instance-mode p5.js
+            // Spiral Mandala — instance-mode p5.js (sized from container, not window)
             const N = 1000;
             const GOLDEN_ANGLE = Math.PI * 2 * 0.61803398875; // ~golden-angle spacing
+
+            function getContainerSize() {
+                const w = container.clientWidth || 400;
+                const h = container.clientHeight || 400;
+                const size = Math.min(w, h);
+                return Math.max(size, 200);
+            }
 
             const mandalaSketch = (p) => {
                 let maxR;
 
                 p.setup = () => {
-                    let canvas = p.createCanvas(700, 700);
+                    const size = getContainerSize();
+                    let canvas = p.createCanvas(size, size);
                     canvas.parent('mandala-sketch');
                     // Add accessibility attributes to canvas
                     canvas.elt.setAttribute('role', 'img');
@@ -262,6 +270,12 @@
                     p.noStroke();
                     maxR = Math.min(p.width, p.height) * 0.48;
                     p.background(0, 0, 0);
+                };
+
+                p.windowResized = () => {
+                    const size = getContainerSize();
+                    p.resizeCanvas(size, size);
+                    maxR = Math.min(p.width, p.height) * 0.48;
                 };
 
                 p.draw = () => {
