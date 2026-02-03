@@ -2,6 +2,11 @@
 <h2>Learning Outcomes</h2>
 <p>By the end of this week, you should be able to use mouse and keyboard input to create interactive experiences. You should write conditional statements to make decisions in code. You should understand event-driven programming. You should create interactive drawing tools and applications.</p>
 <h2>Key Concepts</h2>
+<h3>Interrupts vs. Polling</h3>
+<p>p5.js gives you two ways to react to input: <strong>interrupt-style event handlers</strong> (functions that run when something happens) and <strong>polling</strong> (checking variables every frame in <code>draw()</code>). Knowing the difference helps you choose the right one.</p>
+<p><strong>Interrupt (event handler):</strong> When the user does something (e.g. clicks, presses a key), the system <em>interrupts</em> the normal flow and calls your function <strong>once</strong>. You define functions like <code>mousePressed()</code>, <code>keyPressed()</code>; p5.js calls them when the event occurs. Use for &quot;when the user does X, do Y once&quot; (e.g. change color on click, reset on key press).</p>
+<p><strong>Polling:</strong> Your code repeatedly <em>checks</em> a variable or function inside <code>draw()</code> every frame (e.g. <code>mouseIsPressed</code>, <code>keyIsDown()</code>). Use for &quot;while the user is doing X, do Y every frame&quot; (e.g. draw while mouse is held, move while arrow key is held).</p>
+<p><strong>Why it matters:</strong> Use interrupt handlers for one-time reactions; use polling for continuous state (held vs. not held). Picking the right one keeps your code clear and matches the interaction.</p>
 <h3>Mouse Input</h3>
 <p>p5.js provides built-in variables and functions to track mouse position and button states. These update automatically every frame, making it easy to create interactive experiences.</p>
 <p><strong>Mouse Position Variables:</strong></p>
@@ -18,7 +23,7 @@
 <p><strong>Mouse Button State:</strong></p>
 <ul>
 <li><code>mouseIsPressed</code>: Boolean variable that is <code>true</code> when mouse button is held down, <code>false</code> when released</li>
-<li>Use this in <code>draw()</code> to check if mouse is currently pressed</li>
+<li>Use this in <code>draw()</code> to check if mouse is currently pressed (this is <em>polling</em>)</li>
 </ul>
 <span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">function draw() {
   if (mouseIsPressed) {
@@ -34,7 +39,7 @@
 <li><code>mousePressed()</code>: Called once when mouse button is first pressed down</li>
 <li><code>mouseReleased()</code>: Called once when mouse button is released</li>
 <li><code>mouseClicked()</code>: Called once when mouse is pressed and released (complete click)</li>
-<li>These functions are called automatically by p5.js - you just define them</li>
+<li>These are <em>interrupt-style</em> event handlers: p5.js calls them automatically when the event occurs—you just define them</li>
 </ul>
 <span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">function mousePressed() {
   // This runs once when mouse button is pressed
@@ -52,7 +57,7 @@ function mouseReleased() {
 <ul>
 <li><code>keyPressed()</code>: Called once when any key is first pressed down</li>
 <li><code>keyReleased()</code>: Called once when a key is released</li>
-<li>These functions are called automatically by p5.js</li>
+<li>These are <em>interrupt-style</em> event handlers: p5.js calls them automatically when the event occurs</li>
 </ul>
 <p><strong>Key Variables:</strong></p>
 <ul>
@@ -80,7 +85,7 @@ function mouseReleased() {
   }
 }
 </code></pre>
-<p><strong>Continuous Key Detection:</strong><br>Use <code>keyIsDown()</code> to check if a key is currently being held down (works in <code>draw()</code>):</p>
+<p><strong>Continuous Key Detection:</strong><br>Use <code>keyIsDown()</code> to check if a key is currently being held down (works in <code>draw()</code>). This is <em>polling</em>—you check the state every frame.</p>
 <span class="sr-only" id="code-desc-5">Code example 5 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 5 in javascript" aria-describedby="code-desc-5" id="code-block-5"><code class="language-javascript" lang="javascript">function draw() {
   if (keyIsDown(LEFT_ARROW)) {
     x -= 5;  // Move left continuously while arrow is held
@@ -124,9 +129,10 @@ ellipse(mouseX, mouseY, 50, 50);
 <li><strong>Window events</strong>: <code>windowResized()</code> (when browser window is resized)</li>
 </ul>
 <p><strong>Event vs Continuous:</strong></p>
+<p>Event functions are <em>interrupt</em>-style (called when the event happens); checking <code>mouseIsPressed</code> or <code>keyIsDown()</code> in <code>draw()</code> is <em>polling</em> (you check the state every frame).</p>
 <ul>
-<li><strong>Event functions</strong> (<code>mousePressed()</code>, <code>keyPressed()</code>): Run once when event occurs</li>
-<li><strong>Continuous checking</strong> (<code>mouseIsPressed</code>, <code>keyIsDown()</code>): Check state every frame in <code>draw()</code></li>
+<li><strong>Event functions</strong> (<code>mousePressed()</code>, <code>keyPressed()</code>): Run once when event occurs (interrupt)</li>
+<li><strong>Continuous checking</strong> (<code>mouseIsPressed</code>, <code>keyIsDown()</code>): Check state every frame in <code>draw()</code> (polling)</li>
 </ul>
 <span class="sr-only" id="code-desc-8">Code example 8 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 8 in javascript" aria-describedby="code-desc-8" id="code-block-8"><code class="language-javascript" lang="javascript">// Event-driven: runs once per click
 function mousePressed() {
