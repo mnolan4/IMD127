@@ -88,6 +88,15 @@ for (let i = 0; i &lt; numbers.length; i++) {
 <span class="sr-only" id="code-desc-11">Code example 11 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11 in javascript" aria-describedby="code-desc-11" id="code-block-11"><code class="language-javascript" lang="javascript">let arr = [10, 20, 30, 40];
 let index = arr.indexOf(30);  // Returns 2 (index of value 30)
 </code></pre>
+<h3>Arrays of Colors and random()</h3>
+<p>Arrays can hold any type of value—not just numbers. Strings work too: color names (e.g. <code>&#39;red&#39;</code>, <code>&#39;DodgerBlue&#39;</code>) or hex strings (e.g. <code>&#39;#ff6b6b&#39;</code>). A common pattern is to define a <strong>palette</strong> (array of colors) and use p5&#39;s <code>random(array)</code> to pick one random element. p5&#39;s <code>random()</code> accepts an array and returns one random element—so <code>random(palette)</code> gives you a random color from the palette.</p>
+<p>Generative artists often use this instead of fully random RGB: you curate a small set of colors and let the program choose from them, so results stay coherent while still varied.</p>
+<span class="sr-only" id="code-desc-11a">Code example 11a written in javascript. The code follows.</span><pre role="region" aria-label="Code example 11a in javascript" aria-describedby="code-desc-11a" id="code-block-11a"><code class="language-javascript" lang="javascript">let palette = [&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;#ffaa00&#39;, &#39;DodgerBlue&#39;];
+
+function draw() {
+  fill(random(palette));  // Pick random color from palette
+  ellipse(random(width), random(height), 40, 40);
+}</code></pre>
 <h3>Particle Systems</h3>
 <p>Particle systems use arrays to manage many objects (particles) at once. Each particle has properties like position, velocity, color, or size. Arrays let you store and update all particles efficiently.</p>
 <p><strong>Why Arrays for Particles:</strong></p>
