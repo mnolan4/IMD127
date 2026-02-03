@@ -22,7 +22,7 @@ const courseData = {
                     "homework-sketch-01": "2025-02-03T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-01": "2025-01-31T23:59:00"
+                    "code-tracing-01": "2025-02-03T23:59:00"
                 },
                 activities: {
                     "2025-01-27": { type: "lecture", topics: ["Course overview", "What is code?", "p5.js setup", "Hello World variations"] },
@@ -749,9 +749,9 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     "homework-sketch-02": "2025-02-10T23:59:00"
                 },
                 assessments: {
-                    "parsons-02": "2025-02-07T23:59:00",
-                    "code-explanation-02": "2025-02-07T23:59:00",
-                    "practice-02": "2025-02-07T23:59:00"
+                    "parsons-02": "2025-02-10T23:59:00",
+                    "code-explanation-02": "2025-02-10T23:59:00",
+                    "practice-02": "2025-02-10T23:59:00"
                 },
                 activities: {
                     "2025-02-03": { type: "lecture", topics: ["Shapes, colors, drawing functions", "Variables", "Basic animation"] },
@@ -806,11 +806,11 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 classDates: ["2025-02-10", "2025-02-12"],
                 assignments: {
                     "homework-sketch-03": "2025-02-17T23:59:00",
-                    "major-project-01": "2025-02-23T23:59:00"
+                    "major-project-01": "2025-02-17T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-03": "2025-02-14T23:59:00",
-                    "code-writing-03": "2025-02-14T23:59:00"
+                    "code-tracing-03": "2025-02-17T23:59:00",
+                    "code-writing-03": "2025-02-17T23:59:00"
                 },
                 activities: {
                     "2025-02-10": { type: "lecture", topics: ["mouseX/mouseY, mousePressed(), keyPressed()", "Conditional statements", "Event-driven programming"] },
@@ -857,8 +857,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     "homework-sketch-04": "2025-02-24T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-04": "2025-02-21T23:59:00",
-                    "practice-04": "2025-02-21T23:59:00"
+                    "code-tracing-04": "2025-02-24T23:59:00",
+                    "practice-04": "2025-02-24T23:59:00"
                 },
                 activities: {
                     "2025-02-17": { type: "lecture", topics: ["For loops", "Nested loops", "Pattern generation"] },
@@ -905,8 +905,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     "homework-sketch-05": "2025-03-03T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-05": "2025-02-28T23:59:00",
-                    "parsons-05": "2025-02-28T23:59:00",
+                    "code-explanation-05": "2025-03-03T23:59:00",
+                    "parsons-05": "2025-03-03T23:59:00",
                     "midterm-exam": "2025-03-02T12:00:00"
                 },
                 activities: {
@@ -950,11 +950,11 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 classDates: ["2025-03-03", "2025-03-05"],
                 assignments: {
                     "homework-sketch-06": "2025-03-10T23:59:00",
-                    "creative-challenge-02": "2025-03-16T23:59:00"
+                    "creative-challenge-02": "2025-03-10T23:59:00"
                 },
                 assessments: {
-                    "code-writing-06": "2025-03-07T23:59:00",
-                    "practice-06": "2025-03-07T23:59:00"
+                    "code-writing-06": "2025-03-10T23:59:00",
+                    "practice-06": "2025-03-10T23:59:00"
                 },
                 activities: {
                     "2025-03-03": { type: "lecture", topics: ["Array basics", "Array methods", "Particle systems"] },
@@ -997,10 +997,10 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-03-16",
                 classDates: ["2025-03-10", "2025-03-12"],
                 assignments: {
-                    "homework-sketch-07": "2025-03-24T23:59:00"
+                    "homework-sketch-07": "2025-03-17T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-07": "2025-03-14T23:59:00"
+                    "code-tracing-07": "2025-03-17T23:59:00"
                 },
                 activities: {
                     "2025-03-10": { type: "lecture", topics: ["Object-oriented programming basics", "Classes and instances"] },
@@ -1040,11 +1040,11 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-03-23",
                 classDates: ["2025-03-24", "2025-03-26"],
                 assignments: {
-                    "homework-sketch-08": "2025-03-31T23:59:00"
+                    "homework-sketch-08": "2025-03-24T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-08": "2025-03-28T23:59:00",
-                    "parsons-08": "2025-03-28T23:59:00"
+                    "code-explanation-08": "2025-03-24T23:59:00",
+                    "parsons-08": "2025-03-24T23:59:00"
                 },
                 activities: {
                     "2025-03-24": { type: "lecture", topics: ["random()", "noise()", "Perlin noise", "Probability"] },
@@ -1086,11 +1086,11 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-03-30",
                 classDates: ["2025-03-31", "2025-04-02"],
                 assignments: {
-                    "homework-sketch-09": "2025-04-07T23:59:00"
+                    "homework-sketch-09": "2025-03-31T23:59:00"
                 },
                 assessments: {
-                    "code-writing-09": "2025-04-04T23:59:00",
-                    "practice-09": "2025-04-04T23:59:00"
+                    "code-writing-09": "2025-03-31T23:59:00",
+                    "practice-09": "2025-03-31T23:59:00"
                 },
                 activities: {
                     "2025-03-31": { type: "lecture", topics: ["p5.sound library", "Sound synthesis", "Sound analysis"] },
@@ -1130,10 +1130,10 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-04-06",
                 classDates: ["2025-04-07", "2025-04-09"],
                 assignments: {
-                    "homework-sketch-10": "2025-04-14T23:59:00"
+                    "homework-sketch-10": "2025-04-07T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-10": "2025-04-11T23:59:00"
+                    "code-explanation-10": "2025-04-07T23:59:00"
                 },
                 activities: {
                     "2025-04-07": { type: "lecture", topics: ["UI controls (sliders, buttons, knobs, switches)", "Controlling sound synthesis", "Controlling visual systems"] },
@@ -1179,11 +1179,11 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-04-13",
                 classDates: ["2025-04-14", "2025-04-16"],
                 assignments: {
-                    "homework-sketch-11": "2025-04-21T23:59:00",
-                    "creative-challenge-03": "2025-04-27T23:59:00"
+                    "homework-sketch-11": "2025-04-14T23:59:00",
+                    "creative-challenge-03": "2025-04-14T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-11": "2025-04-18T23:59:00"
+                    "code-tracing-11": "2025-04-14T23:59:00"
                 },
                 activities: {
                     "2025-04-14": { type: "lecture", topics: ["State machines", "Game mechanics", "Collision detection"] },
@@ -1229,10 +1229,10 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-04-20",
                 classDates: ["2025-04-21", "2025-04-23"],
                 assignments: {
-                    "homework-sketch-12": "2025-04-28T23:59:00"
+                    "homework-sketch-12": "2025-04-21T23:59:00"
                 },
                 assessments: {
-                    "code-writing-12": "2025-04-25T23:59:00"
+                    "code-writing-12": "2025-04-21T23:59:00"
                 },
                 activities: {
                     "2025-04-21": { type: "lecture", topics: ["Loading external data", "JSON, CSV", "Creating visualizations"] },
@@ -1271,10 +1271,10 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2025-04-27",
                 classDates: ["2025-04-28", "2025-04-30"],
                 assignments: {
-                    "homework-sketch-13": "2025-05-05T23:59:00"
+                    "homework-sketch-13": "2025-04-28T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-13": "2025-05-02T23:59:00"
+                    "code-explanation-13": "2025-04-28T23:59:00"
                 },
                 activities: {
                     "2025-04-28": { type: "lecture", topics: ["Video capture", "Video manipulation", "Video filters"] },
