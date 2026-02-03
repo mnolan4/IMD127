@@ -2,8 +2,16 @@
 <h2>Learning Outcomes</h2>
 <p>By the end of this week, you should be able to use random to create variation. You should use noise for smooth, organic randomness. You should understand Perlin noise. You should apply probability concepts. You should create organic, natural-looking forms.</p>
 <h2>Key Concepts</h2>
+<p>You&#39;ve already used basic <code>random()</code> in Week 4 (e.g. random positions in a loop) and in earlier examples (Week 3, Week 6). This week we <strong>explore different methods of randomness</strong>: we go deeper with <code>random()</code> (ranges, random choices, <code>randomSeed()</code>), then <strong>random walk</strong> (step-by-step random movement), <strong>noise()</strong> (smooth, organic variation), and <strong>probability</strong> (weighted randomness). Each method has different strengths—knowing when to use which helps you get the look and behavior you want.</p>
+<p><strong>Methods we&#39;ll cover:</strong></p>
+<ul>
+<li><strong>random()</strong>: Variation and one-off random values (positions, sizes, colors)</li>
+<li><strong>Random walk</strong>: Paths and trails built from small random steps</li>
+<li><strong>noise()</strong>: Smooth, natural variation (Perlin noise)</li>
+<li><strong>Probability</strong>: Controlling how often things happen (weighted randomness)</li>
+</ul>
 <h3>Random Function</h3>
-<p>The <code>random()</code> function generates random numbers. It&#39;s essential for creating variation, unpredictability, and organic-looking results in your sketches.</p>
+<p>Building on the basics from Week 4, here we cover ranges, random from an array, and <code>randomSeed()</code>. The <code>random()</code> function generates random numbers. It&#39;s essential for creating variation, unpredictability, and organic-looking results in your sketches.</p>
 <p><strong>Basic Usage:</strong></p>
 <span class="sr-only" id="code-desc-1">Code example 1 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 1 in javascript" aria-describedby="code-desc-1" id="code-block-1"><code class="language-javascript" lang="javascript">random(10);        // Random number from 0 to 10 (not including 10)
 random(5, 15);     // Random number from 5 to 15 (not including 15)
