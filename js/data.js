@@ -963,7 +963,9 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 keyConcepts: { title: "Key Concepts", type: "key-concepts", htmlFile: "content/key-concepts/key-concepts-week-06.html" },
                 examples: [
                     { title: "Basic Array", file: "code-examples/week-06-arrays/basic-array.js", type: "code", description: "Review and understand this code example to be able to store multiple values in a single array variable. Learn array syntax, how arrays are indexed starting at 0, how to access elements, and how to loop through arrays to work with collections of data." },
-                    { title: "Particle System", file: "code-examples/week-06-arrays/particle-system.js", type: "code", description: "Review and understand this code example to be able to manage multiple objects using arrays to create particle systems. Learn how to add particles dynamically, update and draw all particles in a loop, and create complex visual effects with many moving objects.", embedDemo: true }
+                    { title: "Particle System", file: "code-examples/week-06-arrays/particle-system.js", type: "code", description: "Review and understand this code example to be able to manage multiple objects using arrays to create particle systems. Learn how to add particles dynamically, update and draw all particles in a loop, and create complex visual effects with many moving objects.", embedDemo: true },
+                    { title: "Array of Colors", file: "code-examples/week-06-arrays/array-of-colors.js", type: "code", description: "Review and understand this code example to store color names or hex strings in an array (a palette) and use random(palette) to pick a random color. Generative artists often use this pattern to keep results coherent while still varied.", embedDemo: true },
+                    { title: "Array of Colors (Simple)", file: "code-examples/week-06-arrays/array-of-colors-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for a color palette and random(array)." }
                 ],
                 assessments: [
                     { id: "code-writing-06", title: "Code Writing Task #2", type: "code-writing", file: "pdfs/Assessments/Unproctored/Code-Writing/code-writing-week-06.pdf" },
@@ -2660,5 +2662,5 @@ function getSection(sectionId) {
 
 function getAllSections() {
     return courseData.sections;
-} 
+}
 
