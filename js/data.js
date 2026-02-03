@@ -2660,3 +2660,4 @@ function getAllSections() {
     return courseData.sections;
 }
 
+
