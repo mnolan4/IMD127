@@ -251,11 +251,58 @@ function setupEventListeners() {
     });
 }
 
-// Setup mobile menu toggle
+// Setup mobile menu toggle (drawer on mobile: hamburger + overlay)
 function setupMobileMenu() {
-    // Add hamburger menu for mobile if needed
-    if (window.innerWidth <= 768) {
-        // Mobile menu implementation can be added here
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    // Avoid duplicate injection
+    if (document.querySelector('.sidebar-toggle')) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('tabindex', '-1');
+    overlay.addEventListener('click', closeSidebarDrawer);
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'sidebar-toggle';
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'sidebar');
+    toggle.innerHTML = '<span class="sidebar-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>';
+    toggle.addEventListener('click', toggleSidebarDrawer);
+
+    sidebar.insertAdjacentElement('afterend', overlay);
+    document.body.appendChild(toggle);
+
+    // Close drawer when a nav link is clicked
+    sidebar.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeSidebarDrawer);
+    });
+
+    window.addEventListener('resize', onResize);
+    let resizeTimeout;
+    function onResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.innerWidth > 768) {
+                closeSidebarDrawer();
+            }
+        }, 100);
+    }
+
+    function closeSidebarDrawer() {
+        sidebar.classList.remove('open');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleSidebarDrawer() {
+        const isOpen = sidebar.classList.toggle('open');
+        toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
 }
 
