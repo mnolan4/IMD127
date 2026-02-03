@@ -2660,5 +2660,5 @@ function getSection(sectionId) {
 
 function getAllSections() {
     return courseData.sections;
-}
+} 
 
