@@ -846,9 +846,9 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             id: "week-04",
             number: 4,
             title: "Loops and Patterns",
-            topics: ["For loops", "Nested loops", "Pattern generation", "Modulo operator"],
+            topics: ["For loops", "Nested loops", "Basic randomness", "Pattern generation", "Modulo operator"],
             deliverables: ["Code tracing (nested loops)", "Creative pattern challenge"],
-            learningOutcomes: "By the end of this week, you should be able to use for loops to repeat code. You should create nested loops for 2D patterns. You should generate patterns using loops. You should use the modulo operator for pattern variations.",
+            learningOutcomes: "By the end of this week, you should be able to use for loops to repeat code. You should create nested loops for 2D patterns. You should use random() in loops to create variation (random positions, sizes). You should generate patterns using loops. You should use the modulo operator for pattern variations.",
             schedule: {
                 weekStart: "2025-02-17",
                 weekEnd: "2025-02-23",
@@ -870,7 +870,9 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 examples: [
                     { title: "Basic Loop", file: "code-examples/week-04-loops/basic-loop.js", type: "code", description: "Review and understand this code example to be able to use for loops to repeat code multiple times without writing it over and over. Learn loop syntax, how to use the loop variable for calculations, and how loops make patterns and repetitions easy." },
                     { title: "Nested Loops", file: "code-examples/week-04-loops/nested-loops.js", type: "code", description: "Review and understand this code example to be able to create two-dimensional patterns like grids using loops inside loops. Understand how the outer loop handles rows and the inner loop handles columns, perfect for creating organized visual patterns.", embedDemo: true },
-                    { title: "Modulo Pattern", file: "code-examples/week-04-loops/modulo-pattern.js", type: "code", description: "Review and understand this code example to be able to use the modulo operator (%) to create repeating patterns and cycles. Learn how modulo returns remainders, how to check for even/odd numbers, and how to create alternating color patterns." }
+                    { title: "Modulo Pattern", file: "code-examples/week-04-loops/modulo-pattern.js", type: "code", description: "Review and understand this code example to be able to use the modulo operator (%) to create repeating patterns and cycles. Learn how modulo returns remainders, how to check for even/odd numbers, and how to create alternating color patterns." },
+                    { title: "Random Loop", file: "code-examples/week-04-loops/random-loop.js", type: "code", description: "Review and understand this code example to combine a loop with random() to draw many shapes at random positions and sizes. Learn basic random() syntax and how loops plus randomness create variation.", embedDemo: true },
+                    { title: "Random Loop (Simple)", file: "code-examples/week-04-loops/random-loop-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for a loop with random positions and sizes." }
                 ],
                 assessments: [
                     { id: "code-tracing-04", title: "Code Tracing (Nested Loops)", type: "code-tracing", file: "pdfs/Assessments/Unproctored/Code-Tracing/code-tracing-week-04.pdf" },
