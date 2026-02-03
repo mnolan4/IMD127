@@ -23,12 +23,34 @@ ellipse(x, y, diameter, diameter);  // Use variable in function call
 <li>Use <code>const</code> to declare a constant value that cannot be changed</li>
 <li>Variable names should be descriptive: <code>circleX</code> is better than <code>x1</code></li>
 </ul>
+<p><strong>Properties of a Variable:</strong><br>Every variable has five properties that help you understand how it works:</p>
+<ul>
+<li><strong>Name:</strong> The identifier you use to refer to the variable (e.g. <code>x</code>, <code>circleX</code>).</li>
+<li><strong>Value:</strong> The data currently stored in the variable.</li>
+<li><strong>Type:</strong> The kind of data (number, string, boolean, etc.); in JavaScript the type is often inferred from the value.</li>
+<li><strong>Scope:</strong> Where in the code the variable is visible (global vs. local).</li>
+<li><strong>Lifetime:</strong> When the variable exists in memory (e.g. for the whole program vs. only while a function is running).</li>
+</ul>
 <span class="sr-only" id="code-desc-2">Code example 2 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2 in javascript" aria-describedby="code-desc-2" id="code-block-2"><code class="language-javascript" lang="javascript">let circleX = 200;      // Can be changed
 const CANVAS_SIZE = 400; // Cannot be changed (convention: UPPERCASE for constants)
 circleX = 300;          // OK - variable can change
 // CANVAS_SIZE = 500;   // ERROR - constant cannot change
 </code></pre>
-<p><strong>Variable Scope:</strong><br>Variables declared at the top of your file (outside functions) are available everywhere. Variables declared inside functions are only available within that function.</p>
+<p><strong>Variable Scope (Global vs. Local):</strong></p>
+<p><strong>Global scope:</strong> Variables declared at the top of your file (outside <code>setup()</code>, <code>draw()</code>, and any other function) have <strong>global scope</strong>. They are visible everywhere—in <code>setup()</code>, <code>draw()</code>, and any other function. Their lifetime is the whole program.</p>
+<p><strong>Local scope:</strong> Variables declared <strong>inside</strong> a function (e.g. <code>let x = 100;</code> inside <code>draw()</code>) have <strong>local scope</strong>. They are only visible inside that function. Their lifetime is only while that function is running (e.g. each time <code>draw()</code> runs, a new local variable can be created).</p>
+<span class="sr-only" id="code-desc-2b">Code example 2b written in javascript. The code follows.</span><pre role="region" aria-label="Code example 2b in javascript" aria-describedby="code-desc-2b" id="code-block-2b"><code class="language-javascript" lang="javascript">let globalX = 200;  // Global: declared outside functions, visible everywhere
+
+function setup() {
+  createCanvas(400, 400);
+  globalX = 100;  // OK: can use global variable in setup()
+}
+
+function draw() {
+  let localY = 150;  // Local: only visible inside draw()
+  ellipse(globalX, localY, 50, 50);  // OK: globalX and localY both visible here
+  // In setup() we could not use localY—it doesn&#39;t exist there
+}</code></pre>
 <h3>What the Heck is <code>let</code>?</h3>
 <p>You might be wondering: why do we use the word <code>let</code>? It&#39;s actually a normal English word that means &quot;allow&quot; or &quot;permit.&quot; When you write <code>let x = 100</code>, you&#39;re literally saying to the computer: &quot;Let x be 100&quot; or &quot;Allow x to be 100.&quot; It&#39;s like giving permission for a variable to exist and have a value.</p>
 <p>Think of it like this: when you say &quot;Let me explain&quot; in conversation, you&#39;re asking for permission to explain something. In code, <code>let</code> is you giving the computer permission to create a variable with a specific name and value.</p>
