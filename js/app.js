@@ -1187,9 +1187,9 @@ if (typeof window !== 'undefined' && window.location) {
 function toggleKeyConcepts(weekId) {
     const contentWrapper = document.getElementById(`keyConcepts-content-${weekId}`);
     const toggleButton = document.getElementById(`keyConcepts-toggle-${weekId}`);
-    const toggleIcon = toggleButton.querySelector('.toggle-icon');
-    const toggleText = toggleButton.querySelector('.toggle-text');
-    const isExpanded = contentWrapper.getAttribute('aria-expanded') === 'true';
+    const toggleIcon = toggleButton ? toggleButton.querySelector('.toggle-icon') : null;
+    const toggleText = toggleButton ? toggleButton.querySelector('.toggle-text') : null;
+    const isExpanded = toggleButton ? toggleButton.getAttribute('aria-expanded') === 'true' : false;
     const weekNumber = parseInt(weekId.replace('week-', ''));
     const week = getWeekByNumber(weekNumber);
     const ariaLiveRegion = document.getElementById('aria-live-region');
@@ -1199,9 +1199,9 @@ function toggleKeyConcepts(weekId) {
         contentWrapper.style.display = 'none';
         contentWrapper.setAttribute('aria-hidden', 'true');
         toggleButton.setAttribute('aria-expanded', 'false');
-        toggleIcon.textContent = '▼';
-        toggleText.textContent = 'Show';
-        
+        if (toggleIcon) toggleIcon.textContent = '▼';
+        if (toggleText) toggleText.textContent = 'Show';
+
         // Announce collapse to screen readers
         if (ariaLiveRegion) {
             ariaLiveRegion.textContent = `Key concepts for Week ${weekNumber} collapsed`;
@@ -1211,14 +1211,14 @@ function toggleKeyConcepts(weekId) {
         contentWrapper.style.display = 'block';
         contentWrapper.setAttribute('aria-hidden', 'false');
         toggleButton.setAttribute('aria-expanded', 'true');
-        toggleIcon.textContent = '▲';
-        toggleText.textContent = 'Hide';
-        
+        if (toggleIcon) toggleIcon.textContent = '▲';
+        if (toggleText) toggleText.textContent = 'Hide';
+
         // Announce expansion to screen readers
         if (ariaLiveRegion) {
             ariaLiveRegion.textContent = `Key concepts for Week ${weekNumber} expanded`;
         }
-        
+
         // Load content if not already loaded
         if (!keyConceptsCache[weekId]) {
             loadKeyConceptsContent(weekId);
@@ -1325,48 +1325,7 @@ function loadKeyConceptsContent(weekId) {
 }
 
 function setupCodeCopyForKeyConcepts(contentEl) {
-    // Function disabled - "Try on OpenProcessing" buttons removed from key concepts areas
-    // Find all code blocks in key concepts
-    // const codeBlocks = contentEl.querySelectorAll('pre[role="region"]');
-    
-    // codeBlocks.forEach((preBlock, index) => {
-    //     // Check if button already exists
-    //     if (preBlock.nextElementSibling && preBlock.nextElementSibling.classList.contains('try-on-openprocessing')) {
-    //         return; // Already has a button
-    //     }
-        
-    //     // Extract code from the code block
-    //     const codeElement = preBlock.querySelector('code');
-    //     if (!codeElement) return;
-        
-    //     const code = codeElement.textContent.trim();
-    //     if (!code) return;
-        
-    //     // Create "Try on OpenProcessing" button
-    //     const button = document.createElement('a');
-    //     button.href = 'https://openprocessing.org/sketch/create';
-    //     button.target = '_blank';
-    //     button.rel = 'noopener noreferrer';
-    //     button.className = 'try-button try-on-openprocessing';
-    //     button.setAttribute('data-code', code);
-    //     button.setAttribute('aria-label', `Try code example ${index + 1} on OpenProcessing (opens in new window)`);
-    //     button.innerHTML = 'Try on OpenProcessing <span aria-hidden="true">→</span>';
-        
-    //     // Add click handler
-    //     button.addEventListener('click', async (e) => {
-    //         e.preventDefault();
-            
-    //         if (typeof CodeCopyManager !== 'undefined') {
-    //             await CodeCopyManager.copyCodeAndOpenOpenProcessing(code, e);
-    //         } else {
-    //             // Fallback: just open OpenProcessing
-    //             window.open('https://openprocessing.org/sketch/create', '_blank', 'noopener,noreferrer');
-    //         }
-    //     });
-        
-    //     // Insert button after the code block
-    //     preBlock.parentNode.insertBefore(button, preBlock.nextSibling);
-    // });
+   
 }
 
 function showKeyConceptsError(weekId) {
