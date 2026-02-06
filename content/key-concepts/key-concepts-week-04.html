@@ -1,6 +1,6 @@
 <div class="key-concepts-content"><h1>Week 4: Loops and Patterns - Key Concepts</h1>
 <h2>Learning Outcomes</h2>
-<p>By the end of this week, you should be able to use for loops to repeat code. You should create nested loops for 2D patterns. You should generate patterns using loops. You should use the modulo operator for pattern variations.</p>
+<p>By the end of this week, you should be able to use for loops and while loops to repeat code. You should create nested loops for 2D patterns. You should generate patterns using loops. You should use the modulo operator for pattern variations.</p>
 <h2>Key Concepts</h2>
 <h3>For Loops</h3>
 <p>For loops are one of the most powerful tools in programming. They let you repeat code multiple times without writing it over and over. This is essential for creating patterns, managing multiple objects, and processing data.</p>
@@ -54,6 +54,19 @@ for (let i = 10; i &gt; 0; i--) {
   // i = 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
 }
 </code></pre>
+<h3>While Loops</h3>
+<p>A for loop is usually used when you know how many times you want to repeat something. A while loop is usually used when you want to keep repeating something until a condition becomes false.</p>
+<p>With <code>while (condition) { ... }</code>, the body runs while the condition is true. You handle initialization (setting the starting value) and update (changing the variable so the condition can become false) yourself, unlike in a for loop where those are in the loop header. Think of the condition as a gatekeeper: as long as it is true, we run the block and then check again; when it becomes false, we stop.</p>
+<span class="sr-only" id="code-desc-17">Code example 17 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 17 in javascript" aria-describedby="code-desc-17" id="code-block-17"><code class="language-javascript" lang="javascript">let ypos = 10;
+while (ypos &lt; 400) {
+  let xpos = 10;
+  while (xpos &lt; 400) {
+    circle(xpos, ypos, 25);
+    xpos = xpos + 20;
+  }
+  ypos = ypos + 20;
+}</code></pre>
+<p>Here the outer while moves down rows (<code>ypos</code>), and the inner while draws a row of circles across (<code>xpos</code>). Both loops stop when their position reaches 400.</p>
 <h3>Using Loop Variables</h3>
 <p>The loop variable, usually i, changes each iteration.</p>
 <span class="sr-only" id="code-desc-3">Code example 3 written in javascript. The code follows.</span><pre role="region" aria-label="Code example 3 in javascript" aria-describedby="code-desc-3" id="code-block-3"><code class="language-javascript" lang="javascript">for (let i = 0; i &lt; 5; i++) {
@@ -196,6 +209,11 @@ for (let x = 0; x &lt; 8; x++) {
 <td><code>for (let i = 0; i &lt; n; i++)</code></td>
 <td>Repeat n times</td>
 <td><code>for (let i = 0; i &lt; 10; i++)</code></td>
+</tr>
+<tr>
+<td><code>while (condition)</code></td>
+<td>Repeat until condition is false</td>
+<td><code>while (xpos &lt; 400) { ... }</code></td>
 </tr>
 <tr>
 <td><code>i++</code></td>
