@@ -15,18 +15,18 @@ const courseData = {
             deliverables: ["Code tracing exercise", "Creative variation of Hello World using Points, lines, shapes, Text, fill, and background color"],
             learningOutcomes: "By the end of this week, you should be able to set up your development environment and create your first p5.js sketch. You should understand the basic structure of a p5.js program including setup and draw functions. You should use basic drawing functions to create shapes, text, and colors. You should navigate the coordinate system.",
             schedule: {
-                weekStart: "2025-01-27",
-                weekEnd: "2025-02-02",
-                classDates: ["2025-01-27", "2025-01-29"],
+                weekStart: "2026-01-27",
+                weekEnd: "2026-02-02",
+                classDates: ["2026-01-27", "2026-01-29"],
                 assignments: {
-                    "homework-sketch-01": "2025-02-03T23:59:00"
+                    "homework-sketch-01": "2026-02-03T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-01": "2025-02-03T23:59:00"
+                    "code-tracing-01": "2026-02-03T23:59:00"
                 },
                 activities: {
-                    "2025-01-27": { type: "lecture", topics: ["Course overview", "What is code?", "p5.js setup", "Hello World variations"] },
-                    "2025-01-29": { type: "lab", topics: ["Coordinate systems", "Basic shapes and colors", "Hands-on practice"] }
+                    "2026-01-27": { type: "lecture", topics: ["Course overview", "What is code?", "p5.js setup", "Hello World variations"] },
+                    "2026-01-29": { type: "lab", topics: ["Coordinate systems", "Basic shapes and colors", "Hands-on practice"] }
                 }
             },
             tasks: {
@@ -177,10 +177,10 @@ Assessment types include:
 • Live coding demonstrations
 
 Midterm Exam (15% of grade)
-The midterm exam occurs on March 2, 2025, in-class. It covers Weeks 1-5 concepts through custom functions. The exam is proctored in-class with additional time available via TA proctored sessions. It includes a balanced mix of familiar assessment types (code tracing, code explanation, Parsons problems, code writing) to complement the learning structure.
+The midterm exam occurs on March 2, 2026, in-class. It covers Weeks 1-5 concepts through custom functions. The exam is proctored in-class with additional time available via TA proctored sessions. It includes a balanced mix of familiar assessment types (code tracing, code explanation, Parsons problems, code writing) to complement the learning structure.
 
 Final Exam (20% of grade)
-The final exam occurs on Monday, May 11, 2025, from 10:30 a.m. - 12:30 p.m., in-class. It is comprehensive, covering all course concepts (Weeks 1-13). The exam is proctored in-class with additional time available via TA proctored sessions. It includes all assessment types, balanced to complement the learning structure.
+The final exam occurs on Monday, May 11, 2026, from 10:30 a.m. - 12:30 p.m., in-class. It is comprehensive, covering all course concepts (Weeks 1-13). The exam is proctored in-class with additional time available via TA proctored sessions. It includes all assessment types, balanced to complement the learning structure.
 
 About AI Tools
 
@@ -223,11 +223,11 @@ Resources: Check out the guides and FAQs on the course website. There are also v
 
 Important Dates
 
-• First day of class: January 27, 2025 (Tuesday)
-• Last day of classes: May 8, 2025 (Friday)
-• Spring Break: March 15-22, 2025
-• Reading Day: May 9, 2025
-• Final Exams: May 11-18, 2025
+• First day of class: January 27, 2026 (Tuesday)
+• Last day of classes: May 8, 2026 (Friday)
+• Spring Break: March 15-22, 2026
+• Reading Day: May 9, 2026
+• Final Exams: May 11-18, 2026
 
 We meet Tuesdays and Thursdays. Homework sketches are typically due Monday at 11:59 PM before Tuesday's class.
 
@@ -742,20 +742,20 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Parsons problem", "Code explanation exercise"],
             learningOutcomes: "By the end of this week, you should be able to create static visual compositions using shapes, colors, and drawing functions. You should use variables to store and manipulate position and color values. You should create simple animations using frameCount. You should understand how code executes over time through the draw loop.",
             schedule: {
-                weekStart: "2025-02-03",
-                weekEnd: "2025-02-09",
-                classDates: ["2025-02-03", "2025-02-05"],
+                weekStart: "2026-02-03",
+                weekEnd: "2026-02-09",
+                classDates: ["2026-02-03", "2026-02-05"],
                 assignments: {
-                    "homework-sketch-02": "2025-02-10T23:59:00"
+                    "homework-sketch-02": "2026-02-10T23:59:00"
                 },
                 assessments: {
-                    "parsons-02": "2025-02-10T23:59:00",
-                    "code-explanation-02": "2025-02-10T23:59:00",
-                    "practice-02": "2025-02-10T23:59:00"
+                    "parsons-02": "2026-02-10T23:59:00",
+                    "code-explanation-02": "2026-02-10T23:59:00",
+                    "practice-02": "2026-02-10T23:59:00"
                 },
                 activities: {
-                    "2025-02-03": { type: "lecture", topics: ["Shapes, colors, drawing functions", "Variables", "Basic animation"] },
-                    "2025-02-05": { type: "lab", topics: ["The draw loop", "Hands-on animation practice", "Image loading"] }
+                    "2026-02-03": { type: "lecture", topics: ["Shapes, colors, drawing functions", "Variables", "Basic animation"] },
+                    "2026-02-05": { type: "lab", topics: ["The draw loop", "Hands-on animation practice", "Image loading"] }
                 }
             },
             tasks: {
@@ -801,20 +801,20 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Pair programming challenge", "Code writing task", "Major Project 1: Static Image, Visual Poetry"],
             learningOutcomes: "By the end of this week, you should be able to use mouse and keyboard input to create interactive experiences. You should write conditional statements to make decisions in code. You should understand event-driven programming. You should create interactive drawing tools and applications.",
             schedule: {
-                weekStart: "2025-02-10",
-                weekEnd: "2025-02-16",
-                classDates: ["2025-02-10", "2025-02-12"],
+                weekStart: "2026-02-10",
+                weekEnd: "2026-02-16",
+                classDates: ["2026-02-10", "2026-02-12"],
                 assignments: {
-                    "homework-sketch-03": "2025-02-17T23:59:00",
-                    "major-project-01": "2025-02-17T23:59:00"
+                    "homework-sketch-03": "2026-02-17T23:59:00",
+                    "major-project-01": "2026-02-17T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-03": "2025-02-17T23:59:00",
-                    "code-writing-03": "2025-02-17T23:59:00"
+                    "code-tracing-03": "2026-02-17T23:59:00",
+                    "code-writing-03": "2026-02-17T23:59:00"
                 },
                 activities: {
-                    "2025-02-10": { type: "lecture", topics: ["mouseX/mouseY, mousePressed(), keyPressed()", "Conditional statements", "Event-driven programming"] },
-                    "2025-02-12": { type: "lab", topics: ["Interactive examples", "Pair programming challenge", "Major Project 1 introduction"] }
+                    "2026-02-10": { type: "lecture", topics: ["mouseX/mouseY, mousePressed(), keyPressed()", "Conditional statements", "Event-driven programming"] },
+                    "2026-02-12": { type: "lab", topics: ["Interactive examples", "Pair programming challenge", "Major Project 1 introduction"] }
                 }
             },
             tasks: {
@@ -850,19 +850,19 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code tracing (nested loops)", "Creative pattern challenge"],
             learningOutcomes: "By the end of this week, you should be able to use for loops to repeat code. You should create nested loops for 2D patterns. You should use random() in loops to create variation (random positions, sizes). You should generate patterns using loops. You should use the modulo operator for pattern variations.",
             schedule: {
-                weekStart: "2025-02-17",
-                weekEnd: "2025-02-23",
-                classDates: ["2025-02-17", "2025-02-19"],
+                weekStart: "2026-02-17",
+                weekEnd: "2026-02-23",
+                classDates: ["2026-02-17", "2026-02-19"],
                 assignments: {
-                    "homework-sketch-04": "2025-02-24T23:59:00"
+                    "homework-sketch-04": "2026-02-24T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-04": "2025-02-24T23:59:00",
-                    "practice-04": "2025-02-24T23:59:00"
+                    "code-tracing-04": "2026-02-24T23:59:00",
+                    "practice-04": "2026-02-24T23:59:00"
                 },
                 activities: {
-                    "2025-02-17": { type: "lecture", topics: ["For loops", "Nested loops", "Pattern generation"] },
-                    "2025-02-19": { type: "lab", topics: ["Modulo operator", "Creative pattern challenge", "Code review"] }
+                    "2026-02-17": { type: "lecture", topics: ["For loops", "Nested loops", "Pattern generation"] },
+                    "2026-02-19": { type: "lab", topics: ["Modulo operator", "Creative pattern challenge", "Code review"] }
                 }
             },
             tasks: {
@@ -899,20 +899,20 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code explanation (function analysis)", "Parsons problem"],
             learningOutcomes: "By the end of this week, you should be able to define your own functions. You should use parameters to make functions flexible. You should return values from functions. You should organize code into reusable modules.",
             schedule: {
-                weekStart: "2025-02-24",
-                weekEnd: "2025-03-02",
-                classDates: ["2025-02-24", "2025-02-26"],
+                weekStart: "2026-02-24",
+                weekEnd: "2026-03-02",
+                classDates: ["2026-02-24", "2026-02-26"],
                 assignments: {
-                    "homework-sketch-05": "2025-03-03T23:59:00"
+                    "homework-sketch-05": "2026-03-03T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-05": "2025-03-03T23:59:00",
-                    "parsons-05": "2025-03-03T23:59:00",
-                    "midterm-exam": "2025-03-02T12:00:00"
+                    "code-explanation-05": "2026-03-03T23:59:00",
+                    "parsons-05": "2026-03-03T23:59:00",
+                    "midterm-exam": "2026-03-02T12:00:00"
                 },
                 activities: {
-                    "2025-02-24": { type: "lecture", topics: ["Function definition", "Parameters", "Return values"] },
-                    "2025-02-26": { type: "lab", topics: ["Code organization", "Modular pattern systems", "Function practice"] }
+                    "2026-02-24": { type: "lecture", topics: ["Function definition", "Parameters", "Return values"] },
+                    "2026-02-26": { type: "lab", topics: ["Code organization", "Modular pattern systems", "Function practice"] }
                 }
             },
             tasks: {
@@ -946,20 +946,20 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code writing task", "Pair programming challenge"],
             learningOutcomes: "By the end of this week, you should be able to create and use arrays to store multiple values. You should use array methods to manipulate data. You should create particle systems. You should manage multiple objects efficiently.",
             schedule: {
-                weekStart: "2025-03-03",
-                weekEnd: "2025-03-09",
-                classDates: ["2025-03-03", "2025-03-05"],
+                weekStart: "2026-03-03",
+                weekEnd: "2026-03-09",
+                classDates: ["2026-03-03", "2026-03-05"],
                 assignments: {
-                    "homework-sketch-06": "2025-03-10T23:59:00",
-                    "creative-challenge-02": "2025-03-10T23:59:00"
+                    "homework-sketch-06": "2026-03-10T23:59:00",
+                    "creative-challenge-02": "2026-03-10T23:59:00"
                 },
                 assessments: {
-                    "code-writing-06": "2025-03-10T23:59:00",
-                    "practice-06": "2025-03-10T23:59:00"
+                    "code-writing-06": "2026-03-10T23:59:00",
+                    "practice-06": "2026-03-10T23:59:00"
                 },
                 activities: {
-                    "2025-03-03": { type: "lecture", topics: ["Array basics", "Array methods", "Particle systems"] },
-                    "2025-03-05": { type: "lab", topics: ["Managing multiple objects", "Pair programming challenge", "Creative Challenge 2 introduction"] }
+                    "2026-03-03": { type: "lecture", topics: ["Array basics", "Array methods", "Particle systems"] },
+                    "2026-03-05": { type: "lab", topics: ["Managing multiple objects", "Pair programming challenge", "Creative Challenge 2 introduction"] }
                 }
             },
             tasks: {
@@ -994,18 +994,18 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code tracing (object interactions)", "Creative challenge (object-based system)"],
             learningOutcomes: "By the end of this week, you should be able to understand object-oriented programming basics. You should create classes to define object templates. You should instantiate multiple objects from a class. You should write methods that define object behaviors. You should design object-based systems with interactions.",
             schedule: {
-                weekStart: "2025-03-10",
-                weekEnd: "2025-03-16",
-                classDates: ["2025-03-10", "2025-03-12"],
+                weekStart: "2026-03-10",
+                weekEnd: "2026-03-16",
+                classDates: ["2026-03-10", "2026-03-12"],
                 assignments: {
-                    "homework-sketch-07": "2025-03-17T23:59:00"
+                    "homework-sketch-07": "2026-03-17T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-07": "2025-03-17T23:59:00"
+                    "code-tracing-07": "2026-03-17T23:59:00"
                 },
                 activities: {
-                    "2025-03-10": { type: "lecture", topics: ["Object-oriented programming basics", "Classes and instances"] },
-                    "2025-03-12": { type: "lab", topics: ["Object interactions", "Creative challenge", "Spring Break preparation"] }
+                    "2026-03-10": { type: "lecture", topics: ["Object-oriented programming basics", "Classes and instances"] },
+                    "2026-03-12": { type: "lab", topics: ["Object interactions", "Creative challenge", "Spring Break preparation"] }
                 }
             },
             tasks: {
@@ -1037,19 +1037,19 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code explanation (randomness algorithms)", "Parsons problem"],
             learningOutcomes: "By the end of this week, you should be able to use random to create variation. You should use noise for smooth, organic randomness. You should understand Perlin noise. You should apply probability concepts. You should create organic, natural-looking forms.",
             schedule: {
-                weekStart: "2025-03-17",
-                weekEnd: "2025-03-23",
-                classDates: ["2025-03-24", "2025-03-26"],
+                weekStart: "2026-03-17",
+                weekEnd: "2026-03-23",
+                classDates: ["2026-03-24", "2026-03-26"],
                 assignments: {
-                    "homework-sketch-08": "2025-03-24T23:59:00"
+                    "homework-sketch-08": "2026-03-24T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-08": "2025-03-24T23:59:00",
-                    "parsons-08": "2025-03-24T23:59:00"
+                    "code-explanation-08": "2026-03-24T23:59:00",
+                    "parsons-08": "2026-03-24T23:59:00"
                 },
                 activities: {
-                    "2025-03-24": { type: "lecture", topics: ["random()", "noise()", "Perlin noise", "Probability"] },
-                    "2025-03-26": { type: "lab", topics: ["Organic forms", "Random walk patterns", "Hands-on practice"] }
+                    "2026-03-24": { type: "lecture", topics: ["random()", "noise()", "Perlin noise", "Probability"] },
+                    "2026-03-26": { type: "lab", topics: ["Organic forms", "Random walk patterns", "Hands-on practice"] }
                 }
             },
             tasks: {
@@ -1083,19 +1083,19 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code writing task (sound synthesis)", "Creative challenge (sound + visuals)"],
             learningOutcomes: "By the end of this week, you should be able to load and play audio files. You should use the p5.sound library. You should create sound-reactive visuals. You should synthesize simple sounds. You should analyze audio for visualization.",
             schedule: {
-                weekStart: "2025-03-24",
-                weekEnd: "2025-03-30",
-                classDates: ["2025-03-31", "2025-04-02"],
+                weekStart: "2026-03-24",
+                weekEnd: "2026-03-30",
+                classDates: ["2026-03-31", "2026-04-02"],
                 assignments: {
-                    "homework-sketch-09": "2025-03-31T23:59:00"
+                    "homework-sketch-09": "2026-03-31T23:59:00"
                 },
                 assessments: {
-                    "code-writing-09": "2025-03-31T23:59:00",
-                    "practice-09": "2025-03-31T23:59:00"
+                    "code-writing-09": "2026-03-31T23:59:00",
+                    "practice-09": "2026-03-31T23:59:00"
                 },
                 activities: {
-                    "2025-03-31": { type: "lecture", topics: ["p5.sound library", "Sound synthesis", "Sound analysis"] },
-                    "2025-04-02": { type: "lab", topics: ["Audio playback", "Sound-reactive visuals", "Creative challenge"] }
+                    "2026-03-31": { type: "lecture", topics: ["p5.sound library", "Sound synthesis", "Sound analysis"] },
+                    "2026-04-02": { type: "lab", topics: ["Audio playback", "Sound-reactive visuals", "Creative challenge"] }
                 }
             },
             tasks: {
@@ -1127,18 +1127,18 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code explanation (UI integration)", "Creative challenge (UI-controlled system)"],
             learningOutcomes: "By the end of this week, you should be able to create interactive UI controls in p5.js. You should use sliders, buttons, checkboxes, and select menus to control sound synthesis and visual systems. You should capture audio input from a microphone and use it to manipulate video properties. You should build UI-controlled interactive systems.",
             schedule: {
-                weekStart: "2025-03-31",
-                weekEnd: "2025-04-06",
-                classDates: ["2025-04-07", "2025-04-09"],
+                weekStart: "2026-03-31",
+                weekEnd: "2026-04-06",
+                classDates: ["2026-04-07", "2026-04-09"],
                 assignments: {
-                    "homework-sketch-10": "2025-04-07T23:59:00"
+                    "homework-sketch-10": "2026-04-07T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-10": "2025-04-07T23:59:00"
+                    "code-explanation-10": "2026-04-07T23:59:00"
                 },
                 activities: {
-                    "2025-04-07": { type: "lecture", topics: ["UI controls (sliders, buttons, knobs, switches)", "Controlling sound synthesis", "Controlling visual systems"] },
-                    "2025-04-09": { type: "lab", topics: ["Audio input and video manipulation", "UI-controlled systems", "Hands-on practice"] }
+                    "2026-04-07": { type: "lecture", topics: ["UI controls (sliders, buttons, knobs, switches)", "Controlling sound synthesis", "Controlling visual systems"] },
+                    "2026-04-09": { type: "lab", topics: ["Audio input and video manipulation", "UI-controlled systems", "Hands-on practice"] }
                 }
             },
             tasks: {
@@ -1176,19 +1176,19 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code tracing (game systems)", "Creative challenge (interactive system/game)"],
             learningOutcomes: "By the end of this week, you should be able to implement state machines to organize interactive systems. You should create scoring systems and track game data. You should implement timers and countdowns. You should detect collisions between game objects. You should design game mechanics that create playfulness and intentionality. You should use user input to drive generative systems.",
             schedule: {
-                weekStart: "2025-04-07",
-                weekEnd: "2025-04-13",
-                classDates: ["2025-04-14", "2025-04-16"],
+                weekStart: "2026-04-07",
+                weekEnd: "2026-04-13",
+                classDates: ["2026-04-14", "2026-04-16"],
                 assignments: {
-                    "homework-sketch-11": "2025-04-14T23:59:00",
-                    "creative-challenge-03": "2025-04-14T23:59:00"
+                    "homework-sketch-11": "2026-04-14T23:59:00",
+                    "creative-challenge-03": "2026-04-14T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-11": "2025-04-14T23:59:00"
+                    "code-tracing-11": "2026-04-14T23:59:00"
                 },
                 activities: {
-                    "2025-04-14": { type: "lecture", topics: ["State machines", "Game mechanics", "Collision detection"] },
-                    "2025-04-16": { type: "lab", topics: ["Scoring systems", "Timers", "Creative Challenge 3 introduction"] }
+                    "2026-04-14": { type: "lecture", topics: ["State machines", "Game mechanics", "Collision detection"] },
+                    "2026-04-16": { type: "lab", topics: ["Scoring systems", "Timers", "Creative Challenge 3 introduction"] }
                 }
             },
             tasks: {
@@ -1226,18 +1226,18 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code writing task (data visualization)", "Creative challenge"],
             learningOutcomes: "By the end of this week, you should be able to load external data in formats like JSON and CSV. You should parse and visualize data. You should create generative systems. You should design data-driven art. You should work with real-world datasets.",
             schedule: {
-                weekStart: "2025-04-14",
-                weekEnd: "2025-04-20",
-                classDates: ["2025-04-21", "2025-04-23"],
+                weekStart: "2026-04-14",
+                weekEnd: "2026-04-20",
+                classDates: ["2026-04-21", "2026-04-23"],
                 assignments: {
-                    "homework-sketch-12": "2025-04-21T23:59:00"
+                    "homework-sketch-12": "2026-04-21T23:59:00"
                 },
                 assessments: {
-                    "code-writing-12": "2025-04-21T23:59:00"
+                    "code-writing-12": "2026-04-21T23:59:00"
                 },
                 activities: {
-                    "2025-04-21": { type: "lecture", topics: ["Loading external data", "JSON, CSV", "Creating visualizations"] },
-                    "2025-04-23": { type: "lab", topics: ["Generative systems", "Data visualization practice", "Code review"] }
+                    "2026-04-21": { type: "lecture", topics: ["Loading external data", "JSON, CSV", "Creating visualizations"] },
+                    "2026-04-23": { type: "lab", topics: ["Generative systems", "Data visualization practice", "Code review"] }
                 }
             },
             tasks: {
@@ -1268,18 +1268,18 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Code explanation (video system)", "Creative challenge (video-based project)"],
             learningOutcomes: "By the end of this week, you should be able to capture video from a webcam using built-in p5.js features. You should apply filters and effects to video. You should manipulate video at the pixel level. You should use video as input for generative systems. You should create video-reactive interactive installations.",
             schedule: {
-                weekStart: "2025-04-21",
-                weekEnd: "2025-04-27",
-                classDates: ["2025-04-28", "2025-04-30"],
+                weekStart: "2026-04-21",
+                weekEnd: "2026-04-27",
+                classDates: ["2026-04-28", "2026-04-30"],
                 assignments: {
-                    "homework-sketch-13": "2025-04-28T23:59:00"
+                    "homework-sketch-13": "2026-04-28T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-13": "2025-04-28T23:59:00"
+                    "code-explanation-13": "2026-04-28T23:59:00"
                 },
                 activities: {
-                    "2025-04-28": { type: "lecture", topics: ["Video capture", "Video manipulation", "Video filters"] },
-                    "2025-04-30": { type: "lab", topics: ["Video as input for generative systems", "Basic video processing", "Creative challenge"] }
+                    "2026-04-28": { type: "lecture", topics: ["Video capture", "Video manipulation", "Video filters"] },
+                    "2026-04-30": { type: "lab", topics: ["Video as input for generative systems", "Basic video processing", "Creative challenge"] }
                 }
             },
             tasks: {
@@ -1309,14 +1309,14 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Portfolio completion", "Final exam preparation"],
             learningOutcomes: "By the end of this week, you should be able to work independently on your final portfolio project. You should prepare for the final exam. You should complete and document your portfolio work.",
             schedule: {
-                weekStart: "2025-04-28",
-                weekEnd: "2025-05-04",
-                classDates: ["2025-05-05", "2025-05-07"],
+                weekStart: "2026-04-28",
+                weekEnd: "2026-05-04",
+                classDates: ["2026-05-05", "2026-05-07"],
                 assignments: {},
                 assessments: {},
                 activities: {
-                    "2025-05-05": { type: "lecture", topics: ["Portfolio preparation", "Final exam study session"] },
-                    "2025-05-07": { type: "lab", topics: ["Independent project work", "Final exam study session", "Studio time"] }
+                    "2026-05-05": { type: "lecture", topics: ["Portfolio preparation", "Final exam study session"] },
+                    "2026-05-07": { type: "lab", topics: ["Independent project work", "Final exam study session", "Studio time"] }
                 }
             },
             tasks: {
@@ -1335,15 +1335,15 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             deliverables: ["Final exam"],
             learningOutcomes: "By the end of this week, you should be able to develop a cohesive portfolio. You should document your creative work. You should present your projects effectively. You should reflect on your learning journey. You should prepare work for exhibition.",
             schedule: {
-                weekStart: "2025-05-05",
-                weekEnd: "2025-05-11",
+                weekStart: "2026-05-05",
+                weekEnd: "2026-05-11",
                 classDates: [],
                 assignments: {},
                 assessments: {
-                    "final-exam": "2025-05-11T10:30:00"
+                    "final-exam": "2026-05-11T10:30:00"
                 },
                 activities: {
-                    "2025-05-11": { type: "final-exam", topics: ["Final Exam: May 11, 2025, 10:30 a.m. - 12:30 p.m."] }
+                    "2026-05-11": { type: "final-exam", topics: ["Final Exam: May 11, 2026, 10:30 a.m. - 12:30 p.m."] }
                 }
             },
             tasks: {
@@ -1934,8 +1934,8 @@ Formative assessment (25%):
 • Practice problems
 
 Exams (35%):
-• Midterm exam: 15% (March 2, 2025, in-class)
-• Final exam: 20% (May 11, 2025, 10:30 a.m. - 12:30 p.m., in-class)
+• Midterm exam: 15% (March 2, 2026, in-class)
+• Final exam: 20% (May 11, 2026, 10:30 a.m. - 12:30 p.m., in-class)
 
 Summative assessment (40%):
 • Creative challenges: 25%
@@ -1948,8 +1948,8 @@ See rubrics in the Rubrics section for detailed evaluation criteria.
 What are the major assignments?
 Major assignments include:
 • 3 Creative Challenges (25% total) — Major creative projects
-• Midterm Exam (15%) — In-class proctored exam, March 2, 2025
-• Final Exam (20%) — In-class proctored exam, May 11, 2025, 10:30 a.m. - 12:30 p.m.
+• Midterm Exam (15%) — In-class proctored exam, March 2, 2026
+• Final Exam (20%) — In-class proctored exam, May 11, 2026, 10:30 a.m. - 12:30 p.m.
 • Code Writing Tasks (8%) — In-class coding assessments
 • Live Coding (5%) — Real-time coding demonstrations
 • Final Portfolio (2%) — Comprehensive creative work
