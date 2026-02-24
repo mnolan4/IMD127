@@ -177,7 +177,7 @@ Assessment types include:
 • Live coding demonstrations
 
 Midterm Exam (15% of grade)
-The midterm exam occurs on March 2, 2026, in-class. It covers Weeks 1-5 concepts through custom functions. The exam is proctored in-class with additional time available via TA proctored sessions. It includes a balanced mix of familiar assessment types (code tracing, code explanation, Parsons problems, code writing) to complement the learning structure.
+The midterm exam occurs on March 5, 2026, at 11 a.m., in-class. It covers Weeks 1-5 concepts through custom functions. The exam is proctored in-class with additional time available via TA proctored sessions. It includes a balanced mix of familiar assessment types (code tracing, code explanation, Parsons problems, code writing) to complement the learning structure.
 
 Final Exam (20% of grade)
 The final exam occurs on Monday, May 11, 2026, from 10:30 a.m. - 12:30 p.m., in-class. It is comprehensive, covering all course concepts (Weeks 1-13). The exam is proctored in-class with additional time available via TA proctored sessions. It includes all assessment types, balanced to complement the learning structure.
@@ -908,7 +908,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 assessments: {
                     "code-explanation-05": "2026-03-03T23:59:00",
                     "parsons-05": "2026-03-03T23:59:00",
-                    "midterm-exam": "2026-03-02T12:00:00"
+                    "midterm-exam": "2026-03-05T11:00:00"
                 },
                 activities: {
                     "2026-02-24": { type: "lecture", topics: ["Function definition", "Parameters", "Return values"] },
@@ -1001,7 +1001,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     "homework-sketch-07": "2026-03-17T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-07": "2026-03-17T23:59:00"
+                    "code-tracing-07": "2026-02-27T23:59:00"
                 },
                 activities: {
                     "2026-03-10": { type: "lecture", topics: ["Object-oriented programming basics", "Classes and instances"] },
@@ -1044,8 +1044,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     "homework-sketch-08": "2026-03-24T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-08": "2026-03-24T23:59:00",
-                    "parsons-08": "2026-03-24T23:59:00"
+                    "code-explanation-08": "2026-02-27T23:59:00",
+                    "parsons-08": "2026-02-27T23:59:00"
                 },
                 activities: {
                     "2026-03-24": { type: "lecture", topics: ["random()", "noise()", "Perlin noise", "Probability"] },
@@ -1934,7 +1934,7 @@ Formative assessment (25%):
 • Practice problems
 
 Exams (35%):
-• Midterm exam: 15% (March 2, 2026, in-class)
+• Midterm exam: 15% (March 5, 2026, at 11 a.m., in-class)
 • Final exam: 20% (May 11, 2026, 10:30 a.m. - 12:30 p.m., in-class)
 
 Summative assessment (40%):
@@ -1948,7 +1948,7 @@ See rubrics in the Rubrics section for detailed evaluation criteria.
 What are the major assignments?
 Major assignments include:
 • 3 Creative Challenges (25% total) — Major creative projects
-• Midterm Exam (15%) — In-class proctored exam, March 2, 2026
+• Midterm Exam (15%) — In-class proctored exam, March 5, 2026, at 11 a.m.
 • Final Exam (20%) — In-class proctored exam, May 11, 2026, 10:30 a.m. - 12:30 p.m.
 • Code Writing Tasks (8%) — In-class coding assessments
 • Live Coding (5%) — Real-time coding demonstrations
