@@ -843,7 +843,7 @@ function loadAssessmentsPage() {
             <div style="margin-bottom: 1.5rem;">
                 <h4 style="font-size: 1.1rem; color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem;">Midterm Exam (15% of grade)</h4>
                 <p style="color: var(--text-medium); line-height: 1.8; margin-bottom: 0.5rem;">
-                    The midterm exam occurs on <strong>March 2, 2025, in-class</strong>. It covers Weeks 1-5 concepts through custom functions. 
+                    The midterm exam occurs on <strong>March 2, 2026, in-class</strong>. It covers Weeks 1-5 concepts through custom functions. 
                     The exam is proctored in-class with additional time available via TA proctored sessions. 
                     It includes a balanced mix of familiar assessment types (code tracing, code explanation, Parsons problems, code writing) 
                     to complement the learning structure.
@@ -853,7 +853,7 @@ function loadAssessmentsPage() {
             <div style="margin-bottom: 1.5rem;">
                 <h4 style="font-size: 1.1rem; color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem;">Final Exam (20% of grade)</h4>
                 <p style="color: var(--text-medium); line-height: 1.8; margin-bottom: 0.5rem;">
-                    The final exam occurs on <strong>Monday, May 11, 2025, from 10:30 a.m. - 12:30 p.m., in-class</strong>. 
+                    The final exam occurs on <strong>Monday, May 11, 2026, from 10:30 a.m. - 12:30 p.m., in-class</strong>. 
                     It is comprehensive, covering all course concepts (Weeks 1-13). 
                     The exam is proctored in-class with additional time available via TA proctored sessions. 
                     It includes all assessment types, balanced to complement the learning structure.
@@ -1324,9 +1324,6 @@ function loadKeyConceptsContent(weekId) {
         });
 }
 
-function setupCodeCopyForKeyConcepts(contentEl) {
-   
-}
 
 function showKeyConceptsError(weekId) {
     const loadingEl = document.getElementById(`keyConcepts-loading-${weekId}`);
