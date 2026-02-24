@@ -843,7 +843,7 @@ function loadAssessmentsPage() {
             <div style="margin-bottom: 1.5rem;">
                 <h4 style="font-size: 1.1rem; color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem;">Midterm Exam (15% of grade)</h4>
                 <p style="color: var(--text-medium); line-height: 1.8; margin-bottom: 0.5rem;">
-                    The midterm exam occurs on <strong>March 2, 2026, in-class</strong>. It covers Weeks 1-5 concepts through custom functions. 
+                    The midterm exam occurs on <strong>March 5, 2026, at 11 a.m., in-class</strong>. It covers Weeks 1-5 concepts through custom functions. 
                     The exam is proctored in-class with additional time available via TA proctored sessions. 
                     It includes a balanced mix of familiar assessment types (code tracing, code explanation, Parsons problems, code writing) 
                     to complement the learning structure.
@@ -1324,6 +1324,50 @@ function loadKeyConceptsContent(weekId) {
         });
 }
 
+function setupCodeCopyForKeyConcepts(contentEl) {
+    // Function disabled - "Try on OpenProcessing" buttons removed from key concepts areas
+    // Find all code blocks in key concepts
+    // const codeBlocks = contentEl.querySelectorAll('pre[role="region"]');
+    
+    // codeBlocks.forEach((preBlock, index) => {
+    //     // Check if button already exists
+    //     if (preBlock.nextElementSibling && preBlock.nextElementSibling.classList.contains('try-on-openprocessing')) {
+    //         return; // Already has a button
+    //     }
+        
+    //     // Extract code from the code block
+    //     const codeElement = preBlock.querySelector('code');
+    //     if (!codeElement) return;
+        
+    //     const code = codeElement.textContent.trim();
+    //     if (!code) return;
+        
+    //     // Create "Try on OpenProcessing" button
+    //     const button = document.createElement('a');
+    //     button.href = 'https://openprocessing.org/sketch/create';
+    //     button.target = '_blank';
+    //     button.rel = 'noopener noreferrer';
+    //     button.className = 'try-button try-on-openprocessing';
+    //     button.setAttribute('data-code', code);
+    //     button.setAttribute('aria-label', `Try code example ${index + 1} on OpenProcessing (opens in new window)`);
+    //     button.innerHTML = 'Try on OpenProcessing <span aria-hidden="true">→</span>';
+        
+    //     // Add click handler
+    //     button.addEventListener('click', async (e) => {
+    //         e.preventDefault();
+            
+    //         if (typeof CodeCopyManager !== 'undefined') {
+    //             await CodeCopyManager.copyCodeAndOpenOpenProcessing(code, e);
+    //         } else {
+    //             // Fallback: just open OpenProcessing
+    //             window.open('https://openprocessing.org/sketch/create', '_blank', 'noopener,noreferrer');
+    //         }
+    //     });
+        
+    //     // Insert button after the code block
+    //     preBlock.parentNode.insertBefore(button, preBlock.nextSibling);
+    // });
+}
 
 function showKeyConceptsError(weekId) {
     const loadingEl = document.getElementById(`keyConcepts-loading-${weekId}`);
