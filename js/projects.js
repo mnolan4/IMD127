@@ -1,5 +1,5 @@
 // Projects Page Functionality
-// Displays major creative projects (Creative Challenge 2, Creative Challenge 3, Final Portfolio)
+// Displays major creative projects (Creative Challenge 3, Final Portfolio, etc.)
 
 // Helper function to get all weeks (if not available globally)
 function getAllWeeksForProjects() {
@@ -37,9 +37,9 @@ function loadProjectsPage() {
     const contentArea = document.getElementById('page-content');
     if (!contentArea) return;
 
-    // Get all major projects (Major Project 1, Creative Challenge 2, Creative Challenge 3, Final Portfolio)
+    // Get all major projects (Major Project 1, Creative Challenge 3, Final Portfolio)
     const majorProjects = [];
-    const projectIds = ['major-project-01', 'creative-challenge-02', 'creative-challenge-03', 'final-portfolio'];
+    const projectIds = ['major-project-01', 'creative-challenge-03', 'final-portfolio'];
     
     if (typeof courseData !== 'undefined' && courseData.weeks) {
         courseData.weeks.forEach(week => {

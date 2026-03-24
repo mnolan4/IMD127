@@ -117,8 +117,8 @@ You'll learn how to make things interactive, and you'll create Major Project 1: 
 Weeks 4-5: Building Blocks
 Loops and functions—these are the building blocks that let you do more with less code. More homework sketches to practice.
 
-Week 6: Arrays & Creative Challenge 2
-Learn to manage collections of things, and create an Interactive Drawing Tool for Creative Challenge 2.
+Week 6: Arrays & Collections
+Learn to manage collections of things, complete array-focused assessments, and finish the Arrays ToDo sketch on OpenProcessing (weekly sketch).
 
 Week 7: Objects & Classes
 Organize your code better and create reusable components. Another homework sketch.
@@ -151,12 +151,11 @@ Assignments
 
 You'll have a few different types of assignments:
 
-Homework Sketches (Weeks 1, 2, 4, 5, 7, 8, 9, 10, 12)
+Homework Sketches (Weeks 1, 2, 4, 5, 6, 7, 8, 9, 10, 12)
 These are weekly practice assignments that help you build your coding skills. They're due Monday at 11:59 PM before Tuesday's class. The idea is to write code from scratch, use reference material (not AI), and really get comfortable with the basics. These sketches help reinforce that code's impact extends beyond the screen.
 
 Major Projects
 • Major Project 1: Static Image, Visual Poetry (Week 3) - Your first big creative project
-• Creative Challenge 2: Interactive Drawing Tool (Week 6) - Build something interactive
 • Creative Challenge 3: Interactive System or Game (Week 11) - This is the big one where everything comes together
 • Final Portfolio Project (Week 15) - Showcase your best work
 
@@ -943,23 +942,22 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             number: 6,
             title: "Arrays and Collections",
             topics: ["Array basics", "Array methods", "Particle systems", "Managing multiple objects"],
-            deliverables: ["Code writing task", "Pair programming challenge"],
+            deliverables: ["Code explanation (arrays)", "In-class assessment", "Arrays ToDo sketch"],
             learningOutcomes: "By the end of this week, you should be able to create and use arrays to store multiple values. You should use array methods to manipulate data. You should create particle systems. You should manage multiple objects efficiently.",
             schedule: {
                 weekStart: "2026-03-03",
                 weekEnd: "2026-03-09",
                 classDates: ["2026-03-03", "2026-03-05"],
                 assignments: {
-                    "homework-sketch-06": "2026-03-30T23:59:00",
-                    "creative-challenge-02": "2026-03-10T23:59:00"
+                    "homework-sketch-06": "2026-03-30T23:59:00"
                 },
                 assessments: {
-                    "code-writing-06": "2026-03-10T23:59:00",
-                    "practice-06": "2026-03-10T23:59:00"
+                    "code-explanation-arrays-06": "2026-03-30T23:59:00",
+                    "inclass-arrays-06": "2026-03-26T11:00:00"
                 },
                 activities: {
                     "2026-03-03": { type: "lecture", topics: ["Array basics", "Array methods", "Particle systems"] },
-                    "2026-03-05": { type: "lab", topics: ["Managing multiple objects", "Pair programming challenge", "Creative Challenge 2 introduction"] }
+                    "2026-03-05": { type: "lab", topics: ["Managing multiple objects", "Pair programming challenge", "Arrays ToDo sketch (OpenProcessing)"] }
                 }
             },
             tasks: {
@@ -971,16 +969,16 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Array of Colors (Simple)", file: "code-examples/week-06-arrays/array-of-colors-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for a color palette and random(array)." }
                 ],
                 assessments: [
-                    { id: "code-writing-06", title: "Code Writing Task #2", type: "code-writing", file: "pdfs/Assessments/Unproctored/Code-Writing/code-writing-week-06.pdf" },
-                    { id: "practice-06", title: "Practice Problems", type: "practice", file: "pdfs/Assessments/Unproctored/Practice-Problems/practice-problem-week-06.pdf" }
+                    { id: "code-explanation-arrays-06", title: "Code Explanation - Arrays", type: "code-explanation", displayNumber: 15, file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-06.pdf" },
+                    { id: "inclass-arrays-06", title: "In-Class Assessment", type: "parsons", displayNumber: 16, inClass: true, inClassIncludeTime: true, file: "pdfs/Assessments/Unproctored/Parsons-Problems/parsons-problem-week-06.pdf" }
                 ],
                 assignments: [
-                    { 
-                        id: "creative-challenge-02", 
-                        title: "Creative Challenge 2: Interactive Drawing Tool", 
-                        type: "creative-challenge", 
-                        file: "pdfs/Assignments/Creative-Challenges/Creative-Challenge-02.pdf",
-                        prompt: "Create an interactive drawing tool that allows users to create visual marks through mouse or keyboard interaction. This project should demonstrate your understanding of arrays, mouse/keyboard input, and event-driven programming.\n\nRequirements:\n• Use arrays to store drawing data (positions, colors, sizes)\n• Implement mouse interaction (mousePressed, mouseDragged, or mouseIsPressed)\n• Allow users to create persistent marks on the canvas\n• Include at least one interactive feature (color change, brush size, clear function, etc.)\n• Use keyboard input for controls (change modes, clear canvas, save, etc.)\n\nConsider:\n• How does the tool feel to use? Is it responsive and intuitive?\n• What creative possibilities does your tool enable?\n• How do arrays help manage multiple drawing elements?\n• What makes your drawing tool unique or interesting?\n\nTechnical Focus:\n• Arrays for storing drawing data\n• Mouse and keyboard event functions\n• Array methods (push, forEach, etc.)\n• Conditional statements for different drawing modes\n• Event-driven programming patterns"
+                    {
+                        id: "homework-sketch-06",
+                        title: "Arrays ToDo Sketch (Weekly Sketch)",
+                        type: "homework-sketch",
+                        file: "pdfs/Assignments/Homework-Sketches/Homework-Sketch-Week-06.pdf",
+                        prompt: "Complete the TODO sections to finish the sketch located at: https://openprocessing.org/sketch/2900943\n\nTurn in the URL link to your working sketch.\n\nCreate the array\nAt the top of the sketch, make an empty array called mousePoints.\n\nLoop through the array\nIn mouseClicked() (stamp mode):\n• Set the loop to run through the entire mousePoints array\n• Use i < mousePoints.length as the condition\n• Keep i += 2 since values are stored in pairs\n\nAccess stored values\nInside the loop:\n• Use mousePoints[i] for the x offset\n• Use mousePoints[i + 1] for the y offset\n\nDraw stamped circles\nReplace the TODOs so the circle is drawn at:\n• mouseX + mousePoints[i]\n• mouseY + mousePoints[i + 1]\n\nStore mouse movement\nIn mouseMoved():\n• Add (mouseX - originX) to the array\n• Add (mouseY - originY) to the array\n\nUse .push() to add both values in order to the array\n\nGoal:\nRecord mouse movement as offsets, then replay (stamp) that shape anywhere on click."
                     }
                 ],
                 resources: []
@@ -1034,7 +1032,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
             number: 8,
             title: "Randomness and Noise",
             topics: ["random()", "noise()", "Perlin noise", "Probability", "Organic forms"],
-            deliverables: ["Code explanation (randomness algorithms)", "Parsons problem"],
+            deliverables: ["Homework sketch (randomness and noise)"],
             learningOutcomes: "By the end of this week, you should be able to use random to create variation. You should use noise for smooth, organic randomness. You should understand Perlin noise. You should apply probability concepts. You should create organic, natural-looking forms.",
             schedule: {
                 weekStart: "2026-03-17",
@@ -1043,10 +1041,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 assignments: {
                     "homework-sketch-08": "2026-03-24T23:59:00"
                 },
-                assessments: {
-                    "code-explanation-08": "2026-03-30T23:59:00",
-                    "parsons-08": "2026-03-26T12:00:00"
-                },
+                assessments: {},
                 activities: {
                     "2026-03-24": { type: "lecture", topics: ["random()", "noise()", "Perlin noise", "Probability"] },
                     "2026-03-26": { type: "lab", topics: ["Organic forms", "Random walk patterns", "Hands-on practice"] }
@@ -1059,10 +1054,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Random Walk", file: "code-examples/week-08-randomness/random-walk.js", type: "code", description: "Review and understand this code example to be able to create organic, meandering paths with step-by-step random movement. Learn the random walk algorithm, how small random steps build up into natural-looking trails, and how to keep objects on canvas.", embedDemo: true },
                     { title: "Noise Example", file: "code-examples/week-08-randomness/noise-example.js", type: "code", description: "Review and understand this code example to be able to use Perlin noise for smooth, organic randomness instead of jumpy random() values. Learn how noise() creates gradual, continuous changes perfect for natural movement, clouds, terrain, and organic forms." }
                 ],
-                assessments: [
-                    { id: "code-explanation-08", title: "Code Explanation-Arrays", type: "code-explanation", file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-08.pdf" },
-                    { id: "parsons-08", title: "Parsons Problem", type: "parsons", inClass: true, file: "pdfs/Assessments/Unproctored/Parsons-Problems/parsons-problem-week-08.pdf" }
-                ],
+                assessments: [],
                 assignments: [
                     { 
                         id: "homework-sketch-08", 
@@ -1104,8 +1096,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Sound Basic", file: "code-examples/week-09-sound/sound-basic.js", type: "code", description: "Review and understand this code example to be able to create and manipulate sound using the p5.sound library. Learn how to use oscillators to generate tones, control frequency (pitch) with mouse position, and create interactive sound experiences that connect audio and visuals." }
                 ],
                 assessments: [
-                    { id: "code-writing-09", title: "Code Writing Task #3", type: "code-writing", file: "pdfs/Assessments/Unproctored/Code-Writing/code-writing-week-09.pdf" },
-                    { id: "practice-09", title: "Practice Problems", type: "practice", file: "pdfs/Assessments/Unproctored/Practice-Problems/practice-problem-week-09.pdf" }
+                    { id: "code-writing-09", title: "Code Writing Task #3", type: "code-writing", displayNumber: 17, file: "pdfs/Assessments/Unproctored/Code-Writing/code-writing-week-09.pdf" },
+                    { id: "practice-09", title: "Practice Problems", type: "practice", displayNumber: 18, file: "pdfs/Assessments/Unproctored/Practice-Problems/practice-problem-week-09.pdf" }
                 ],
                 assignments: [
                     { 
@@ -1154,7 +1146,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Audio Input Video (Simple)", file: "code-examples/week-10-ml-intro/audio-input-video-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for audio input controlling video properties." }
                 ],
                 assessments: [
-                    { id: "code-explanation-10", title: "Code Explanation (UI Integration)", type: "code-explanation", file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-10.pdf" }
+                    { id: "code-explanation-10", title: "Code Explanation (UI Integration)", type: "code-explanation", displayNumber: 19, file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-10.pdf" }
                 ],
                 assignments: [
                     { 
@@ -1204,7 +1196,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Simple Game (Simple)", file: "code-examples/week-11-advanced-ml/simple-game-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for a complete simple game." }
                 ],
                 assessments: [
-                    { id: "code-tracing-11", title: "Code Tracing (Game Systems)", type: "code-tracing", file: "pdfs/Assessments/Unproctored/Code-Tracing/code-tracing-week-11.pdf" }
+                    { id: "code-tracing-11", title: "Code Tracing (Game Systems)", type: "code-tracing", displayNumber: 20, file: "pdfs/Assessments/Unproctored/Code-Tracing/code-tracing-week-11.pdf" }
                 ],
                 assignments: [
                     { 
@@ -1246,7 +1238,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Load JSON", file: "code-examples/week-12-data-viz/load-json.js", type: "code", description: "Review and understand this code example to be able to load external JSON data files to use real data in your visualizations. Learn the preload() function, how to use loadJSON(), how to access data properties, and how to create data-driven visualizations." }
                 ],
                 assessments: [
-                    { id: "code-writing-12", title: "Code Writing Task #4", type: "code-writing", file: "pdfs/Assessments/Unproctored/Code-Writing/code-writing-week-12.pdf" }
+                    { id: "code-writing-12", title: "Code Writing Task #4", type: "code-writing", displayNumber: 21, file: "pdfs/Assessments/Unproctored/Code-Writing/code-writing-week-12.pdf" }
                 ],
                 assignments: [
                     { 
@@ -1295,7 +1287,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Video Generative (Simple)", file: "code-examples/week-13-integration/video-generative-simple.js", type: "code", description: "Clean version without comments - shows just the essential code for video-driven generative systems." }
                 ],
                 assessments: [
-                    { id: "code-explanation-13", title: "Code Explanation (Video System)", type: "code-explanation", file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-13.pdf" }
+                    { id: "code-explanation-13", title: "Code Explanation (Video System)", type: "code-explanation", displayNumber: 22, file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-13.pdf" }
                 ],
                 assignments: [],
                 resources: []
@@ -1350,7 +1342,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 keyConcepts: { title: "Key Concepts", type: "key-concepts", htmlFile: "content/key-concepts/key-concepts-week-15.html" },
                 examples: [],
                 assessments: [
-                    { id: "final-exam", title: "Final Exam", type: "final-exam", file: null }
+                    { id: "final-exam", title: "Final Exam", type: "final-exam", displayNumber: 23, file: null }
                 ],
                 assignments: [],
                 resources: []
