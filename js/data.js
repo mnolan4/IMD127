@@ -950,7 +950,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2026-03-09",
                 classDates: ["2026-03-03", "2026-03-05"],
                 assignments: {
-                    "homework-sketch-06": "2026-03-10T23:59:00",
+                    "homework-sketch-06": "2026-03-30T23:59:00",
                     "creative-challenge-02": "2026-03-10T23:59:00"
                 },
                 assessments: {
@@ -998,10 +998,10 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2026-03-16",
                 classDates: ["2026-03-10", "2026-03-12"],
                 assignments: {
-                    "homework-sketch-07": "2026-03-17T23:59:00"
+                    "homework-sketch-07": "2026-04-06T23:59:00"
                 },
                 assessments: {
-                    "code-tracing-07": "2026-02-27T23:59:00"
+                    "code-tracing-07": "2026-04-03T23:59:00"
                 },
                 activities: {
                     "2026-03-10": { type: "lecture", topics: ["Object-oriented programming basics", "Classes and instances"] },
@@ -1015,7 +1015,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Class Example", file: "code-examples/week-07-objects/class-example.js", type: "code", description: "Review and understand this code example to be able to create classes as templates for objects and instantiate multiple instances. Learn class syntax, constructors, methods, the 'this' keyword, and how to create many similar objects with different properties." }
                 ],
                 assessments: [
-                    { id: "code-tracing-07", title: "Code Tracing (Object Interactions)", type: "code-tracing", file: "pdfs/Assessments/Unproctored/Code-Tracing/code-tracing-week-07.pdf" }
+                    { id: "code-tracing-07", title: "Code Writing-Objects", type: "code-tracing", file: "pdfs/Assessments/Unproctored/Code-Tracing/code-tracing-week-07.pdf" }
                 ],
                 assignments: [
                     { 
@@ -1044,8 +1044,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     "homework-sketch-08": "2026-03-24T23:59:00"
                 },
                 assessments: {
-                    "code-explanation-08": "2026-02-27T23:59:00",
-                    "parsons-08": "2026-02-27T23:59:00"
+                    "code-explanation-08": "2026-03-30T23:59:00",
+                    "parsons-08": "2026-03-26T12:00:00"
                 },
                 activities: {
                     "2026-03-24": { type: "lecture", topics: ["random()", "noise()", "Perlin noise", "Probability"] },
@@ -1060,8 +1060,8 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                     { title: "Noise Example", file: "code-examples/week-08-randomness/noise-example.js", type: "code", description: "Review and understand this code example to be able to use Perlin noise for smooth, organic randomness instead of jumpy random() values. Learn how noise() creates gradual, continuous changes perfect for natural movement, clouds, terrain, and organic forms." }
                 ],
                 assessments: [
-                    { id: "code-explanation-08", title: "Code Explanation (Randomness Algorithms)", type: "code-explanation", file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-08.pdf" },
-                    { id: "parsons-08", title: "Parsons Problem", type: "parsons", file: "pdfs/Assessments/Unproctored/Parsons-Problems/parsons-problem-week-08.pdf" }
+                    { id: "code-explanation-08", title: "Code Explanation-Arrays", type: "code-explanation", file: "pdfs/Assessments/Unproctored/Code-Explanation/code-explanation-week-08.pdf" },
+                    { id: "parsons-08", title: "Parsons Problem", type: "parsons", inClass: true, file: "pdfs/Assessments/Unproctored/Parsons-Problems/parsons-problem-week-08.pdf" }
                 ],
                 assignments: [
                     { 
@@ -1087,7 +1087,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2026-03-30",
                 classDates: ["2026-03-31", "2026-04-02"],
                 assignments: {
-                    "homework-sketch-09": "2026-03-31T23:59:00"
+                    "homework-sketch-09": "2026-04-13T23:59:00"
                 },
                 assessments: {
                     "code-writing-09": "2026-03-31T23:59:00",
@@ -1131,7 +1131,7 @@ Remember: These strategies are tools to help you learn. Find what works for you 
                 weekEnd: "2026-04-06",
                 classDates: ["2026-04-07", "2026-04-09"],
                 assignments: {
-                    "homework-sketch-10": "2026-04-07T23:59:00"
+                    "homework-sketch-10": "2026-04-28T23:59:00"
                 },
                 assessments: {
                     "code-explanation-10": "2026-04-07T23:59:00"
