@@ -404,7 +404,9 @@ function loadWeekPage(weekNumber) {
                         <strong>Assessments:</strong><br>
                         ${Object.entries(week.schedule.assessments).map(([id, dueDate]) => {
                             const assessment = week.tasks.assessments.find(a => a.id === id);
-                            return assessment ? `<span style="display: inline-block; margin-top: 0.25rem;">${assessment.title}: <strong>${formatDateTime(dueDate)}</strong></span>` : '';
+                            if (!assessment) return '';
+                            const when = assessment.inClass ? `${formatDate(dueDate)} (in-class)` : formatDateTime(dueDate);
+                            return `<span style="display: inline-block; margin-top: 0.25rem;">${assessment.title}: <strong>${when}</strong></span>`;
                         }).filter(Boolean).join('<br>')}
                     </div>
                     ` : ''}
@@ -548,8 +550,11 @@ function loadWeekPage(weekNumber) {
         week.tasks.assessments.forEach(assessment => {
             const assessmentNumber = getAssessmentNumber(week.number, assessment.id);
             const assessmentTitleWithWeek = `Assessment #${assessmentNumber}: ${assessment.title}`;
-            const dueDate = week.schedule && week.schedule.assessments && week.schedule.assessments[assessment.id] 
-                ? formatDateTime(week.schedule.assessments[assessment.id]) 
+            const assessmentDueRaw = week.schedule && week.schedule.assessments && week.schedule.assessments[assessment.id]
+                ? week.schedule.assessments[assessment.id]
+                : null;
+            const dueDate = assessmentDueRaw
+                ? (assessment.inClass ? formatDate(assessmentDueRaw) : formatDateTime(assessmentDueRaw))
                 : null;
             
             // Special handling for midterm and final exam
@@ -560,6 +565,8 @@ function loadWeekPage(weekNumber) {
             
             if (isMidterm || isFinal) {
                 description = '';
+                dateTimeLabel = 'In-class';
+            } else if (assessment.inClass) {
                 dateTimeLabel = 'In-class';
             }
             
@@ -966,16 +973,20 @@ function loadAssessmentsPage() {
             week.tasks.assessments.forEach(assessment => {
                 const assessmentNumber = getAssessmentNumber(week.number, assessment.id);
                 const assessmentTitleWithNumber = `Assessment #${assessmentNumber}: ${assessment.title}`;
-                const dueDate = week.schedule && week.schedule.assessments && week.schedule.assessments[assessment.id] 
-                    ? formatDateTime(week.schedule.assessments[assessment.id]) 
+                const assessmentDueRaw = week.schedule && week.schedule.assessments && week.schedule.assessments[assessment.id]
+                    ? week.schedule.assessments[assessment.id]
                     : null;
+                const dueDate = assessmentDueRaw
+                    ? (assessment.inClass ? formatDate(assessmentDueRaw) : formatDateTime(assessmentDueRaw))
+                    : null;
+                const dueLabel = assessment.inClass ? 'In-class' : 'Due';
                 html += `
                     <div class="task-item">
                         <div class="task-content">
                             <div class="task-title">${assessmentTitleWithNumber}</div>
                             <div class="task-description">
                                 ${assessment.type} - Complete this assessment in your LMS.
-                                ${dueDate ? `<br><strong>Due:</strong> ${dueDate}` : ''}
+                                ${dueDate ? `<br><strong>${dueLabel}:</strong> ${dueDate}` : ''}
                             </div>
                         </div>
                     </div>
